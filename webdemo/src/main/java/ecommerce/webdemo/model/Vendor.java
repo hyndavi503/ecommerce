@@ -36,8 +36,6 @@ private Set<Address> addresses;
 @OneToMany(mappedBy="vendor")
 private Set<Account> accounts;
 
-
-
 public Set<Account> getAccounts() {
 	return accounts;
 }

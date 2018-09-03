@@ -9,9 +9,11 @@
 </head>
 <body>
 this is login page
+<br>
+<br>
 <springform:form action="login" method="POST" modelAttribute="login">
 <springform:input path="email"/>
-<springform:input path="password"/>
+<springform:input type="password" path="password" />
 <input type="submit" value="login"/>
 </springform:form>
 </body>

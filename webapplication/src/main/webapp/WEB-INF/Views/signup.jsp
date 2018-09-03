@@ -12,7 +12,7 @@
 <springform:input path="username"/>
 <springform:input path="email"/>
 <springform:input path="mobile"/>
-<springform:input path="password"/>
+<springform:input type="password" path="password"/>
 <springform:input path="companyName"/>
 <input type="submit" value="signup"/>
 </springform:form>

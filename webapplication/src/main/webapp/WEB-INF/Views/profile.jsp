@@ -9,17 +9,31 @@
 </head>
 <body>
 This is profile page
-<br>
-${vendor.getUsername()}
-<br>
- ${vendor.getEmail()}
-<br>
-${vendor.getMobile()} 
-<br>
-${vendor.getCompanyName()}
-<br>
-<br>
-<a href="update">update</a>
+<spring:form>
+<table>
+<tr>
+<td>username:</td>
+<td>${vendor.username}</td>
+</tr>
+<tr>
+<td>email:</td>
+<td>${vendor.email}</td>
+</tr>
+<tr>
+<td>mobile:</td>
+<td>${vendor.mobile}</td>
+</tr>
+<tr>
+<td>password:</td>
+<td>${vendor.password}</td>
+</tr>
+<tr>
+<td>companyName:</td>
+<td>${vendor.companyName}</td>
+</tr>
+</table>
+<a href="editprofile">editprofile</a>
+</spring:form>
 </body>
 </html>
 
