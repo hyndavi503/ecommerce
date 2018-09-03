@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,11 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-this is login page
-<springform:form action="login" method="POST" modelAttribute="login">
-<springform:input path="email"/>
-<springform:input path="password"/>
-<input type="submit" value="login"/>
-</springform:form>
+This is profile page
+<br>
+${vendor.getUsername()}
+<br>
+ ${vendor.getEmail()}
+<br>
+${vendor.getMobile()} 
+<br>
+${vendor.getCompanyName()}
+<br>
+<br>
+<a href="update">update</a>
 </body>
 </html>
+
+

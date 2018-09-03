@@ -1,11 +1,14 @@
 package ecommerce.webdemo.daoimpl;
 
-import javax.transaction.Transactional;
+
+
+import javax.persistence.NoResultException;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.model.Vendor;
@@ -49,6 +52,7 @@ private SessionFactory factory;
 		{
 			factory.getCurrentSession().update(vendor);
 			return true;
+			
 		}
 		catch(Exception e)
 		{
@@ -60,7 +64,7 @@ private SessionFactory factory;
 	public Vendor getVendor(long id) {
 	try
 	{
-		return factory.getCurrentSession().get(Vendor.class, id);
+		return factory.getCurrentSession().get(Vendor.class,id);
 	}
 	catch(Exception e)
 	{
@@ -76,6 +80,24 @@ private SessionFactory factory;
 	query.setParameter("password", password);
 	
 		return query.getSingleResult();
+	}
+
+	
+	
+	
+	@Override
+	public Vendor getEmail(String email) 
+	{
+		try
+		{
+		Query<Vendor> query=factory.getCurrentSession().createQuery("from Vendor where email=:email", Vendor.class);
+		query.setParameter("email", email);
+		return query.getSingleResult();
+		}
+		catch(NoResultException e)
+		{
+			return null;
+		}
 	}
 
 }

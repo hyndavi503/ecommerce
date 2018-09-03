@@ -14,49 +14,82 @@ import ecommerce.webdemo.model.Login;
 import ecommerce.webdemo.model.Vendor;
 
 @Controller
-public class IndexController 
-{
+public class IndexController {
 	@Autowired
 	private VendorDao vendorDao;
-	
-@RequestMapping("/")
-public ModelAndView index()
-{
-	ModelAndView view=new ModelAndView();
-	view.addObject("myName", "hyndavi");
-	return view;
-}
-@RequestMapping("/contact")
-public ModelAndView contact()
-{
-	ModelAndView modelAndView=new ModelAndView();
-	modelAndView.addObject("myContact", "9966293705");
-	return modelAndView;
-}
-	
+
+	@RequestMapping("/")
+	public ModelAndView index() {
+		ModelAndView view = new ModelAndView("index");
+		view.addObject("myName", "hyndavi");
+		return view;
+	}
+
+	@RequestMapping("/contact")
+	public ModelAndView contact() {
+		ModelAndView modelAndView = new ModelAndView("contact");
+		modelAndView.addObject("myContact", "9966293705");
+		return modelAndView;
+	}
+
 	@GetMapping("/signup")
-public String signup(Model model)
-{
-model.addAttribute("vendor", new Vendor());
-	return "signup";
-}
+	public String signup(Model model) {
+		model.addAttribute("vendor", new Vendor());
+		return "signup";
+	}
+
 	@PostMapping("/signup")
-	public String signup(@ModelAttribute("Vendor") Vendor vendor)
-	{
-		if(vendorDao.addVendor(vendor))
-		{
+	public String signup(@ModelAttribute("vendor") Vendor vendor) {
+		if (vendorDao.getEmail(vendor.getEmail()) == null) {
+			vendorDao.addVendor(vendor);
+			
 			return "redirect:/login";
+		} else {
+			return "signup";
+		}
+	}
+
+	@GetMapping("/login")
+	public String login(Model model) {
+		model.addAttribute("login", new Login());
+		return "login";
+	}
+	
+
+	@PostMapping("/login")
+	public String login(@ModelAttribute("login") Login login,Model model,Vendor vendor) {
+		if (vendorDao.login(login.getEmail(),login.getPassword()) != null) 
+		{
+			 vendor=vendorDao.login(login.getEmail(),login.getPassword());
+			model.addAttribute("vendor", vendor);
+			return "profile";
+		} else {
+			return "login";
+		}
+	}
+
+	@GetMapping("/profile")
+	public String profile(Model model) 
+	{
+		return "profile";
+	}
+	
+	@GetMapping("/update")
+	public String updation(Model model)
+	{
+		return "update";
+	}
+	@PostMapping("/update")
+	public String update(@ModelAttribute("vendor") Vendor vendor)
+	{
+		if(vendorDao.updateVendor(vendor))
+		{
+		return "redirect:/success";
 		}
 		else
 		{
-		return "signup";
+			return "update";
 		}
-	}
-	@GetMapping("/login")
-	public String login(Model model)
-	{
-		model.addAttribute("login", new Login());
-		return "login";
 	}
 	
 }

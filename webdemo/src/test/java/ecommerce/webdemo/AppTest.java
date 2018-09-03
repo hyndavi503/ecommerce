@@ -2,6 +2,7 @@ package ecommerce.webdemo;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 import java.util.HashSet;
 
@@ -92,6 +93,7 @@ private AddressDao addressDao;
 		addresses.add(address2);
 		address2.setVendor(vendor);
 		
+		
 		account.setAccountNumber("9848022338");
 		account.setAccountNumber("sbi");
 		
@@ -104,7 +106,8 @@ private AddressDao addressDao;
 	}
 
 	@Test
-	public void addVendor() {
+	public void addVendor() 
+	{
 		assertEquals("test is failed", true, vendorDao.addVendor(vendor));
 
 	}
@@ -113,6 +116,11 @@ private AddressDao addressDao;
 	{
 		vendorDao.addVendor(vendor);
 		assertEquals("test is failed",vendor,vendorDao.getVendor(vendor.getId()));
+	}
+	public void getEmail()
+	{
+		vendorDao.addVendor(vendor);
+		assertEquals("test is failed", vendor, vendorDao.getEmail(vendor.getEmail()));
 	}
 	@Test
 	public void updateVendor() {
@@ -143,6 +151,8 @@ private AddressDao addressDao;
 	{
 		vendorDao.addVendor(vendor);
 		address.setVendor(vendor);
+	
+		
 		assertEquals("test is failed",true,addressDao.addAddress(address));
 		deleteAddress();
 	}
