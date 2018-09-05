@@ -21,13 +21,15 @@ private String bankName;
 private String accountNumber;
 
 @ManyToOne
-private Vendor vendor;
+private User user;
 
-public Vendor getVendor() {
-	return vendor;
+
+
+public User getUser() {
+	return user;
 }
-public void setVendor(Vendor vendor) {
-	this.vendor = vendor;
+public void setUser(User user) {
+	this.user = user;
 }
 public int getAccountid() {
 	return accountid;
@@ -49,8 +51,10 @@ public void setAccountNumber(String accountNumber) {
 }
 @Override
 public String toString() {
-	return "Account [accountid=" + accountid + ", bankName=" + bankName + ", accountNumber=" + accountNumber + "]";
+	return "Account [accountid=" + accountid + ", bankName=" + bankName + ", accountNumber=" + accountNumber + ", user="
+			+ user + "]";
 }
+
 
 
 

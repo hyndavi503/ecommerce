@@ -9,7 +9,7 @@
 </head>
 <body>
 Welcome to Edit Page
-<springform:form action="update" method="POST" modelAttribute="vendor">
+<springform:form action="update" method="POST" modelAttribute="user">
 <table>
 <tr>
 <td>id</td>
@@ -17,7 +17,7 @@ Welcome to Edit Page
 </tr> 
 <tr>
 <td>username</td>
-<td><springform:input path="username"/></td>
+<td><springform:input path="name"/></td>
 </tr>
 <tr>
 <td>email</td>
@@ -32,8 +32,8 @@ Welcome to Edit Page
 <td><springform:input path="mobile"/></td>
 </tr>
 <tr>
-<td>companyName</td>
-<td><springform:input path="companyName"/></td>
+<td>role</td>
+<td><springform:input path="role"/></td>
 </tr>
 </table>
 <tr>

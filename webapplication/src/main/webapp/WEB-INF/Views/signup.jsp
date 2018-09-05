@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<springform:form action="signup" method="POST" modelAttribute="vendor" >
-<springform:input path="username"/>
+<springform:form action="signup" method="POST" modelAttribute="user" >
+<springform:input path="name"/>
 <springform:input path="email"/>
 <springform:input path="mobile"/>
 <springform:input type="password" path="password"/>
-<springform:input path="companyName"/>
+<springform:input path="role"/>
 <input type="submit" value="signup"/>
 </springform:form>
 </body>

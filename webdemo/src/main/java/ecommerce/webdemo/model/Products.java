@@ -21,16 +21,16 @@ private String price;
 private String quantity;
 
 @ManyToOne
-private Vendor vendor;
+private User user;
 @ManyToOne
 private SubCategory subCategory;
 
 
-public Vendor getVendor() {
-	return vendor;
+public User getUser() {
+	return user;
 }
-public void setVendor(Vendor vendor) {
-	this.vendor = vendor;
+public void setUser(User user) {
+	this.user = user;
 }
 public SubCategory getSubCategory() {
 	return subCategory;
@@ -58,7 +58,7 @@ public void setQuantity(String quantity) {
 }
 @Override
 public String toString() {
-	return "Products [pid=" + pid + ", price=" + price + ", quantity=" + quantity + ", vendor=" + vendor
+	return "Products [pid=" + pid + ", price=" + price + ", quantity=" + quantity + ",user=" +user
 			+ ", subCategory=" + subCategory + "]";
 }
 

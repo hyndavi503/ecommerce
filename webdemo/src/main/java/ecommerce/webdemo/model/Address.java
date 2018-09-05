@@ -19,13 +19,13 @@ public class Address {
 	private String city;
 	private String pincode;
 	@ManyToOne
-	private Vendor vendor;
+	private User user;
 	
-	public Vendor getVendor() {
-		return vendor;
+	public User getUser() {
+		return user;
 	}
-	public void setVendor(Vendor vendor) {
-		this.vendor = vendor;
+	public void setVendor(User user) {
+		this.user = user;
 	}
 	public int getAddressid() {
 		return addressid;
@@ -54,7 +54,8 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [addressid=" + addressid + ", street=" + street + ", city=" + city + ", pincode=" + pincode
-				+ "]";
+				+ ", user=" + user + "]";
 	}
+	
 
 }
