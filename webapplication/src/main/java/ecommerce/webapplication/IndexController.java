@@ -1,5 +1,7 @@
 package ecommerce.webapplication;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 
@@ -66,23 +68,38 @@ public class IndexController {
 	}
 	
 
+	
 	@PostMapping("/login")
-	public String login(@ModelAttribute("login") Login login,HttpSession session,User user) {
-		if(userDao.login(login.getEmail(),login.getPassword())!=null)
-		{
-			user=userDao.login(login.getEmail(),login.getPassword());
-			session.setAttribute("user", user);
-			return "redirect:/profile";
-		} else {
-			return "login";
-		}
-	}
-
-	@GetMapping("/profile")
-	public String profile(Model model) 
+	public  String  loginUser(@ModelAttribute("login")Login login,HttpSession session)
 	{
-		return "profile";
+	   if((userDao.login(login.getEmail(),login.getPassword()))!=null) 
+	   {
+		   User user=userDao.login(login.getEmail(),login.getPassword());
+		   
+		   session.setAttribute("user",user);
+		   
+		    // return "redirect:userprofile";
+		   
+		   if(user.getRole().equalsIgnoreCase("admin")) 
+		   {
+			   
+			   return  "admin";
+		   }
+		   else 
+		   if(user.getRole().equalsIgnoreCase("vendor")) 
+		   {
+			   return  "vendorindex";
+		   }
+		   else
+		  return  "customer";
+		   }
+	   else 
+	   {
+		   
+		   return "login";
+	   }
 	}
+	
 	
 	@GetMapping("/editprofile")
 	public String editprofile(HttpSession session,Model model)
@@ -91,13 +108,30 @@ public class IndexController {
 		return "editprofile";
 	}
 	
-	@PostMapping("/update")
-	public String update(@ModelAttribute("user") User user,HttpSession httpSession)
-	{
-		System.out.println(user.getId());
-		httpSession.setAttribute("user",user);
-		userDao.updateUser(user);
-		return "redirect:/profile";
+	@PostMapping("update")
+	public String userUpdateProcess(@ModelAttribute("user")User user,HttpSession session) {
+
+		    session.setAttribute("user", user);
+			userDao.updateUser(user);
+			
+			  if(user.getRole().equalsIgnoreCase("admin")) {
+				   return  "admin";
+			   }else 
+			   if(user.getRole().equalsIgnoreCase("vendor")) {
+				   return  "vendorindex";
+			   } else
+			  
+				   return  "customer";
+		
+	}
+	@GetMapping("userdetails")
+	public String getUserDetails(Map<String ,Object> user) {
+		user.put("userList", userDao.getAllUserDetails());
+		return "userdetails";
+	}
+	@GetMapping("userprofile")
+	public String getUserDetails() {
+		return "userprofile";
 	}
 	
 }

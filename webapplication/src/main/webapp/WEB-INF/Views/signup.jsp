@@ -8,13 +8,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-<springform:form action="signup" method="POST" modelAttribute="user" >
-<springform:input path="name"/>
-<springform:input path="email"/>
-<springform:input path="mobile"/>
-<springform:input type="password" path="password"/>
-<springform:input path="role"/>
-<input type="submit" value="signup"/>
+<springform:form  action="signup" method="post" modelAttribute="user">
+    <table>
+      <tr>
+      <td><springform:label path="name">Name:</springform:label></td>
+      <td><springform:input path="name"/></td>
+      </tr>
+      
+        <tr>
+      <td><springform:label path="email">Email:</springform:label></td>
+      <td> <springform:input path="email"/></td>
+      </tr>
+     
+        <tr>
+      <td><springform:label path="mobile">Mobile:</springform:label></td>
+      <td>    <springform:input path="mobile"/></td>
+      </tr>
+     
+       <tr>
+      <td><springform:label path="password">Password:</springform:label></td>
+      <td>   <springform:input type="password" path="password"/></td>
+      </tr>
+               <td><springform:label path = "role">Role</springform:label></td>
+               <td>
+                  <ul>
+            <springform:select path="role">
+                <springform:option value="vendor">Vendor</springform:option>
+                <springform:option value="customer">Customer</springform:option>
+                <springform:option value="admin">Admin</springform:option>
+            </springform:select>
+        </ul>
+               </td>
+            </tr>
+    <tr><td><input type="submit" value="signup"/></td></tr>
+   </table>
 </springform:form>
 </body>
 </html>

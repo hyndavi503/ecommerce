@@ -27,8 +27,19 @@ private String mobile;
 private String password;
 private String role;
 
+private boolean status=false;
+
 @OneToMany(mappedBy="user")
-private Set<Address> addresses;
+	private  Set<Address> addresses;
+
+
+public boolean isStatus() {
+	return status;
+}
+
+public void setStatus(boolean status) {
+	this.status = status;
+}
 
 public long getId() {
 	return id;
@@ -90,6 +101,51 @@ public void setAddresses(Set<Address> addresses) {
 public String toString() {
 	return "User [id=" + id + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", password=" + password
 			+ ", role=" + role + ", addresses=" + addresses + "]";
+}
+
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	User other = (User) obj;
+	if (addresses == null) {
+		if (other.addresses != null)
+			return false;
+	} else if (!addresses.equals(other.addresses))
+		return false;
+	if (email == null) {
+		if (other.email != null)
+			return false;
+	} else if (!email.equals(other.email))
+		return false;
+	if (mobile == null) {
+		if (other.mobile != null)
+			return false;
+	} else if (!mobile.equals(other.mobile))
+		return false;
+	if (name == null) {
+		if (other.name != null)
+			return false;
+	} else if (!name.equals(other.name))
+		return false;
+	if (password == null) {
+		if (other.password != null)
+			return false;
+	} else if (!password.equals(other.password))
+		return false;
+	if (role == null) {
+		if (other.role != null)
+			return false;
+	} else if (!role.equals(other.role))
+		return false;
+	if (status != other.status)
+		return false;
+	return true;
 }
 
 

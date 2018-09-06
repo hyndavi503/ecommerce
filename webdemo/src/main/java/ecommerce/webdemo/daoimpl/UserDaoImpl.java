@@ -1,5 +1,7 @@
 package ecommerce.webdemo.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +70,17 @@ public class UserDaoImpl implements UserDao{
 	}
 	}
 
+	@Override
+	public List<User> getAllUserDetails() {
+		try {
+			return factory.getCurrentSession().createCriteria(User.class).list();
+		}
+	   catch (Exception e) {
+		     e.printStackTrace();
+		     return null;
+		}
+	
+	}
 	@Override
 	public User getUser(long user_id) {
 		// TODO Auto-generated method stub
