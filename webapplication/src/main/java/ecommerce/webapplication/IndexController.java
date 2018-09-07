@@ -68,7 +68,7 @@ public class IndexController {
 		return "login";
 	}
 	
-
+//login process
 	
 	@PostMapping("/login")
 	public  String  loginUser(@ModelAttribute("login")Login login,HttpSession session,User user)
