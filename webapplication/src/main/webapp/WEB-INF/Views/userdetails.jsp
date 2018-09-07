@@ -55,13 +55,11 @@
                        <td><a href="accept/${user.id }"><input type="button" value="Activate"></a></td>
                        </c:when>
                        <c:when test="${ status == true}">
-                       <td><a href="reject/${user.id}"><input type="button" value="Deactivate"></a></td>
+                       <td><a href="acc
+                       ept/${user.id}"><input type="button" value="Deactivate"></a></td>
                        </c:when>
                        </c:choose>
-                       
-                       
-
-                           
+                               
                 </tr>
            </tbody>
              

@@ -71,11 +71,14 @@ public class IndexController {
 
 	
 	@PostMapping("/login")
-	public  String  loginUser(@ModelAttribute("login")Login login,HttpSession session)
+	public  String  loginUser(@ModelAttribute("login")Login login,HttpSession session,User user)
 	{
+		
+		System.out.println(login.getEmail()+"  "+login.getPassword());
 	   if((userDao.login(login.getEmail(),login.getPassword()))!=null) 
 	   {
-		   User user=userDao.login(login.getEmail(),login.getPassword());
+		   
+		   user=userDao.login(login.getEmail(),login.getPassword());
 		   
 		   session.setAttribute("user",user);
 		   if(user.getRole().equalsIgnoreCase("admin")) 
@@ -103,8 +106,9 @@ public class IndexController {
 	}
 	
 	@PostMapping("update")
-	public String userUpdateProcess(@ModelAttribute("user")User user,HttpSession session) {
-
+	public String Update(@ModelAttribute("user")User user,HttpSession session) 
+	{
+System.out.println(user.getId());
 		    session.setAttribute("user", user);
 			userDao.updateUser(user);
 			

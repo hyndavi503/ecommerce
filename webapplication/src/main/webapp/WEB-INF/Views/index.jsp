@@ -5,8 +5,8 @@
  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <spring:url value="/resources/images" var="images"></spring:url>
- <link rel="stylesheet" href="edit.css">
-
+<!--  <link rel="stylesheet" href="edit.css"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -62,6 +62,7 @@
 
 <li class="page"><a href="Home">Short Codes</a></li>
 
+<i class="fas fa-mail-bulk"></i>
 <li class="page"><a href="Home">Mail Us</a></li>
 
 </ul>
