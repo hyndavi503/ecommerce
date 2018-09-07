@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%-- <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<spring:uri=value="/resources/images" var="images"/> --%>
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+<spring:url value="/resources/images" var="images"></spring:url>
  <link rel="stylesheet" href="edit.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -66,12 +67,49 @@
 </ul>
 </div>
 </nav>
-<img src=images.png>
+<%-- <img src="${images}/images.png"> --%>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="${images}/images.png" alt="Los Angeles">
+    </div>
+    <div class="carousel-item">
+      <img src="${images}/phone.jpg" alt="Chicago">
+    </div>
+    <!-- <div class="carousel-item">
+      <img src="laptop.jpg" alt="New York">
+    </div> -->
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+
  </body>
 </html>
 <style>
-body,div,nav,ul,li,a
+ body,div,nav,ul,li,a
 {
 	padding-right: 10px;
+} 
+img
+{
+	width:100%;
+	height:100%;
 }
 </style>

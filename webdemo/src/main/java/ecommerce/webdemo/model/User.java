@@ -1,3 +1,4 @@
+
 package ecommerce.webdemo.model;
 
 import java.util.Set;
@@ -33,16 +34,16 @@ private boolean status=false;
 	private  Set<Address> addresses;
 
 
+public long getId() {
+	return id;
+}
+
 public boolean isStatus() {
 	return status;
 }
 
 public void setStatus(boolean status) {
 	this.status = status;
-}
-
-public long getId() {
-	return id;
 }
 
 public void setId(long id) {

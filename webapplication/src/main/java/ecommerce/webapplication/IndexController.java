@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -77,12 +78,8 @@ public class IndexController {
 		   User user=userDao.login(login.getEmail(),login.getPassword());
 		   
 		   session.setAttribute("user",user);
-		   
-		    // return "redirect:userprofile";
-		   
 		   if(user.getRole().equalsIgnoreCase("admin")) 
-		   {
-			   
+		   {  
 			   return  "admin";
 		   }
 		   else 
@@ -95,12 +92,9 @@ public class IndexController {
 		   }
 	   else 
 	   {
-		   
-		   return "login";
+	   return "login";
 	   }
 	}
-	
-	
 	@GetMapping("/editprofile")
 	public String editprofile(HttpSession session,Model model)
 	{
@@ -114,6 +108,7 @@ public class IndexController {
 		    session.setAttribute("user", user);
 			userDao.updateUser(user);
 			
+			
 			  if(user.getRole().equalsIgnoreCase("admin")) {
 				   return  "admin";
 			   }else 
@@ -126,12 +121,31 @@ public class IndexController {
 	}
 	@GetMapping("userdetails")
 	public String getUserDetails(Map<String ,Object> user) {
-		user.put("userList", userDao.getAllUserDetails());
+		user.put("userList", userDao.getVendorDetails());
 		return "userdetails";
 	}
-	@GetMapping("userprofile")
+	
+	@GetMapping("profile")
 	public String getUserDetails() {
-		return "userprofile";
+		return "profile";
+	}
+	@GetMapping("accept/{id}")
+	public String acceptUser(@PathVariable("id")long id) {
+		
+		User user=userDao.getAllUserDetails(id);
+		user.setStatus(true);
+		userDao.updateUser(user);
+		return "redirect:/userdetails";
+		
 	}
 	
+	@GetMapping("reject/{id}")
+	public String rejectUser(@PathVariable("user_id")long id) {
+		
+		User user=userDao.getAllUserDetails(id);
+		user.setStatus(false);
+		userDao.updateUser(user);
+		return "redirect:/userdetails";
+		
+	}
 }

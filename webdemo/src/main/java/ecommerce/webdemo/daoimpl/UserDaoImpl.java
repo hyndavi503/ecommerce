@@ -71,15 +71,14 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public List<User> getAllUserDetails() {
+	public User getAllUserDetails(long id) {
 		try {
-			return factory.getCurrentSession().createCriteria(User.class).list();
+			User user=factory.getCurrentSession().get(User.class,id);
+			return user;
+		} catch (Exception e) {
+			return null;
 		}
-	   catch (Exception e) {
-		     e.printStackTrace();
-		     return null;
-		}
-	
+		
 	}
 	@Override
 	public User getUser(long user_id) {
@@ -106,6 +105,19 @@ public class UserDaoImpl implements UserDao{
 		{
 		return null;
 		}
+	}
+
+	@Override
+	public List<User> getVendorDetails() {
+		try {
+			Query<User> query=factory.getCurrentSession().createQuery("from User where role='vendor'",User.class);
+			return query.getResultList();
+		}
+	   catch (Exception e) {
+		     e.printStackTrace();
+		     return null;
+		}
+	
 	}
 
 }
