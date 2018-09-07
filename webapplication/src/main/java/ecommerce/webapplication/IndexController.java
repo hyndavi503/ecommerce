@@ -135,17 +135,17 @@ public class IndexController {
 		User user=userDao.getAllUserDetails(id);
 		user.setStatus(true);
 		userDao.updateUser(user);
-		return "redirect:/userdetails";
+		return "index";
 		
 	}
 	
 	@GetMapping("reject/{id}")
-	public String rejectUser(@PathVariable("user_id")long id) {
+	public String rejectUser(@PathVariable("id")long id) {
 		
 		User user=userDao.getAllUserDetails(id);
 		user.setStatus(false);
 		userDao.updateUser(user);
-		return "redirect:/userdetails";
+		return "index";
 		
 	}
 }

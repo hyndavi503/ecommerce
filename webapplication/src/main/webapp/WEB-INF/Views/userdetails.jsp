@@ -60,8 +60,7 @@
                        </c:choose>
                        
                        
-                    <%-- <td><a href="accept/${user.user_id }"><input type="button" value="accept" />  </a></td>
-                    <td> <a href="reject/${user.user_id }"><input type="button" value="reject" />  </a></td> --%>
+
                            
                 </tr>
            </tbody>
