@@ -7,8 +7,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<title></title>
+
 <body>
-<div class="bg">
+<%-- <div class="bg">
 <springform:form  action="signup" method="post" modelAttribute="user">
     <table>
       <tr>
@@ -44,7 +67,52 @@
     <tr><td><input type="submit" value="signup"/></td></tr>
    </table>
 </springform:form>
+</div> --%>
+
+<div class="bg">
+		<div class="container-fluid bg">
+			<div class="row">
+<springform:form  action="signup" method="post" modelAttribute="user">
+<!-- <center>
+<i class="fas fa-users"></i>
+</center> -->
+<h2>Sign Up</h2>
+<div class="form-group">
+<label for="name">Name:</label>
+<springform:input path="name" class="form-control" id="name"/>
 </div>
+<div class="form-group">
+<label for="email">Email:</label>
+<springform:input path="email" class="form-control" id="email" placeholder="@email"/>
+</div>
+<div class="form-group">
+<label for="mobile">Mobile:</label>
+<springform:input path="mobile" class="form-control" id="mobile"/>
+</div>
+<div class="form-group">
+<label for="password">password:</label>
+<springform:input path="password" class="form-control" id="password"/>
+</div>
+ <td><springform:label path = "role">Role</springform:label></td>
+               <td>
+                  <ul>
+            <springform:select path="role">
+                <springform:option value="vendor">Vendor</springform:option>
+                <springform:option value="customer">Customer</springform:option>
+                <springform:option value="admin">Admin</springform:option>
+            </springform:select>
+        </ul>
+               </td>
+<div class="form-group form-check">
+						<label class="form-check-label"> <input
+							class="form-check-input" type="checkbox">Remember me
+</label>
+</div>
+
+
+<button type="submit" class="btn btn-success btn-block">Sign Up</button>
+
+</springform:form>
 </body>
 </html> 
 
@@ -52,7 +120,7 @@
 
 .bg { 
     	    /* The image used */
-    	    background-image: url("https://wallpapercave.com/wp/TywCqVe.jpg");
+    	    background-image: url("http://lh4.ggpht.com/-MhNrLp6NYs4/U1sK0EXcqKI/AAAAAAAAS-Y/fCnJdHXmClQ/s1024/main-background.jpg");
     	    /* Full height */
     	    width: 100%; 
     	    height: 100vh;
@@ -69,10 +137,10 @@
 box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
     	}*/
     	form{
-    		padding-left: 450px;
-    		padding-top: 150px;
+    		padding-left: 550px;
+    		padding-top: 70px;
     	}
 
 </style>
 
- 
+  

@@ -19,6 +19,7 @@
       <nav class="navbar navbar-expand bg-danger navbar-dark justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item">
+          
             <a class="nav-link" href="signup.html">SignUp</a>
         </li>
     <li class="nav-item">
