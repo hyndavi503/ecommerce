@@ -78,20 +78,24 @@
 </center> -->
 <h2>Sign Up</h2>
 <div class="form-group">
+<springform:errors path="name"></springform:errors>
 <label for="name">Name:</label>
 <springform:input path="name" class="form-control" id="name"/>
 </div>
 <div class="form-group">
+<springform:errors path="email"></springform:errors>
 <label for="email">Email:</label>
 <springform:input path="email" class="form-control" id="email" placeholder="@email"/>
 </div>
 <div class="form-group">
+<springform:errors path="mobile"></springform:errors>
 <label for="mobile">Mobile:</label>
 <springform:input path="mobile" class="form-control" id="mobile"/>
 </div>
 <div class="form-group">
+<springform:errors path="password"></springform:errors>
 <label for="password">password:</label>
-<springform:input path="password" class="form-control" id="password"/>
+<springform:input type="password" path="password" class="form-control" id="password"/>
 </div>
  <td><springform:label path = "role">Role</springform:label></td>
                <td>
@@ -108,8 +112,6 @@
 							class="form-check-input" type="checkbox">Remember me
 </label>
 </div>
-
-
 <button type="submit" class="btn btn-success btn-block">Sign Up</button>
 
 </springform:form>

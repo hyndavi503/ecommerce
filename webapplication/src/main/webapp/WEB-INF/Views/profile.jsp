@@ -29,22 +29,16 @@
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 <body>
-This is profile page
 <div class="bg">
-		<div class="container-fluid bg">
-			<div class="row">
-			<div class="form-container">
-<spring:form>
+<h3>welcome to profile page</h3>
+<form>
 <table>
 <tr>
 <td>username:</td>
 <td>${user.name}</td>
 </tr>
-<div class="form-group">
 <tr>
-<!-- <td>email:</td> -->
 <td><label for="email">Email address:</label></td>
-<%-- <springform:input path="email" class="form-control" id="email" /> --%>
 <td>${user.email}</td>
 </tr>
 <tr>
@@ -60,47 +54,34 @@ This is profile page
 <td>${user.role}</td>
 </tr>
 </table>
-</div>
-</div>
-</div>
-</div>
-					<div class="form-group form-check">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox">Remember me
+<button><a href="editprofile">editprofile</a></button>
+</form>
+					
 
-						</label>
-
-					</div>
-					<!-- <button type="submit" class="btn btn-success btn-block">Edit Progile</button> -->
-<a button type="submit" class="btn btn-success btn-block" href="editprofile">editprofile</a>
-</spring:form>
+</div>
 </body>
 </html>
 
 <style>
-.bg {
-	/* The image used */
-	background-image:
-		url("https://image.freepik.com/free-vector/blurred-abstract-background_1107-166.jpg");
-	/* Full height */
-	width: 100%;
-	height: 100vh;
-	/* Center and scale the image nicely */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+.bg
+{
+background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/background-vidro-5.jpg");
+width:100%;
+height:100vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
-/* .form-container{border:0px solid #fff; padding: 30px 60px;
-           margin-top: 40vh;
-           -webkit-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
--moz-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
-       } */
-form {
-	padding-left: 550px;
-	padding-top: 150px;
+form
+{
+padding-left: 600px;
+padding-top: 150px;
 }
+</style>
 
-text {
-	color:#fff;
-}
+
+
+
+
+
+ 

@@ -65,7 +65,7 @@ font-size: 20px;
 	<%-- <springform:form action="login" method="POST" modelAttribute="login"> --%>
 	<div class="bg">
 		<div class="container-fluid bg">
-			<div class="row">
+			<div class="row" style="padding-left:450px;padding-top:100px;">
 
 				<springform:form action="login" method="POST" modelAttribute="login"
 					class="form-container">
@@ -115,12 +115,13 @@ font-size: 20px;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-/* .form-container{border:0px solid #fff; padding: 30px 60px;
-           margin-top: 40vh;
+ .form-container{border:0px solid #fff; padding:100px;padding-top:50px;
            -webkit-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
 -moz-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
 box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
-       } */
+
+
+       } 
 form {
 	padding-left: 550px;
 	padding-top: 150px;
