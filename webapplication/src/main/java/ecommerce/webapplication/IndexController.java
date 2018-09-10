@@ -17,16 +17,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ecommerce.webdemo.dao.UserDao;
+import ecommerce.webdemo.dao.VendorDao;
+import ecommerce.webdemo.daoimpl.VendorDaoImpl;
 import ecommerce.webdemo.model.Login;
-import ecommerce.webdemo.model.User;
+import ecommerce.webdemo.model.Vendor;
 
 @Controller
 public class IndexController {
 	@Autowired
-	private User user;
+	private Vendor vendor;
 	@Autowired
-	private UserDao userDao;
+	private VendorDao vendorDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -45,24 +46,31 @@ public class IndexController {
 	@GetMapping("/signup")
 	
 	public String signup(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("vendor", new Vendor());
 		return "signup";
 	}
 
 	@PostMapping("/signup")
-	public String signup(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String signup(@Valid @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult)
+	{
 		System.out.println(bindingResult.hasErrors());
-		if (!bindingResult.hasErrors()) {
-			if (userDao.getUserByEmail(user.getEmail()) == null) {
-				userDao.addUser(user);
+		/*if (!bindingResult.hasErrors()) 
+		{*/
+			if (vendorDao.getVendorByEmail(vendor.getEmail()) == null) 
+			{
+				vendorDao.addVendor(vendor);
 				return "redirect:/login";
 
-			} else {
+			} 
+			else 
+			{
 				return "signup";
 			}
-		} else {
+		/*} 
+		else 
+		{
 			return "signup";
-		}
+		}*/
 	}
 
 	@GetMapping("/login")
@@ -74,58 +82,52 @@ public class IndexController {
 	// login process
 
 	@PostMapping("/login")
-	public String loginUser(@ModelAttribute("login") Login login, HttpSession session, User user) {
-
-		System.out.println(login.getEmail() + "  " + login.getPassword());
-		if ((userDao.login(login.getEmail(), login.getPassword())) != null) {
-
-			user = userDao.login(login.getEmail(), login.getPassword());
-
-			session.setAttribute("user", user);
-			if (user.getRole().equalsIgnoreCase("admin")) {
-				return "admin";
-			} else if (user.getRole().equalsIgnoreCase("vendor")) {
-				return "vendorindex";
-			} else
-				return "customer";
-		} else {
+	public String loginUser(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
+	{
+System.out.println(login.getEmail() + "  " + login.getPassword());
+		if ((vendorDao.login(login.getEmail(), login.getPassword())) != null) 
+		{
+			vendor =vendorDao.login(login.getEmail(), login.getPassword());
+			session.setAttribute("vendor",vendor);
+			return "redirect:/profile";
+		} 
+		else 
+		{
 			return "login";
 		}
+	}
+	
+	@GetMapping("profile")
+	public String getUserDetails() 
+	{
+		return "profile";
 	}
 
 	@GetMapping("/editprofile")
 	public String editprofile(HttpSession session, Model model) {
-		model.addAttribute("user", session.getAttribute("user"));
+		model.addAttribute("vendor", session.getAttribute("vendor"));
 		return "editprofile";
 	}
 
-	@PostMapping("update")
-	public String Update(@ModelAttribute("user") User user, HttpSession session) {
-		System.out.println(user.getId());
-		session.setAttribute("user", user);
-		userDao.updateUser(user);
+	@PostMapping("/update")
+    public String update(@ModelAttribute("vendor")Vendor vendor,HttpSession httpSession)
+    {
+        System.out.println(vendor);
+        httpSession.setAttribute("vendor", vendor);
+        vendorDao.updateVendor(vendor);
+        return "profile";
+        
+    }
 
-		if (user.getRole().equalsIgnoreCase("admin")) {
-			return "admin";
-		} else if (user.getRole().equalsIgnoreCase("vendor")) {
-			return "vendorindex";
-		} else
-
-			return "customer";
-	}
-
-	@GetMapping("userdetails")
+	/*@GetMapping("vendordetails")
 	public String getUserDetails(Map<String, Object> user) {
-		user.put("userList", userDao.getVendorDetails());
+		user.put("userList",vendorDao.getVendorDetails());
 		return "userdetails";
-	}
+	}*/
 
-	@GetMapping("profile")
-	public String getUserDetails() {
-		return "profile";
-	}
+	
 
-	@GetMapping("accept/{id}")
+	/*@GetMapping("accept/{id}")
 	public String acceptUser(@PathVariable("id") long id) {
 
 		User user = userDao.getAllUserDetails(id);
@@ -143,5 +145,5 @@ public class IndexController {
 		userDao.updateUser(user);
 		return "index";
 
-	}
+	}*/
 }

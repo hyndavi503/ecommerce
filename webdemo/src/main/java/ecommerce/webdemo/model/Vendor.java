@@ -17,34 +17,34 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class User {
+public class Vendor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@NotNull(message = "name should not be null")
-	@NotBlank(message = "name should not be blank")
+	/*@NotNull(message = "name should not be null")
+	@NotBlank(message = "name should not be blank")*/
 	/*@Pattern(regexp = "[a-zA-Z/s]{3,15}", message = "name must contain a-z.min are 3 and max are 15")*/
 	@Column(unique = true)
 	private String name;
-	@NotNull(message = "email should not be null")
-	@NotBlank(message = "email should not be blank")
+	/*@NotNull(message = "email should not be null")
+	@NotBlank(message = "email should not be blank")*/
 	/*@Pattern(regexp = "[a-z0-9]{5,15}@[a-z]{3,6}\.[a-z]{2,6}
 	 * ", message = "email must contain the following rules")*/
 	@Column(unique = true)
 	private String email;
-	@NotNull(message = "mobile should not be null")
-	@NotBlank(message = "mobile should not be blank")
+	/*@NotNull(message = "mobile should not be null")
+	@NotBlank(message = "mobile should not be blank")*/
 	/*@Pattern(regexp = "[0-9] {1,10}", message = "mobile number should have 0-9")*/
 	@Column(unique = true)
 	private String mobile;
 	private String password;
 	
 
-	private String role;
+	private String companyname;
 
 	private boolean status = false;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "vendor")
 	private Set<Address> addresses;
 
 	public long getId() {
@@ -95,12 +95,14 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	
+
+	public String getCompanyname() {
+		return companyname;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
 	}
 
 	public Set<Address> getAddresses() {
@@ -114,9 +116,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", password="
-				+ password + ", role=" + role + ", addresses=" + addresses + "]";
+				+ password + ", companyname=" + companyname + ", addresses=" + addresses + "]";
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -125,11 +128,16 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Vendor other = (Vendor) obj;
 		if (addresses == null) {
 			if (other.addresses != null)
 				return false;
 		} else if (!addresses.equals(other.addresses))
+			return false;
+		if (companyname == null) {
+			if (other.companyname != null)
+				return false;
+		} else if (!companyname.equals(other.companyname))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -151,14 +159,10 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (role == null) {
-			if (other.role != null)
-				return false;
-		} else if (!role.equals(other.role))
-			return false;
 		if (status != other.status)
 			return false;
 		return true;
 	}
 
+	
 }

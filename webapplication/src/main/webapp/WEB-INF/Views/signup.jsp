@@ -31,48 +31,12 @@
 <title></title>
 
 <body>
-<%-- <div class="bg">
-<springform:form  action="signup" method="post" modelAttribute="user">
-    <table>
-      <tr>
-      <td><springform:label path="name">Name:</springform:label></td>
-      <td><springform:input path="name"/></td>
-      </tr>
-      
-        <tr>
-      <td><springform:label path="email">Email:</springform:label></td>
-      <td> <springform:input path="email"/></td>
-      </tr>
-     
-        <tr>
-      <td><springform:label path="mobile">Mobile:</springform:label></td>
-      <td>    <springform:input path="mobile"/></td>
-      </tr>
-     
-       <tr>
-      <td><springform:label path="password">Password:</springform:label></td>
-      <td>   <springform:input type="password" path="password"/></td>
-      </tr>
-               <td><springform:label path = "role">Role</springform:label></td>
-               <td>
-                  <ul>
-            <springform:select path="role">
-                <springform:option value="vendor">Vendor</springform:option>
-                <springform:option value="customer">Customer</springform:option>
-                <springform:option value="admin">Admin</springform:option>
-            </springform:select>
-        </ul>
-               </td>
-            </tr>
-    <tr><td><input type="submit" value="signup"/></td></tr>
-   </table>
-</springform:form>
-</div> --%>
+
 
 <div class="bg">
 		<div class="container-fluid bg">
 			<div class="row">
-<springform:form  action="signup" method="post" modelAttribute="user">
+<springform:form  action="signup" method="post" modelAttribute="vendor">
 <!-- <center>
 <i class="fas fa-users"></i>
 </center> -->
@@ -97,16 +61,12 @@
 <label for="password">password:</label>
 <springform:input type="password" path="password" class="form-control" id="password"/>
 </div>
- <td><springform:label path = "role">Role</springform:label></td>
-               <td>
-                  <ul>
-            <springform:select path="role">
-                <springform:option value="vendor">Vendor</springform:option>
-                <springform:option value="customer">Customer</springform:option>
-                <springform:option value="admin">Admin</springform:option>
-            </springform:select>
-        </ul>
-               </td>
+<div class="form-group">
+<springform:errors path="companyname"></springform:errors>
+<label for="companyname">companyname:</label>
+<springform:input path="companyname" class="form-control" id="companyname"/>
+</div>
+ 
 <div class="form-group form-check">
 						<label class="form-check-label"> <input
 							class="form-check-input" type="checkbox">Remember me

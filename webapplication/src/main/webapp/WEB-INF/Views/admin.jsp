@@ -13,7 +13,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <body>
+ <div class="bg">
  <h1>Welcome to Admin Page</h1>
+
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
@@ -28,7 +30,8 @@
  	</ul> 
 </nav>
 <div class="container">
-<img src="${images}/adminlogin.jpg">
+<%-- <img src="${images}/adminlogin.jpg"> --%>
+</div>
 </div>
 </body>
 </html>
@@ -42,4 +45,19 @@ img
 padding-top:90px;
 padding-left:500px;
 }
+.bg
+{
+background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/background-vidro-5.jpg");
+width:100%;
+height:100vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+form
+{
+padding-left: 600px;
+padding-top: 150px;
+}
+</style>
 </style>

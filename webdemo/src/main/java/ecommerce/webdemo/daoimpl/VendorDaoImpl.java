@@ -8,21 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import ecommerce.webdemo.dao.UserDao;
-import ecommerce.webdemo.model.User;
+import ecommerce.webdemo.dao.VendorDao;
+import ecommerce.webdemo.model.Vendor;
+
+
 
 
 @Component
 @Transactional
-public class UserDaoImpl implements UserDao{
+public class VendorDaoImpl implements VendorDao{
 
 	@Autowired
 	private SessionFactory factory;
 	
 	@Override
-	public boolean addUser(User user) {
+	public boolean addVendor(Vendor vendor) {
 		try {
-			factory.getCurrentSession().save(user);
+			factory.getCurrentSession().save(vendor);
 			return true;
 		} catch (Exception e) {
 			
@@ -32,9 +34,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean updateUser(User user) {
+	public boolean updateVendor(Vendor vendor) {
 		try {
-			factory.getCurrentSession().update(user);
+			factory.getCurrentSession().update(vendor);
 			return true;
 		} catch (Exception e) {
 			
@@ -44,9 +46,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
+	public boolean deleteVendor(Vendor vendor) {
 		try {
-			factory.getCurrentSession().delete(user);
+			factory.getCurrentSession().delete(vendor);
 			return true;
 		} catch (Exception e) {
 			
@@ -56,10 +58,10 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User login(String email, String password) {
+	public Vendor login(String email, String password) {
 		try
 		{
-		Query<User> query=factory.getCurrentSession().createQuery("from User where email=:email and password=:password",User.class)
+		Query<Vendor> query=factory.getCurrentSession().createQuery("from Vendor where email=:email and password=:password",Vendor.class)
 				.setParameter("email", email)
 				.setParameter("password", password);
 		return query.getSingleResult();
@@ -71,8 +73,8 @@ public class UserDaoImpl implements UserDao{
 	}
 	}
 
-	@Override
-	public User getAllUserDetails(long id) {
+	/*@Override
+	public Venodr getAllVendorDetails(long id) {
 		try {
 			User user=factory.getCurrentSession().get(User.class,id);
 			return user;
@@ -80,12 +82,12 @@ public class UserDaoImpl implements UserDao{
 			return null;
 		}
 		
-	}
+	}*/
 	@Override
-	public User getUser(long user_id) {
+	public Vendor getVendor(long id) {
 		// TODO Auto-generated method stub
 		try {
-			return factory.getCurrentSession().get(User.class, user_id);
+			return factory.getCurrentSession().get(Vendor.class,id);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -95,10 +97,10 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserByEmail(String email) {
+	public Vendor getVendorByEmail(String email) {
 		try
 		{
-			Query<User> query=factory.getCurrentSession().createQuery("from User where email=:email", User.class)
+			Query<Vendor> query=factory.getCurrentSession().createQuery("from User where email=:email", Vendor.class)
 					.setParameter("email", email);
 			return query.getSingleResult();
 		}
@@ -108,7 +110,13 @@ public class UserDaoImpl implements UserDao{
 		}
 	}
 
-	@Override
+//	@Override
+//	public Vendor getAllVendorDetails(long id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	/*@Override
 	public List<User> getVendorDetails() {
 		try {
 			Query<User> query=factory.getCurrentSession().createQuery("from User where role='vendor'",User.class);
@@ -119,6 +127,6 @@ public class UserDaoImpl implements UserDao{
 		     return null;
 		}
 	
-	}
+	}*/
 
 }

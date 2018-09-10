@@ -34,24 +34,24 @@
 <form>
 <table>
 <tr>
-<td>username:</td>
-<td>${user.name}</td>
+<td>name:</td>
+<td>${vendor.name}</td>
 </tr>
 <tr>
 <td><label for="email">Email address:</label></td>
-<td>${user.email}</td>
+<td>${vendor.email}</td>
 </tr>
 <tr>
 <td>mobile:</td>
-<td>${user.mobile}</td>
+<td>${vendor.mobile}</td>
 </tr>
 <tr>
 <td>password:</td>
-<td>${user.password}</td>
+<td>${vendor.password}</td>
 </tr>
-<tr>
-<td>role:</td>
-<td>${user.role}</td>
+<tr>1
+<td>companyname:</td>
+<td>${vendor.companyname}</td>
 </tr>
 </table>
 <button><a href="editprofile">editprofile</a></button>
@@ -65,7 +65,7 @@
 <style>
 .bg
 {
-background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/background-vidro-5.jpg");
+background-image: url("https://divicake.com/wp-content/uploads/Picture.png");
 width:100%;
 height:100vh;
 background-position: center;

@@ -14,6 +14,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <body>
+<div class="bg">
  <h1>Welcome to Vendor Page</h1>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
@@ -25,6 +26,7 @@
  	</li>
  	</ul> 
 </nav>
+</div>
 </body>
 </html>
 <style>
@@ -32,4 +34,19 @@ h1
 {
 padding-bottom:50px;
 }
+.bg
+{
+background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/00/01/80/73560a545c6ae6b.jpg");
+width:100%;
+height:100vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+form
+{
+padding-left: 600px;
+padding-top: 150px;
+}
+</style>
 </style>

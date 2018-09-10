@@ -19,18 +19,20 @@ import ecommerce.webdemo.dao.AccountDao;
 import ecommerce.webdemo.dao.AddressDao;
 import ecommerce.webdemo.dao.AdminDao;
 import ecommerce.webdemo.dao.CategoryDao;
+import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.LaptopDao;
 import ecommerce.webdemo.dao.ProductDao;
 import ecommerce.webdemo.dao.SubCategoryDao;
-import ecommerce.webdemo.dao.UserDao;
+import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.model.Account;
 import ecommerce.webdemo.model.Address;
 import ecommerce.webdemo.model.Admin;
 import ecommerce.webdemo.model.Category;
+import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Laptop;
 import ecommerce.webdemo.model.Products;
 import ecommerce.webdemo.model.SubCategory;
-import ecommerce.webdemo.model.User;
+import ecommerce.webdemo.model.Vendor;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import ecommerce.webdemo.HibernateConfig;
@@ -45,9 +47,9 @@ public class AppTest {
 	@Autowired
 	private AdminDao adminDao;*/
 	@Autowired
-	private User user;
+	private Vendor vendor;
 	@Autowired
-	private UserDao userDao;
+	private VendorDao vendorDao;
 	@Autowired
 	private Products products;
 	@Autowired
@@ -64,6 +66,10 @@ public class AppTest {
 	private Laptop laptop;
 	@Autowired
 	private LaptopDao laptopDao;
+	@Autowired
+	private Customer customer;
+	@Autowired
+	private CustomerDao customerDao;
 	
 
 	@Before
@@ -75,12 +81,16 @@ public class AppTest {
 		admin.setAdmin_email("sudheer@gmail.com");
 		admin.setAdmin_password("sudheer");*/
 		
+		customer.setName("shyam");
+		customer.setEmail("shyam@gmail.com");
+		customer.setMobile("9666069549");
+		customer.setPassword("shyam");
 
-		user.setName("hyndavi");
-		user.setEmail("hyndavi@gmail.com");
-		user.setMobile("9966293705");
-		user.setPassword("hyndavi");
-		user.setRole("customer");
+		vendor.setName("hyndavi");
+		vendor.setEmail("hyndavi@gmail.com");
+		vendor.setMobile("9966293705");
+		vendor.setPassword("hyndavi");
+		vendor.setCompanyname("flipkart");
 		
 		
 		laptop = new Laptop();
@@ -91,50 +101,69 @@ public class AppTest {
 		laptop.setPrice("20000");
 	}
 	
+	
+	
 	@Test
-	public void addUser()
+	public void addCustomer()
 	{
-		assertEquals("test is failed",true,userDao.addUser(user));
+		assertEquals("test is failed",true,customerDao.addCustomer(customer));
+	}
+	
+	public void updateCustomer()
+	{
+		customer.setName("sudheer");
+		customer.setEmail("sudheer@gmail.com");
+		customer.setMobile("9989873796");
+		customer.setPassword("sudheer");
+	}
+	@Test
+	public void addVendor()
+	{
+		assertEquals("test is failed",true,vendorDao.addVendor(vendor));
 		/*deleteUser();*/
 	}
 	
-	public void getUser()
+	public void getVendor()
 	{
-		userDao.addUser(user);
-		assertEquals("test is failed", user, userDao.getUser(user.getId()));
+		vendorDao.addVendor(vendor);
+		assertEquals("test is failed",vendor,vendorDao.getVendor(vendor.getId()));
 	}
 	
 	
-	public void getUserByEmail()
+	public void getVendorByEmail()
 	{
-		userDao.addUser(user);
-		assertEquals("test is failed", user, userDao.getUserByEmail(user.getEmail()));
+		vendorDao.addVendor(vendor);
+		assertEquals("test is failed",vendor,vendorDao.getVendorByEmail(vendor.getEmail()));
 	}
-	public void updateUser()
+	public void updateVendor()
 	{
-		userDao.addUser(user);
-		user.setName("reshma");
-		user.setEmail("reshma@gmail.com");
-		user.setMobile("34567890");
-		user.setPassword("reshma");
-		user.setRole("customer");
-		assertEquals("test is failed",true,userDao.updateUser(user));
+		vendorDao.addVendor(vendor);
+		vendor.setName("reshma");
+		vendor.setEmail("reshma@gmail.com");
+		vendor.setMobile("34567890");
+		vendor.setPassword("reshma");
+		vendor.setCompanyname("amazon");
+		assertEquals("test is failed",true,vendorDao.updateVendor(vendor));
 		/*deleteUser();*/
 	}
 	@After
-	public void deleteUser()
+	public void deleteVendor()
 	{
-		userDao.deleteUser(user);
+		vendorDao.deleteVendor(vendor);
 	}
 	
-	
+	/*@After*/
+	public void deleteCustomer()
+	{
+		customerDao.deleteCustomer(customer);
+	}
 	
 	
 	@Test
 	public void addLaptop() {
 		subCategory = subCategoryDao.getSubCategory(1);
-		userDao.addUser(user);
-		laptop.setUser(user);
+		vendorDao.addVendor(vendor);
+		laptop.setVendor(vendor);
 		laptop.setSubCategory(subCategory);
 		assertEquals("test is failed", true, laptopDao.addLaptop(laptop));
 		deleteLaptop();
