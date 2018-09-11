@@ -15,7 +15,7 @@ public Vendor login(String email,String password);
 public Vendor getVendor(long user_id);
 public Vendor getVendorByEmail(String email);
 /*public Vendor getAllVendorDetails(long id);*/
-/*public List<Vendor>  getVendorDetails();*/
+public List<Vendor>  getVendorDetails();
 }
 
 

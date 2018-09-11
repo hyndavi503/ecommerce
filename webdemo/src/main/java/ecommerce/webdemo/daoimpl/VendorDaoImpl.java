@@ -116,17 +116,18 @@ public class VendorDaoImpl implements VendorDao{
 //		return null;
 //	}
 
-	/*@Override
-	public List<User> getVendorDetails() {
-		try {
-			Query<User> query=factory.getCurrentSession().createQuery("from User where role='vendor'",User.class);
-			return query.getResultList();
-		}
-	   catch (Exception e) {
-		     e.printStackTrace();
-		     return null;
-		}
 	
-	}*/
+	
+	@Override
+	public List<Vendor> getVendorDetails() {
+		
+		try {
+			Query<Vendor> query=factory.getCurrentSession().createQuery("from Vendor ",Vendor.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

@@ -2,6 +2,7 @@ package ecommerce.webapplication;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -17,8 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.VendorDao;
+import ecommerce.webdemo.daoimpl.CustomerDaoImpl;
 import ecommerce.webdemo.daoimpl.VendorDaoImpl;
+import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Login;
 import ecommerce.webdemo.model.Vendor;
 
@@ -28,6 +32,10 @@ public class IndexController {
 	private Vendor vendor;
 	@Autowired
 	private VendorDao vendorDao;
+	@Autowired
+	private Customer customer;
+	@Autowired
+	private CustomerDao customerDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -82,7 +90,7 @@ public class IndexController {
 	// login process
 
 	@PostMapping("/login")
-	public String loginUser(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
+	public String loginVendor(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
 	{
 System.out.println(login.getEmail() + "  " + login.getPassword());
 		if ((vendorDao.login(login.getEmail(), login.getPassword())) != null) 
@@ -98,7 +106,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 	}
 	
 	@GetMapping("profile")
-	public String getUserDetails() 
+	public String getVendorDetails() 
 	{
 		return "profile";
 	}
@@ -118,19 +126,68 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
         return "profile";
         
     }
+	
+	
+	@GetMapping("/customersignup")
+	public String signupCustomer(Model model)
+	{
+		model.addAttribute("customer", new Customer());
+		
+		return "customersignup";
+	}
+	
+	@PostMapping("customersignup")
+	public String singupVendorProcess(@ModelAttribute("customer")Customer customer) {
+	
+		if((customerDao.getCustomerByEmail(customer.getEmail()))!=null) {
+		
+			 return "customerlogin";
+		}
+		else {
+			customerDao.addCustomer(customer);
+			return "index";
+		}
+	}
+	
+	@GetMapping("/customerlogin")
+	public String loginCustomer(Model model)
+	{
+		model.addAttribute("login", new Login());
+		return "customerlogin";
+	}
+	
+	@PostMapping("customerlogin")
+	public  String  loginCustomer(HttpServletRequest request,HttpSession session)
+	{
+		
+	   if((customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password")))!=null) {
+		   
+		   Customer customer=customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password"));
+		   
+		   session.setAttribute("customerDetails",customer);
+		   
+		    return "redirect:customerindex";
+		 
+	   }
+	   else {
+		   
+		   return "customerlogin";
+	   }
+	}
+	
 
-	/*@GetMapping("vendordetails")
-	public String getUserDetails(Map<String, Object> user) {
-		user.put("userList",vendorDao.getVendorDetails());
-		return "userdetails";
-	}*/
+@GetMapping("vendordetails")
+	public String getVendorDetails(Map<String, Object> vendor) {
+		vendor.put("vendorList",vendorDao.getVendorDetails());
+		return "vendordetails";
+	}
 
 	
 
 	/*@GetMapping("accept/{id}")
 	public String acceptUser(@PathVariable("id") long id) {
 
-		User user = userDao.getAllUserDetails(id);
+		Vendor vendor =vendorDao.getVendorDetails(id);
 		user.setStatus(true);
 		userDao.updateUser(user);
 		return "index";

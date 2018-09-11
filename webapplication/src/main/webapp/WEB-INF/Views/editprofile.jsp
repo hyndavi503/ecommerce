@@ -19,7 +19,6 @@ Welcome to Edit Page
 <td>name</td>
 <td><springform:input path="name"/></td>
 </tr> 
-
 <tr>
 <td>email</td>
 <td><springform:input path="email"/></td>
@@ -28,7 +27,6 @@ Welcome to Edit Page
 <td>password</td>
 <td><springform:input path="password" type="hidden"/></td>
 </tr> 
-
 <tr>
 <td>mobile</td>
 <td><springform:input path="mobile"/></td>

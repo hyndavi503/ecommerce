@@ -14,41 +14,41 @@ public class Admin
 {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private long admin_id;
+private long id;
 @Column(unique=true)
-private String admin_name;
+private String name;
 @Column(unique=true)
-private String admin_email;
-private String admin_password;
-public long getAdmin_id() {
-	return admin_id;
+private String email;
+private String password;
+public long getId() {
+	return id;
 }
-public void setAdmin_id(long admin_id) {
-	this.admin_id = admin_id;
+public void setId(long id) {
+	this.id = id;
 }
-public String getAdmin_name() {
-	return admin_name;
+public String getName() {
+	return name;
 }
-public void setAdmin_name(String admin_name) {
-	this.admin_name = admin_name;
+public void setName(String name) {
+	this.name = name;
 }
-public String getAdmin_email() {
-	return admin_email;
+public String getEmail() {
+	return email;
 }
-public void setAdmin_email(String admin_email) {
-	this.admin_email = admin_email;
+public void setEmail(String email) {
+	this.email = email;
 }
-public String getAdmin_password() {
-	return admin_password;
+public String getPassword() {
+	return password;
 }
-public void setAdmin_password(String admin_password) {
-	this.admin_password = admin_password;
+public void setPassword(String password) {
+	this.password = password;
 }
 @Override
 public String toString() {
-	return "Admin [admin_id=" + admin_id + ", admin_name=" + admin_name + ", admin_email=" + admin_email
-			+ ", admin_password=" + admin_password + "]";
+	return "Admin [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 }
+
 
 
 }

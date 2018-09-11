@@ -21,7 +21,7 @@
       
   
      
-     <c:if test="${!empty userList }">
+     <c:if test="${!empty vendorList }">
         <table  class="table table-bordered table-sm">
         <thead>
             <tr>
@@ -29,34 +29,31 @@
               <th>name</th>
               <th>email</th>
               <th>mobile</th>
-              <th>role</th>
-              <th>status</th>
-              <th>operation</th>
+              <th>password</th>
               
            </tr>
         
         </thead>
            
-           <c:forEach  items="${userList }"  var="user">
+           <c:forEach  items="${vendorList }"  var="vendor">
            <tbody>
            
                <tr>
-                      <td><c:out value="${user.id }"></c:out></td>
-                      <td><c:out value="${user.name }"></c:out></td>
-                      <td><c:out value="${user.email}"></c:out></td>
-                      <td><c:out value="${user.mobile}"></c:out></td>
-                      <td><c:out value="${user.role}"></c:out></td>
-                       <td><c:out value="${user.status }"></c:out></td>   
+                      <td><c:out value="${vendor.id }"></c:out></td>
+                      <td><c:out value="${vendor.name }"></c:out></td>
+                      <td><c:out value="${vendor.email}"></c:out></td>
+                      <td><c:out value="${vendor.mobile}"></c:out></td>
+                      <td><c:out value="${vendor.password}"></c:out></td>
+                       <%-- <td><c:out value="${vendor.status }"></c:out></td>  --%>  
                        
                        
-                       <c:set var = "status" scope = "session" value = "${user.status}"/>
+                       <c:set var = "status" scope = "session" value = "${vendor.status}"/>
                        <c:choose>
                        <c:when test="${ status == false}">
-                       <td><a href="accept/${user.id }"><input type="button" value="Activate"></a></td>
+                       <td><a href="accept/${vendor.id }"><input type="button" value="Activate"></a></td>
                        </c:when>
                        <c:when test="${ status == true}">
-                       <td><a href="acc
-                       ept/${user.id}"><input type="button" value="Deactivate"></a></td>
+                       <td><a href="accept/${vendor.id}"><input type="button" value="Deactivate"></a></td>
                        </c:when>
                        </c:choose>
                                

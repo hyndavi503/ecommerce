@@ -73,7 +73,8 @@ public class AppTest {
 	
 
 	@Before
-	public void setup() {
+	public void setup() 
+	{
 		AnnotationConfigApplicationContext applicationContext=new AnnotationConfigApplicationContext(HibernateConfig.class);
 		
 		
@@ -176,6 +177,5 @@ public class AppTest {
 	{
 		assertEquals("test is failed", true, laptopDao.deleteLaptop(laptop));
 	}
-	
 	
 }

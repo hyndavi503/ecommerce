@@ -1,6 +1,7 @@
 
 package ecommerce.webdemo.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -46,6 +47,18 @@ public class Vendor {
 
 	@OneToMany(mappedBy = "vendor")
 	private Set<Address> addresses;
+	
+	@OneToMany(mappedBy = "vendor")
+	private List<Products> products;
+
+
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
+	}
 
 	public long getId() {
 		return id;
