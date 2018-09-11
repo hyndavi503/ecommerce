@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.daoimpl.CustomerDaoImpl;
 import ecommerce.webdemo.daoimpl.VendorDaoImpl;
+import ecommerce.webdemo.model.Category;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Login;
 import ecommerce.webdemo.model.Vendor;
@@ -36,6 +38,12 @@ public class IndexController {
 	private Customer customer;
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private Mail mail;
+	@Autowired
+	private Category category;
+	@Autowired
+	private CategoryDao categoryDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -43,6 +51,7 @@ public class IndexController {
 		/* view.addObject("myName", "hyndavi"); */
 		return view;
 	}
+
 
 	@RequestMapping("/contact")
 	public ModelAndView contact() {
@@ -67,6 +76,8 @@ public class IndexController {
 			if (vendorDao.getVendorByEmail(vendor.getEmail()) == null) 
 			{
 				vendorDao.addVendor(vendor);
+				/*mail=new Mail();
+				mail.sendingMail(vendor.getEmail(),vendor.getPassword());*/
 				return "redirect:/login";
 
 			} 
@@ -97,7 +108,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 		{
 			vendor =vendorDao.login(login.getEmail(), login.getPassword());
 			session.setAttribute("vendor",vendor);
-			return "redirect:/profile";
+			return "vendorindex";
 		} 
 		else 
 		{
@@ -106,7 +117,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 	}
 	
 	@GetMapping("profile")
-	public String getVendorDetails() 
+	public String profile() 
 	{
 		return "profile";
 	}
@@ -127,8 +138,47 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
         
     }
 	
+	@GetMapping("vendordetails")
+	public String getVendorDetails(Map<String, Object> vendor) {
+		vendor.put("vendorList",vendorDao.getVendorDetails());
+		return "vendordetails";
+	}
 	
-	@GetMapping("/customersignup")
+	@GetMapping("categorydetails")
+	public String getCategoryDetails(Map<String,Object> category )
+	{
+		category.put("categorylist",categoryDao.getCategoryDetails());
+		return "categorydetails";
+	}
+	
+
+	
+@GetMapping("accept/{id}")
+public String acceptUser(@PathVariable("id")long id) {
+	
+	Vendor vendor=vendorDao.getVendor(id);
+	vendor.setStatus(true);
+	vendorDao.updateVendor(vendor);
+	return "index";
+	
+}
+
+@GetMapping("reject/{id}")
+public String rejectUser(@PathVariable("id")long id) {
+	
+	Vendor vendor=vendorDao.getVendor(id);
+	vendor.setStatus(false);
+	vendorDao.updateVendor(vendor);
+	return "index";
+	
+}
+	
+
+
+
+//customer signup process
+	
+	/*@GetMapping("/customersignup")
 	public String signupCustomer(Model model)
 	{
 		model.addAttribute("customer", new Customer());
@@ -137,7 +187,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 	}
 	
 	@PostMapping("customersignup")
-	public String singupVendorProcess(@ModelAttribute("customer")Customer customer) {
+	public String singupCustomer(@ModelAttribute("customer")Customer customer) {
 	
 		if((customerDao.getCustomerByEmail(customer.getEmail()))!=null) {
 		
@@ -145,9 +195,11 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 		}
 		else {
 			customerDao.addCustomer(customer);
-			return "index";
+			return "customersignup";
 		}
 	}
+	
+	
 	
 	@GetMapping("/customerlogin")
 	public String loginCustomer(Model model)
@@ -156,51 +208,23 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 		return "customerlogin";
 	}
 	
-	@PostMapping("customerlogin")
-	public  String  loginCustomer(HttpServletRequest request,HttpSession session)
+	@PostMapping("/login")
+	public String loginCustomer(@ModelAttribute("login") Login login, HttpSession session,Customer customer) 
 	{
-		
-	   if((customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password")))!=null) {
-		   
-		   Customer customer=customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password"));
-		   
-		   session.setAttribute("customerDetails",customer);
-		   
-		    return "redirect:customerindex";
-		 
-	   }
-	   else {
-		   
-		   return "customerlogin";
-	   }
+System.out.println(login.getEmail() + "  " + login.getPassword());
+		if ((customerDao.login(login.getEmail(), login.getPassword())) != null) 
+		{
+			customer =customerDao.login(login.getEmail(), login.getPassword());
+			session.setAttribute("customer",customer);
+			return "customerindex";
+		} 
+		else 
+		{
+			return "login";
+		}
 	}
+	*/
 	
 
-@GetMapping("vendordetails")
-	public String getVendorDetails(Map<String, Object> vendor) {
-		vendor.put("vendorList",vendorDao.getVendorDetails());
-		return "vendordetails";
-	}
 
-	
-
-	/*@GetMapping("accept/{id}")
-	public String acceptUser(@PathVariable("id") long id) {
-
-		Vendor vendor =vendorDao.getVendorDetails(id);
-		user.setStatus(true);
-		userDao.updateUser(user);
-		return "index";
-
-	}
-
-	@GetMapping("reject/{id}")
-	public String rejectUser(@PathVariable("id") long id) {
-
-		User user = userDao.getAllUserDetails(id);
-		user.setStatus(false);
-		userDao.updateUser(user);
-		return "index";
-
-	}*/
 }

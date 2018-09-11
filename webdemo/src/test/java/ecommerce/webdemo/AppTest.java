@@ -92,7 +92,7 @@ public class AppTest {
 		vendor.setMobile("9966293705");
 		vendor.setPassword("hyndavi");
 		vendor.setCompanyname("flipkart");
-		
+	
 		
 		laptop = new Laptop();
 		laptop.setRam(4);
@@ -108,20 +108,24 @@ public class AppTest {
 	public void addCustomer()
 	{
 		assertEquals("test is failed",true,customerDao.addCustomer(customer));
+		/*deleteCustomer();*/
 	}
 	
-	public void updateCustomer()
+	/*public void updateCustomer()
 	{
+		customerDao.addCustomer(customer);
 		customer.setName("sudheer");
 		customer.setEmail("sudheer@gmail.com");
 		customer.setMobile("9989873796");
 		customer.setPassword("sudheer");
-	}
+		assertEquals("test is failed",true,customerDao.updateCustomer(customer));
+		deleteCustomer();
+	}*/
 	@Test
 	public void addVendor()
 	{
 		assertEquals("test is failed",true,vendorDao.addVendor(vendor));
-		/*deleteUser();*/
+
 	}
 	
 	public void getVendor()
@@ -147,13 +151,26 @@ public class AppTest {
 		assertEquals("test is failed",true,vendorDao.updateVendor(vendor));
 		/*deleteUser();*/
 	}
+	
+	public void getCustomerById()
+	{
+		customerDao.addCustomer(customer);
+		assertEquals("test is failed",customer,customerDao.getCustomerById(customer.getId()));
+	}
+	
+	
+	public void getCustomerByEmail()
+	{
+		customerDao.addCustomer(customer);
+		assertEquals("test is failed",customer,customerDao.getCustomerByEmail(customer.getEmail()));
+	}
 	@After
 	public void deleteVendor()
 	{
 		vendorDao.deleteVendor(vendor);
 	}
 	
-	/*@After*/
+	@After
 	public void deleteCustomer()
 	{
 		customerDao.deleteCustomer(customer);

@@ -89,7 +89,8 @@ public class VendorDaoImpl implements VendorDao{
 		try {
 			return factory.getCurrentSession().get(Vendor.class,id);
 			
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			// TODO: handle exception
 			return null;
 		}
@@ -100,7 +101,7 @@ public class VendorDaoImpl implements VendorDao{
 	public Vendor getVendorByEmail(String email) {
 		try
 		{
-			Query<Vendor> query=factory.getCurrentSession().createQuery("from User where email=:email", Vendor.class)
+			Query<Vendor> query=factory.getCurrentSession().createQuery("from Vendor where email=:email", Vendor.class)
 					.setParameter("email", email);
 			return query.getSingleResult();
 		}
@@ -110,12 +111,7 @@ public class VendorDaoImpl implements VendorDao{
 		}
 	}
 
-//	@Override
-//	public Vendor getAllVendorDetails(long id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
+	
 	
 	
 	@Override

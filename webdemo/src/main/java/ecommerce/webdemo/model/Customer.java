@@ -13,10 +13,19 @@ public class Customer
 {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
+private long id;
 private String name;
 private String email;
 private String mobile;
 private String password;
+
+
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
 public String getName() {
 	return name;
 }
@@ -43,7 +52,40 @@ public void setPassword(String password) {
 }
 @Override
 public String toString() {
-	return "Customer [name=" + name + ", email=" + email + ", mobile=" + mobile + ", password=" + password + "]";
+	return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", password="
+			+ password + "]";
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Customer other = (Customer) obj;
+	if (email == null) {
+		if (other.email != null)
+			return false;
+	} else if (!email.equals(other.email))
+		return false;
+	if (mobile == null) {
+		if (other.mobile != null)
+			return false;
+	} else if (!mobile.equals(other.mobile))
+		return false;
+	if (name == null) {
+		if (other.name != null)
+			return false;
+	} else if (!name.equals(other.name))
+		return false;
+	if (password == null) {
+		if (other.password != null)
+			return false;
+	} else if (!password.equals(other.password))
+		return false;
+	return true;
 }
 
 

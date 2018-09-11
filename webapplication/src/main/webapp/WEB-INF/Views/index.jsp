@@ -25,6 +25,12 @@
     <li class="nav-item">
        <a class="nav-link" href="login">Login</a>
    </li>
+   <li class="nav-item">
+       <a class="nav-link" href="customersignup">Customer Signup</a>
+   </li>
+   <li class="nav-item">
+       <a class="nav-link" href="customerlogin">Customer Login</a>
+   </li>
 <hr>
 <hr>
 </div>
@@ -40,7 +46,7 @@
 <!-- <ul class="nav navbar-nav"> -->
 <li class="page"><a href="Home">Home</a></li>
 
-<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="footwear">footwear
+<!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="footwear">footwear
   <span class="caret"></span>
 </a>
   <ul class="dropdown-menu">
@@ -58,13 +64,12 @@
   <li><a href="laptops">laptops</a></li>
   <li><a href="cameras">cameras</a></li>
 </li>
-</ul>
+</ul> -->
 
 
 <li class="page"><a href="Home">Short Codes</a></li>
 
-<i class="fas fa-mail-bulk"></i>
-<li class="page"><a href="Home">Mail Us</a></li>
+<li class="page"><a href="Mail us">Mail Us</a></li>
 
 </ul>
 </div>
@@ -72,14 +77,14 @@
 <%-- <img src="${images}/images.png"> --%>
 <div id="demo" class="carousel slide" data-ride="carousel">
 
-  <!-- Indicators -->
+ 
   <ul class="carousel-indicators">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
     <li data-target="#demo" data-slide-to="1"></li>
     <li data-target="#demo" data-slide-to="2"></li>
   </ul>
 
-  <!-- The slideshow -->
+
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="${images}/images.png" alt="Los Angeles">

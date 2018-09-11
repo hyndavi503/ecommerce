@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.model.Customer;
+import ecommerce.webdemo.model.Vendor;
 
 
 @Component
@@ -54,35 +55,57 @@ public class CustomerDaoImpl implements CustomerDao{
 
 
 	@Override
-	public Customer loginCustomer(String customer_email, String customer_password) {
+	public Customer login(String email, String password) {
 		
 		try {
-			Query<Customer> query=factory.getCurrentSession().createQuery("from Customer where email=:email and password=:password ",Customer.class);
-			query.setParameter("email",email);
-			query.setParameter("password",password);
+			Query<Customer> query=factory.getCurrentSession().createQuery("from Customer where email=:email and password=:password",Customer.class)
+					.setParameter("email", email)
+					.setParameter("password", password);
 			return query.getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+	
+	
 
 	@Override
-	public Customer getCustomerById(int customer_id) {
-		// TODO Auto-generated method stub
+	public Customer getCustomerById(long id) {
+		try {
+			factory.getCurrentSession().get(Customer.class,id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
 	@Override
-	public Customer getCustomerByEmail(String customer_email) {
-		// TODO Auto-generated method stub
+	public Customer getCustomerByEmail(String email) {
+		
+		try
+		{
+			Query<Customer> query=factory.getCurrentSession().createQuery("from Customer where email=:email",Customer.class)
+					.setParameter("email", email);
+			return query.getSingleResult();
+		}
+		catch(Exception e)
+		{
 		return null;
+		}
 	}
 
 	@Override
 	public List<Customer> getAllCustomerDetails() {
-		// TODO Auto-generated method stub
-		return null;
+		try
+		{
+			Query<Customer> query=factory.getCurrentSession().createQuery("from Customer ",Customer.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 }

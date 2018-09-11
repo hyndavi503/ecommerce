@@ -61,11 +61,7 @@
 <label for="password">password:</label>
 <springform:input type="password" path="password" class="form-control" id="password"/>
 </div>
-<div class="form-group">
-<springform:errors path="companyname"></springform:errors>
-<label for="companyname">companyname:</label>
-<springform:input path="companyname" class="form-control" id="companyname"/>
-</div>
+
  
 <div class="form-group form-check">
 						<label class="form-check-label"> <input

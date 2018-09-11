@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class SubCategory {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private long sid;
+private int sid;
 private String subcategoryname;
 
 @ManyToOne
@@ -26,10 +26,10 @@ public Category getCategory() {
 public void setCategory(Category category) {
 	this.category = category;
 }
-public long getSid() {
+public int getSid() {
 	return sid;
 }
-public void setSid(long sid) {
+public void setSid(int sid) {
 	this.sid = sid;
 }
 public String getSubcategoryname() {
