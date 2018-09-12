@@ -16,7 +16,7 @@ public class Category
 {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private long cid;
+private int cid;
 private String cname;
 @OneToMany(mappedBy="category")
 private Set<SubCategory> subCategory;
@@ -28,10 +28,10 @@ public Set<SubCategory> getSubCategory() {
 public void setSubCategory(Set<SubCategory> subCategory) {
 	this.subCategory = subCategory;
 }
-public long getCid() {
+public int getCid() {
 	return cid;
 }
-public void setCid(long cid) {
+public void setCid(int cid) {
 	this.cid = cid;
 }
 public String getCname() {

@@ -20,9 +20,9 @@
 <div class="form-group">
 <label for="items">Categories</label>
 
-<select class="form-control" id="items">
+<select class="form-control" id="items" name="cid">
 <c:forEach items="${categorylist}" var="category">
-<option value="${category.cname}">${category.cname}</option>
+<option value="${category.cid}">${category.cname}</option>
 
 </c:forEach>
 </select>

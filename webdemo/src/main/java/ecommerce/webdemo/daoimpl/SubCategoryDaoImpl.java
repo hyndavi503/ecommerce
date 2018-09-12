@@ -37,7 +37,7 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		try
 		{
 		Query<SubCategory> query=factory.getCurrentSession().createQuery("from SubCategory where Category_cid=:cid",SubCategory.class);
-		query.setParameter("id", cid);
+		query.setParameter("cid", cid);
 		return query.getResultList();
 		}
 		catch(Exception e)
