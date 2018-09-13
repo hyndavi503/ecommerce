@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.webdemo.dao.VendorDao;
+import ecommerce.webdemo.model.Products;
 import ecommerce.webdemo.model.Vendor;
 
 
@@ -123,6 +124,18 @@ public class VendorDaoImpl implements VendorDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	@Override
+	public List<Products> getProducts(int Vendor_id) {
+		
+		try {
+			Query<Products> query=factory.getCurrentSession().createQuery("form Products where vendor_id=:id", Products.class);
+			return query.getResultList();
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
 		}
 	}
 

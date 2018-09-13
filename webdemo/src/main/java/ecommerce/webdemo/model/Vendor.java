@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class Vendor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	/*@NotNull(message = "name should not be null")
 	@NotBlank(message = "name should not be blank")*/
 	/*@Pattern(regexp = "[a-zA-Z/s]{3,15}", message = "name must contain a-z.min are 3 and max are 15")*/
@@ -60,7 +60,7 @@ public class Vendor {
 		this.products = products;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -72,7 +72,7 @@ public class Vendor {
 		this.status = status;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

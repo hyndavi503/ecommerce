@@ -16,33 +16,28 @@ import org.springframework.stereotype.Component;
 public class Products {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private long pid;
+private int pid;
+private String name;
 private String price;
 private String quantity;
+private int numberOfProducts;
+
 
 @ManyToOne
 private Vendor vendor;
 @ManyToOne
 private SubCategory subCategory;
-
-
-public Vendor getVendor() {
-	return vendor;
-}
-public void setVendor(Vendor vendor) {
-	this.vendor = vendor;
-}
-public SubCategory getSubCategory() {
-	return subCategory;
-}
-public void setSubCategory(SubCategory subCategory) {
-	this.subCategory = subCategory;
-}
-public long getPid() {
+public int getPid() {
 	return pid;
 }
-public void setPid(long pid) {
+public void setPid(int pid) {
 	this.pid = pid;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
 }
 public String getPrice() {
 	return price;
@@ -56,11 +51,27 @@ public String getQuantity() {
 public void setQuantity(String quantity) {
 	this.quantity = quantity;
 }
-@Override
-public String toString() {
-	return "Products [pid=" + pid + ", price=" + price + ", quantity=" + quantity + ",vendor=" +vendor
-			+ ", subCategory=" + subCategory + "]";
+public int getNumberOfProducts() {
+	return numberOfProducts;
 }
+public void setNumberOfProducts(int numberOfProducts) {
+	this.numberOfProducts = numberOfProducts;
+}
+public Vendor getVendor() {
+	return vendor;
+}
+public void setVendor(Vendor vendor) {
+	this.vendor = vendor;
+}
+public SubCategory getSubCategory() {
+	return subCategory;
+}
+public void setSubCategory(SubCategory subCategory) {
+	this.subCategory = subCategory;
+}
+
+
+
 
  
 }

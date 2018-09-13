@@ -2,6 +2,7 @@ package ecommerce.webdemo.dao;
 
 import java.util.List;
 
+import ecommerce.webdemo.model.Products;
 import ecommerce.webdemo.model.Vendor;
 
 
@@ -16,6 +17,7 @@ public Vendor getVendor(long user_id);
 public Vendor getVendorByEmail(String email);
 /*public Vendor getAllVendorDetails(long id);*/
 public List<Vendor>  getVendorDetails();
+public List<Products> getProducts(int id);
 }
 
 

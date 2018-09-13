@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform"%>
 <html>
 <head>
-<title>Add Mobile</title>
+<title>Add Mixer</title>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -38,9 +38,9 @@
 <div class="bg">
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
-				<springform:form class="form-container" action="mobile"
-					method="post" modelAttribute="mobile">
-					<h2>Add Mobile</h2>
+				<springform:form class="form-container" action="mixer"
+					method="post" modelAttribute="mixer">
+					<h2>Add Mixer</h2>
 					<div class="form-group">
 						<label path="subCategory.sid">SubCategoryId</label>
 						<springform:input path="subCategory.sid" class="form-control"  type="hidden" value="${sid }"/>
@@ -50,37 +50,15 @@
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
 					</div>
 					<div class="form-group">
-						<label path="ram">Ram</label>
-						<springform:input type="text" path="ram" class="form-control"/>
+						<label path="companyname">companyName</label>
+						<springform:input type="text" path="companyname" class="form-control"/>
 					</div>
 					<div class="form-group">
-						<label path="rom">Rom</label>
-						<springform:input type="text"  path="rom" class="form-control" />
+						<label path="waranty">Waranty</label>
+						<springform:input type="text"  path="waranty" class="form-control" />
 					</div>
 
-					<div class="form-group">
-						<label path="processor">Processor</label>
-						<springform:input type="text" class="form-control" path="processor" />
-					</div>
-					<div class="form-group">
-						<label path="os">os</label>
-						<springform:input type="text" class="form-control" path="os" />
-					</div>
-					
-					<div class="form-group">
-						<label path="brandname">Brandname</label>
-						<springform:input type="text" class="form-control" path="brandname" />
-					</div>
-					
-					<div class="form-group">
-					<label path="price">Price</label>
-					<springform:input path="price" type="text" class="form-control"/>
-					</div>
-					
-					<div class="form-group">
-					<label path="quantity">Quantity</label>
-					<springform:input path="quantity" type="text" class="form-control"/>
-					</div>
+	
 
 					<button type="submit" class="btn btn-success btn-block">Add Laptop</button>
 				</springform:form>
