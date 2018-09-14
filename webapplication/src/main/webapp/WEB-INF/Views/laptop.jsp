@@ -28,7 +28,6 @@
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
 
-<!-- <link rel="stylesheet" type="text/css" href="registerstyle.css"> -->
 </head>
 <body>
 
@@ -39,7 +38,7 @@
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
 				<springform:form class="form-container" action="laptop"
-					method="post" modelAttribute="laptop">
+					method="post" modelAttribute="laptop" enctype="multipart/form-data">
 					<h2>Add Laptop</h2>
 					<div class="form-group">
 						<label path="subCategory.sid">SubCategoryId</label>
@@ -48,6 +47,10 @@
 					<div class="form-group">
 						<label path="vendor.id">VendorId</label>
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
+					</div>
+					<div class="form-group">
+						<label path="numberOfProducts">numberOfProducts</label>
+						<springform:input type="text" path="numberOfProducts" class="form-control"/>
 					</div>
 					<div class="form-group">
 						<label path="ram">Ram</label>
@@ -73,11 +76,10 @@
 					<springform:input path="price" type="text" class="form-control"/>
 					</div>
 					
-					<div class="form-group">
-					<label path="quantity">Quantity</label>
-					<springform:input path="quantity" type="text" class="form-control"/>
-					</div>
-
+<div class="form-group">
+<label path="image">Image</label>
+<springform:input path="image" type="file" class="form-group"/>
+</div>
 					<button type="submit" class="btn btn-success btn-block">Add Laptop</button>
 				</springform:form>
 			</div>

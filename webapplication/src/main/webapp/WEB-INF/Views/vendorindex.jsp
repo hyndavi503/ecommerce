@@ -31,6 +31,9 @@
  	<li class="nav-item">
  	<a class="nav-link" href="categorydetails">Add Products</a>
  	</li>
+ 	 <li class="nav-item">
+ 	<a class="nav-link" href="productdetails">Product Details</a>
+ 	</li> 
  	</ul> 
 </nav>
 </div>

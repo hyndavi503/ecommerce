@@ -13,8 +13,12 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="ecommerce" />
 <mvc:resources location="/resources/" mapping="/resources/**"/>
+
 	<bean id="views" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/Views/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</bean>
 </beans>

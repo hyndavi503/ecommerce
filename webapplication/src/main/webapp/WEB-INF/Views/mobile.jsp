@@ -39,7 +39,7 @@
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
 				<springform:form class="form-container" action="mobile"
-					method="post" modelAttribute="mobile">
+					method="post" modelAttribute="mobile" enctype="multipart/file-data">
 					<h2>Add Mobile</h2>
 					<div class="form-group">
 						<label path="subCategory.sid">SubCategoryId</label>
@@ -48,6 +48,10 @@
 					<div class="form-group">
 						<label path="vendor.id">VendorId</label>
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
+					</div>
+					<div class="form-group">
+						<label path="numberOfProducts">numberOfProducts</label>
+						<springform:input type="text" path="numberOfProducts" class="form-control"/>
 					</div>
 					<div class="form-group">
 						<label path="ram">Ram</label>
@@ -77,12 +81,8 @@
 					<springform:input path="price" type="text" class="form-control"/>
 					</div>
 					
-					<div class="form-group">
-					<label path="quantity">Quantity</label>
-					<springform:input path="quantity" type="text" class="form-control"/>
-					</div>
 
-					<button type="submit" class="btn btn-success btn-block">Add Laptop</button>
+					<button type="submit" class="btn btn-success btn-block">Add Mobile</button>
 				</springform:form>
 			</div>
 		</div>

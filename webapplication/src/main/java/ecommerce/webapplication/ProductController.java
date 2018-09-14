@@ -1,12 +1,19 @@
 package ecommerce.webapplication;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.metadata.GenericTableMetaDataProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +25,7 @@ import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.LaptopDao;
 import ecommerce.webdemo.dao.MixerDao;
 import ecommerce.webdemo.dao.MobileDao;
+import ecommerce.webdemo.dao.ProductDao;
 import ecommerce.webdemo.dao.SubCategoryDao;
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.daoimpl.SubCategoryDaoImpl;
@@ -44,7 +52,8 @@ public class ProductController {
 	private MixerDao mixerDao;
 	@Autowired
 	private VendorDao vendorDao;
-	
+	@Autowired
+	private ProductDao productDao;
 	
 	
 	
@@ -75,25 +84,85 @@ public class ProductController {
 		  case "mobiles": model.addAttribute("mobile" ,new Mobile());
 		   return "mobile";
 		   
-		  /*case "Mixer": model.addAttribute("mixer" ,new Mixer());
-		   return "mixer";*/
+		 case "mixer": model.addAttribute("mixer" ,new Mixer());
+		   return "mixer";
 		default: return "subcategory";
 		}
 				
 }
-	
+
 	@PostMapping("laptop")
-	public String addLaptop(@ModelAttribute("laptop")Laptop laptop) {
+	public String addLaptop(@ModelAttribute("laptop")Laptop laptop,HttpSession session,HttpServletRequest request) {
+	   List<NoOfProducts> noOfProducts=listOfProducts(laptop);
+	   
+		laptop.setNoOfProducts(noOfProducts);;
 		
-		laptopDao.addLaptop(laptop);
-		return "vendorindex";
+		if(laptopDao.addLaptop(laptop)) 
+		{
+			String contextPath=request.getRealPath("/");
+            File file=new File(contextPath+"/resources/images/products/");
+            System.out.println(file.getPath());
+            if(!file.exists())
+            {
+                file.mkdir();
+            }
+            FileOutputStream fileOutputStream;
+            try {
+				fileOutputStream=new FileOutputStream(file.getPath()+"/"+laptop.getPid()+".jpg");
+				InputStream inputStream=laptop.getImage().getInputStream();
+				byte[] imageBytes=new byte[inputStream.available()];
+				inputStream.read(imageBytes);
+				fileOutputStream.write(imageBytes);
+				fileOutputStream.flush();
+            } 
+            catch(FileNotFoundException e) 
+            
+            
+            {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+			return  "vendorindex";
+			}
+		   else {
+			return  "getModel";
+		   }
+		
 	}
-	
 	@PostMapping("mobile")
-	public String addMobile(@ModelAttribute("mobile")Mobile mobile) {
+	public String addMobile(@ModelAttribute("mobile")Mobile mobile,HttpServletRequest request) 
+	{	
+		
+		String context=request.getRealPath("/");
+		File file=new File(context+"/resources/images/products");
+		System.out.println(file.getPath());
+		if(!file.exists())
+		{
+			file.mkdir();
+		}
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream=new FileOutputStream(file.getPath()+"/"+mobile.getImage()+".jpg");
+			InputStream inputStream=mobile.getImage().getInputStream();
+			byte[] imagebyte=new byte[(inputStream.available())];
+			inputStream.read(imagebyte);
+			fileOutputStream.write(imagebyte);
+			fileOutputStream.flush();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		mobileDao.addMobile(mobile);
 		return "vendorindex";
+		
 	}
 	
 	@PostMapping("mixer")
@@ -115,13 +184,12 @@ public class ProductController {
 		return noOfProductsList;
 }
 	
-	
-	
 	@GetMapping("productdetails")
-	public String getProducts(HttpSession session,Model model) {
-		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
-		List<Products> products=vendorDao.getProducts(vendor.getId());
-	    session.setAttribute("products",products);
+	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {
+		
+		Vendor vendor=(Vendor)session.getAttribute("vendor");
+		products.put("productList", productDao.getAllProducts(vendor.getId()));
+
 		return "productdetails";	
 	}
 	

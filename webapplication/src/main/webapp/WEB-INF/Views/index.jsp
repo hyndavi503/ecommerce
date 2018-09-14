@@ -46,26 +46,6 @@
 <!-- <ul class="nav navbar-nav"> -->
 <li class="page"><a href="Home">Home</a></li>
 
-<!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="footwear">footwear
-  <span class="caret"></span>
-</a>
-  <ul class="dropdown-menu">
-<li><a href="shoes">shoes</a></li>
-<li><a href="shoes">loafers</a></li>
-<li><a href="shoes">flipflops</a></li>
-</li>
-</ul>
-
-
-<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="electronics">electronics
-<span class="caret"></span></a>
-<ul class="dropdown-menu">
-  <li><a href="mobiles">mobiles</a></li>
-  <li><a href="laptops">laptops</a></li>
-  <li><a href="cameras">cameras</a></li>
-</li>
-</ul> -->
-
 
 <li class="page"><a href="Home">Short Codes</a></li>
 

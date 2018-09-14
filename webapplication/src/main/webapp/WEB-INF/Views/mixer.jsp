@@ -50,6 +50,10 @@
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
 					</div>
 					<div class="form-group">
+						<label path="numberOfProducts">numberOfProducts</label>
+						<springform:input type="text" path="numberOfProducts" class="form-control"/>
+					</div>
+					<div class="form-group">
 						<label path="companyname">companyName</label>
 						<springform:input type="text" path="companyname" class="form-control"/>
 					</div>
@@ -60,7 +64,7 @@
 
 	
 
-					<button type="submit" class="btn btn-success btn-block">Add Laptop</button>
+					<button type="submit" class="btn btn-success btn-block">Add Mixer</button>
 				</springform:form>
 			</div>
 		</div>

@@ -97,7 +97,7 @@ public class AppTest {
 		laptop = new Laptop();
 		laptop.setRam(4);
 		laptop.setRom(4);
-		laptop.setQuantity("2pieces");
+		laptop.setNumberOfProducts(6);
 		laptop.setOs("windows 8.1");
 		laptop.setPrice("20000");
 	}

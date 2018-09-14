@@ -1,3 +1,4 @@
+
 package ecommerce.webdemo.model;
 
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ public int getRam() {
 public void setRam(int ram) {
 	this.ram = ram;
 }
+
+
 public int getRom() {
 	return rom;
 }
@@ -36,10 +39,5 @@ public String getOs() {
 public void setOs(String os) {
 	this.os = os;
 }
-@Override
-public String toString() {
-	return "Laptop [ram=" + ram + ", rom=" + rom + ", processor=" + processor + ", os=" + os + "]";
-}
-
 
 }

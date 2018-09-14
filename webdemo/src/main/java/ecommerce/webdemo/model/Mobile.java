@@ -1,8 +1,10 @@
 package ecommerce.webdemo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
@@ -13,8 +15,17 @@ public class Mobile extends Products
 	private String processor;
 	private String os;
 	private String brandname;
+	@Transient
+	private MultipartFile image;
 	
+
 	
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
 	public String getBrandname() {
 		return brandname;
 	}
