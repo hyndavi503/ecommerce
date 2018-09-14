@@ -187,6 +187,7 @@ public class ProductController {
         	image.uploadImage(laptop, request);
         }
 		laptopDao.updateLaptop(laptop);
+		
 		return "vendorindex";
 	}
 

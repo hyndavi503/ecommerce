@@ -73,7 +73,8 @@
 					</div>
 					
 <div class="form-group">
-<label path="image">Image</label>
+<l
+abel path="image">Image</label>
 <springform:input path="image" type="file" class="form-group"/>
 </div>
 					<button type="submit" class="btn btn-success btn-block">update laptop</button>
