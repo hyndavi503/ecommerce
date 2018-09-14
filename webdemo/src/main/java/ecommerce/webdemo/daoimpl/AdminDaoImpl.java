@@ -1,6 +1,7 @@
 package ecommerce.webdemo.daoimpl;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,19 @@ public class AdminDaoImpl implements AdminDao
 			return false;
 		}
 		
+	}
+
+	@Override
+	public Admin adminlogin(String email, String password) {
+		try {
+			Query<Admin> query=factory.getCurrentSession().createQuery("from Admin where email=:email and password=:password",Admin.class);
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 }

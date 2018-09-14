@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ecommerce.webdemo.dao.AdminDao;
 import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.daoimpl.CustomerDaoImpl;
 import ecommerce.webdemo.daoimpl.VendorDaoImpl;
+import ecommerce.webdemo.model.Admin;
 import ecommerce.webdemo.model.Category;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Login;
@@ -44,6 +46,8 @@ public class IndexController {
 	private Category category;
 	@Autowired
 	private CategoryDao categoryDao;
+	@Autowired
+	private AdminDao adminDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -173,9 +177,28 @@ public String rejectUser(@PathVariable("id")long id) {
 	
 }
 	
+@GetMapping("adminlogin")
+public String adminlogin(Model model)
+{
+	model.addAttribute("admin", new Admin());
+	return "adminlogin";
+}
 
 
-
+@PostMapping("adminlogin")
+public String adminlogin(@ModelAttribute("login") Login login,HttpSession session,Admin admin)
+{
+	if(adminDao.adminlogin(login.getEmail(),login.getPassword())!=null)
+	{
+		admin=adminDao.adminlogin(login.getEmail(),login.getPassword());
+		session.setAttribute("admin", admin);
+		return "admin";
+	}
+	else
+	{
+		return "adminlogin";
+	}
+}
 //customer signup process
 	
 	/*@GetMapping("/customersignup")

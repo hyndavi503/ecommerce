@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="springform"%>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Add Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -27,20 +27,15 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
-
-<!-- <link rel="stylesheet" type="text/css" href="registerstyle.css"> -->
+<title>Insert title here</title>
 </head>
 <body>
-
-
-
-
 <div class="bg">
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
-				<springform:form class="form-container" action="mobile"
-					method="post" modelAttribute="mobile" enctype="multipart/form-data">
-					<h2>Add Mobile</h2>
+				<springform:form class="form-container" action="${contextPath}/laptop"
+					method="post" modelAttribute="laptop" enctype="multipart/form-data">
+					<h2>Add Laptop</h2>
 					<div class="form-group">
 						<label path="subCategory.sid">SubCategoryId</label>
 						<springform:input path="subCategory.sid" class="form-control"  type="hidden" value="${sid }"/>
@@ -51,72 +46,44 @@
 					</div>
 					<div class="form-group">
 						<label path="numberOfProducts">numberOfProducts</label>
-						<springform:input type="text" path="numberOfProducts" class="form-control"/>
+						<springform:input type="text" path="numberOfProducts" class="form-control" value="${laptop.numberOfProducts}"/>
 					</div>
 					<div class="form-group">
 						<label path="ram">Ram</label>
-						<springform:input type="text" path="ram" class="form-control"/>
+						<springform:input type="text" path="ram" class="form-control" value="${laptop.ram}"/>
 					</div>
 					<div class="form-group">
 						<label path="rom">Rom</label>
-						<springform:input type="text"  path="rom" class="form-control" />
+						<springform:input type="text"  path="rom" class="form-control" value="${laptop.rom}" />
 					</div>
 
 					<div class="form-group">
 						<label path="processor">Processor</label>
-						<springform:input type="text" class="form-control" path="processor" />
+						<springform:input type="text" class="form-control" path="processor"  value="${laptop.processor}"/>
 					</div>
 					<div class="form-group">
 						<label path="os">os</label>
-						<springform:input type="text" class="form-control" path="os" />
+						<springform:input type="text" class="form-control" path="os" value="${laptop.os}" />
 					</div>
 					
-					<div class="form-group">
-						<label path="brandname">Brandname</label>
-						<springform:input type="text" class="form-control" path="brandname" />
-					</div>
 					
 					<div class="form-group">
 					<label path="price">Price</label>
-					<springform:input path="price" type="text" class="form-control"/>
+					<springform:input path="price" type="text" class="form-control" value="${laptop.price}"/>
 					</div>
 					
-
-					<button type="submit" class="btn btn-success btn-block">Add Mobile</button>
+<div class="form-group">
+<label path="image">Image</label>
+<springform:input path="image" type="file" class="form-group"/>
+</div>
+					<button type="submit" class="btn btn-success btn-block">update laptop</button>
 				</springform:form>
 			</div>
 		</div>
 	</div>
 	
 </div>
+
+
 </body>
-
-</html> 
-
-<style>
-
-.bg { 
-    	    /* The image used */
-    	    background-image: url("http://lh4.ggpht.com/-MhNrLp6NYs4/U1sK0EXcqKI/AAAAAAAAS-Y/fCnJdHXmClQ/s1024/main-background.jpg");
-    	    /* Full height */
-    	    width: 100%; 
-    	    height: 100vh;
-
-    	    /* Center and scale the image nicely */
-    	    background-position: center;
-    	    background-repeat: no-repeat;
-    	    background-size: cover;
-    	}
-    	
-    	form{
-    		padding-left: 550px;
-    		padding-top: 70px;
-    	}
-
-</style>
-
-  
-
-
-
-
+</html>

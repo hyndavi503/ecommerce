@@ -11,4 +11,5 @@ public boolean addProduct(Products products);
 public boolean deleteProduct(Products products);
 public boolean updateProduct(Products products);
 public List<Products> getAllProducts(int id);
+public int getSid(int pid);
 }

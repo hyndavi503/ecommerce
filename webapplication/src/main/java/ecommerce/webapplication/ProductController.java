@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,6 +41,7 @@ import ecommerce.webdemo.model.Vendor;
 @Controller
 public class ProductController {
 	
+	/*/webapplication/src/main/java/ecommerce/webapplication/Image.java*/
 	@Autowired
 	private SubCategoryDao subCategoryDao;
 	@Autowired
@@ -54,7 +56,8 @@ public class ProductController {
 	private VendorDao vendorDao;
 	@Autowired
 	private ProductDao productDao;
-	
+	@Autowired
+	private Image image;
 	
 	
 	@PostMapping("subcategory")
@@ -81,7 +84,7 @@ public class ProductController {
 		  case "laptop": model.addAttribute("laptop" ,new Laptop());
 		  return "laptop";
 		  
-		  case "mobiles": model.addAttribute("mobile" ,new Mobile());
+		  case "mobile": model.addAttribute("mobile" ,new Mobile());
 		   return "mobile";
 		   
 		 case "mixer": model.addAttribute("mixer" ,new Mixer());
@@ -94,72 +97,21 @@ public class ProductController {
 	@PostMapping("laptop")
 	public String addLaptop(@ModelAttribute("laptop")Laptop laptop,HttpSession session,HttpServletRequest request) {
 	   List<NoOfProducts> noOfProducts=listOfProducts(laptop);
-	   
 		laptop.setNoOfProducts(noOfProducts);;
 		
 		if(laptopDao.addLaptop(laptop)) 
 		{
-			String contextPath=request.getRealPath("/");
-            File file=new File(contextPath+"/resources/images/products/");
-            System.out.println(file.getPath());
-            if(!file.exists())
-            {
-                file.mkdir();
-            }
-            FileOutputStream fileOutputStream;
-            try {
-				fileOutputStream=new FileOutputStream(file.getPath()+"/"+laptop.getPid()+".jpg");
-				InputStream inputStream=laptop.getImage().getInputStream();
-				byte[] imageBytes=new byte[inputStream.available()];
-				inputStream.read(imageBytes);
-				fileOutputStream.write(imageBytes);
-				fileOutputStream.flush();
-            } 
-            catch(FileNotFoundException e) 
-            
-            
-            {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            
+			image.uploadImage(laptop, request);
 			return  "vendorindex";
 			}
 		   else {
 			return  "getModel";
 		   }
-		
-	}
+		}
+	
 	@PostMapping("mobile")
 	public String addMobile(@ModelAttribute("mobile")Mobile mobile,HttpServletRequest request) 
 	{	
-		
-		String context=request.getRealPath("/");
-		File file=new File(context+"/resources/images/products");
-		System.out.println(file.getPath());
-		if(!file.exists())
-		{
-			file.mkdir();
-		}
-		FileOutputStream fileOutputStream;
-		try {
-			fileOutputStream=new FileOutputStream(file.getPath()+"/"+mobile.getImage()+".jpg");
-			InputStream inputStream=mobile.getImage().getInputStream();
-			byte[] imagebyte=new byte[(inputStream.available())];
-			inputStream.read(imagebyte);
-			fileOutputStream.write(imagebyte);
-			fileOutputStream.flush();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		mobileDao.addMobile(mobile);
 		return "vendorindex";
 		
@@ -185,14 +137,64 @@ public class ProductController {
 }
 	
 	@GetMapping("productdetails")
-	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {
-		
+	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {	
 		Vendor vendor=(Vendor)session.getAttribute("vendor");
 		products.put("productList", productDao.getAllProducts(vendor.getId()));
 
 		return "productdetails";	
 	}
-	
+
+	@GetMapping("laptopdetails/{pid}")
+	public String viewProducts(@PathVariable("pid")int pid,Model model) 
+	{
+		String name=subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
+		System.out.println(name);
+		switch(name)
+		{
+		case "mobile":model.addAttribute("mobile",mobileDao.getMobileDetails(pid));
+			return "mobiledetails";
+		case "laptop": model.addAttribute("laptop",laptopDao.getLaptopDetails(pid));
+			return "laptopdetails";
+			
+		default:return "vendordetails";
+       }
+	}
+	@GetMapping("editproducts/{pid}")
+	public String editProducts(@PathVariable("pid") int pid, Model model,HttpServletRequest request) {
+
+		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
+		
+		
+		switch (name) {
+
+		/*case "mobile":
+			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("mobile", mobileDao.getMobileDetails(pid));
+			return "editmobile";
+*/
+		case "laptop":
+			model.addAttribute("contextPath",request.getContextPath());
+			model.addAttribute("laptop", laptopDao.getLaptopDetails(pid));
+			return "editlaptop";
+
+		default:
+			return "productdetails";
+		}
+	}
+@PostMapping("editlaptop")
+	public String editLaptopProductDetails(@ModelAttribute("laptop") Laptop laptop,HttpServletRequest request) {
+        if(!laptop.getImage().isEmpty()) {
+        	image.uploadImage(laptop, request);
+        }
+		laptopDao.updateLaptop(laptop);
+		return "vendorindex";
+	}
+
+	/*@PostMapping("editmobile")
+	public String editMobileProductDetails(@ModelAttribute("mobile") Mobile mobile) {
+
+		mobileDao.updateMobile(mobile);
+		return "vendorindex";
+	}*/
 }
 
-	

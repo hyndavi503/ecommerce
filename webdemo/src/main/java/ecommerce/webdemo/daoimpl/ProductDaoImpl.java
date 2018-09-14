@@ -59,16 +59,31 @@ public class ProductDaoImpl implements ProductDao{
 
 	}
 
-
-	@Override
+@Override
 	public List<Products> getAllProducts(int id) {
 		try {
 			Query<Products> query=factory.getCurrentSession().createQuery("from Products where vendor_id =: id", Products.class);
 			query.setParameter("id",id);
 			return query.getResultList();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 		e.printStackTrace();
 		return null;
+		}
+	}
+	
+	@Override
+	public int getSid(int pid) {
+		
+		try {
+			Query<Products> query=factory.getCurrentSession().createQuery("from Products where pid =:id",Products.class);
+			query.setParameter("id",pid);
+			Products products=query.getSingleResult();
+			return products.getSubCategory().getSid();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
 		}
 	}
 }

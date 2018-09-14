@@ -3,6 +3,7 @@ package ecommerce.webdemo.daoimpl;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,4 +44,28 @@ public class LaptopDaoImpl implements LaptopDao {
 		}
 	}
 
+	@Override
+	public Laptop getLaptopDetails(int pid) {
+		try {
+			return factory.getCurrentSession().get(Laptop.class, pid);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
+
+	@Override
+	public boolean updateLaptop(Laptop laptop) {
+		try {
+			factory.getCurrentSession().update(laptop);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
+
+	
 }

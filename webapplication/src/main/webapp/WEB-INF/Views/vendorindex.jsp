@@ -32,7 +32,7 @@
  	<a class="nav-link" href="categorydetails">Add Products</a>
  	</li>
  	 <li class="nav-item">
- 	<a class="nav-link" href="productdetails">Product Details</a>
+ 	<a class="nav-link" href="productdetails">View Products</a>
  	</li> 
  	</ul> 
 </nav>

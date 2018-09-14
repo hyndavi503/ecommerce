@@ -15,7 +15,7 @@
 </head>
 <body>
 
-
+<div class="bg">
 <form action="subcategory" method="post">
 <nav class="navbar navbar-expand-sm-bg-danger navbar-danger">
 <div class="form-group">
@@ -30,6 +30,36 @@
 </div>
 </nav>
 <input type="submit" value="go">
+
+</form>
+</div>
 </body>
 </html>
+
+
+<style>
+.bg { 
+    	    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROejhNVgMlc0SWjx6U9Xl8IidYR9uzoNgYWvVTXQGEAlHC11Ww");
+    	    width: 100%; 
+    	    height: 100vh;
+
+    	    /* Center and scale the image nicely */
+    	    background-position: center;
+    	    background-repeat: no-repeat;
+    	    background-size: cover;
+    	}
+    	/*.form-container{border:0px solid #fff; padding: 30px 60px;
+    		margin-top: 40vh;
+    		-webkit-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
+-moz-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
+box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
+    	}*/
+    	form{
+    		padding-left: 550px;
+    		padding-top: 70px;
+    	}
+
+</style>
+
+
 

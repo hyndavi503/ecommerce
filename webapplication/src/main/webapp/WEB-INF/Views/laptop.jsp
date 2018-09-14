@@ -30,10 +30,6 @@
 
 </head>
 <body>
-
-
-
-
 <div class="bg">
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
@@ -108,7 +104,7 @@
     	
     	form{
     		padding-left: 550px;
-    		padding-top: 70px;
+    		padding-top: 30px;
     	}
 
 </style>

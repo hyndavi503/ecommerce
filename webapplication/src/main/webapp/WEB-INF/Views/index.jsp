@@ -15,7 +15,7 @@
 <title>project</title>
 </head>
 <body>
-   <div class="container">
+   <div class="container-fluid">
       <nav class="navbar navbar-expand bg-danger navbar-dark justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -31,6 +31,8 @@
    <li class="nav-item">
        <a class="nav-link" href="customerlogin">Customer Login</a>
    </li>
+   <li class="nav-item">
+   <a class="nav-link" href="adminlogin">Admin Login</a>
 <hr>
 <hr>
 </div>
