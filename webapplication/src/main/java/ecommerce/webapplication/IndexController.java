@@ -177,10 +177,9 @@ public String rejectUser(@PathVariable("id")long id) {
 	
 }
 	
-@GetMapping("adminlogin")
-public String adminlogin(Model model)
+/*@GetMapping("adminlogin")
+public String adminlogin()
 {
-	model.addAttribute("admin", new Admin());
 	return "adminlogin";
 }
 
@@ -198,10 +197,12 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 	{
 		return "adminlogin";
 	}
-}
+}*/
+
+
 //customer signup process
 	
-	/*@GetMapping("/customersignup")
+	@GetMapping("/customersignup")
 	public String signupCustomer(Model model)
 	{
 		model.addAttribute("customer", new Customer());
@@ -231,23 +232,27 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 		return "customerlogin";
 	}
 	
-	@PostMapping("/login")
-	public String loginCustomer(@ModelAttribute("login") Login login, HttpSession session,Customer customer) 
+	@PostMapping("/customerlogin")
+	public String loginCustomer(HttpServletRequest request, HttpSession session,Customer customer) 
 	{
-System.out.println(login.getEmail() + "  " + login.getPassword());
-		if ((customerDao.login(login.getEmail(), login.getPassword())) != null) 
+/*System.out.println(login.getEmail() + "  " + login.getPassword());*/
+		if ((customerDao.login(request.getParameter("email"),request.getParameter("password"))) != null) 
 		{
-			customer =customerDao.login(login.getEmail(), login.getPassword());
+			customer =customerDao.login(request.getParameter("email"),request.getParameter("password"));
 			session.setAttribute("customer",customer);
 			return "customerindex";
 		} 
 		else 
 		{
-			return "login";
+			return "customerlogin";
 		}
 	}
-	*/
 	
+	@GetMapping("customerindex")
+	public String customerindex(Model model)
+	{
+		return "customerindex";
+	}
 
 
 }

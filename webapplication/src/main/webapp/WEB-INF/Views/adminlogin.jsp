@@ -48,12 +48,12 @@ font-size: 20px;
 </style>
 </head>
 <body>
-	<%-- <springform:form action="login" method="POST" modelAttribute="login"> --%>
+<%--  <springform:form action="login" method="POST" modelAttribute="login"> --%> --%>
 	<div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
-				<springform:form action="admin" method="POST" modelAttribute="admin"
+				<springform:form action="adminlogin" method="POST" modelAttribute="login">
 					class="form-container">
 					<h1>Login Here!!!</h1>
 

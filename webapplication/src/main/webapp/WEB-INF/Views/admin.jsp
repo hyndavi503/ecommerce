@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
 
 <spring:url value="/resources/images" var="images"></spring:url>
 <meta charset="utf-8">
@@ -15,7 +15,6 @@
 <body>
  <div class="bg">
  <h1>Welcome to Admin Page</h1>
-
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
@@ -25,7 +24,7 @@
  	<a class="nav-link" href="editprofile">Edit Profile</a>
  	</li>
  	<li class="nav-item">
-      <a class="nav-link" href="userdetails">Users</a>
+      <a class="nav-link" href="admindetails">Admin details</a>
     </li>
  	</ul> 
 </nav>
@@ -33,6 +32,7 @@
 <%-- <img src="${images}/adminlogin.jpg"> --%>
 </div>
 </div>
+
 </body>
 </html>
 <style>

@@ -14,16 +14,16 @@ public class Admin
 {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private long id;
+private int id;
 @Column(unique=true)
 private String name;
 @Column(unique=true)
 private String email;
 private String password;
-public long getId() {
+public int getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(int id) {
 	this.id = id;
 }
 public String getName() {

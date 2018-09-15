@@ -33,7 +33,7 @@
 <div class="bg">
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
-				<springform:form class="form-container" action="${contextPath}/laptop"
+				<springform:form class="form-container" action="${contextPath}/editlaptop"
 					method="post" modelAttribute="laptop" enctype="multipart/form-data">
 					<h2>Add Laptop</h2>
 					<div class="form-group">
@@ -43,6 +43,10 @@
 					<div class="form-group">
 						<label path="vendor.id">VendorId</label>
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
+					</div>
+					<div class="form-group">
+						<label path="pid">P Id</label>
+						<springform:input path="pid" class="form-control" type="hidden" value="${laptop.pid}"/>
 					</div>
 					<div class="form-group">
 						<label path="numberOfProducts">numberOfProducts</label>

@@ -81,6 +81,10 @@
 					<springform:input path="price" type="text" class="form-control"/>
 					</div>
 					
+					<div class="form-group">
+					<label path="image">Image</label>
+					<springform:input path="image" type="file" class="form-control"/>
+					</div>
 
 					<button type="submit" class="btn btn-success btn-block">Add Mobile</button>
 				</springform:form>

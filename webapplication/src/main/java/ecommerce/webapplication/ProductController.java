@@ -112,9 +112,14 @@ public class ProductController {
 	@PostMapping("mobile")
 	public String addMobile(@ModelAttribute("mobile")Mobile mobile,HttpServletRequest request) 
 	{	
-		mobileDao.addMobile(mobile);
-		return "vendorindex";
 		
+		if(mobileDao.addMobile(mobile))
+		{
+			image.uploadImage(mobile, request);
+			return "vendorindex";
+		}
+		
+		return "getModel";
 	}
 	
 	@PostMapping("mixer")
@@ -144,7 +149,7 @@ public class ProductController {
 		return "productdetails";	
 	}
 
-	@GetMapping("laptopdetails/{pid}")
+	@GetMapping("viewproductdetails/{pid}")
 	public String viewProducts(@PathVariable("pid")int pid,Model model) 
 	{
 		String name=subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
@@ -167,11 +172,11 @@ public class ProductController {
 		
 		switch (name) {
 
-		/*case "mobile":
+		case "mobile":
 			model.addAttribute("contextPath",request.getContextPath());
 			model.addAttribute("mobile", mobileDao.getMobileDetails(pid));
 			return "editmobile";
-*/
+
 		case "laptop":
 			model.addAttribute("contextPath",request.getContextPath());
 			model.addAttribute("laptop", laptopDao.getLaptopDetails(pid));
@@ -181,21 +186,23 @@ public class ProductController {
 			return "productdetails";
 		}
 	}
-@PostMapping("editlaptop")
-	public String editLaptopProductDetails(@ModelAttribute("laptop") Laptop laptop,HttpServletRequest request) {
+    @PostMapping("editlaptop")
+	public String editLaptopProductDetails(@ModelAttribute("laptop")Laptop laptop,HttpServletRequest request) {
         if(!laptop.getImage().isEmpty()) {
-        	image.uploadImage(laptop, request);
+        	image.uploadImage(laptop,request);
         }
 		laptopDao.updateLaptop(laptop);
 		
 		return "vendorindex";
 	}
 
-	/*@PostMapping("editmobile")
-	public String editMobileProductDetails(@ModelAttribute("mobile") Mobile mobile) {
-
+	@PostMapping("editmobile")
+	public String editMobileProductDetails(@ModelAttribute("mobile") Mobile mobile,HttpServletRequest request) {
+		if(!mobile.getImage().isEmpty()) {
+        	image.uploadImage(mobile,request);
+        }
 		mobileDao.updateMobile(mobile);
 		return "vendorindex";
-	}*/
+	}
 }
 
