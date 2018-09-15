@@ -36,28 +36,24 @@
 <div class="bg">
 		<div class="container-fluid bg">
 			<div class="row">
-<springform:form  action="customersignup" method="post" modelAttribute="customer">
+<springform:form  action="customerregister" method="post" modelAttribute="customer">
 <!-- <center>
 <i class="fas fa-users"></i>
 </center> -->
-<h2>Sign Up</h2>
+<h2>Customer Sign Up</h2>
 <div class="form-group">
-<springform:errors path="name"></springform:errors>
 <label for="name">Name:</label>
 <springform:input path="name" class="form-control" id="name"/>
 </div>
 <div class="form-group">
-<springform:errors path="email"></springform:errors>
 <label for="email">Email:</label>
 <springform:input path="email" class="form-control" id="email" placeholder="@email"/>
 </div>
 <div class="form-group">
-<springform:errors path="mobile"></springform:errors>
 <label for="mobile">Mobile:</label>
 <springform:input path="mobile" class="form-control" id="mobile"/>
 </div>
 <div class="form-group">
-<springform:errors path="password"></springform:errors>
 <label for="password">password:</label>
 <springform:input type="password" path="password" class="form-control" id="password"/>
 </div>
@@ -68,7 +64,7 @@
 							class="form-check-input" type="checkbox">Remember me
 </label>
 </div>
-<button type="submit" class="btn btn-success btn-block">Sign Up</button>
+<button type="submit" class="btn btn-success btn-block">Customer SignUp</button>
 
 </springform:form>
 </body>

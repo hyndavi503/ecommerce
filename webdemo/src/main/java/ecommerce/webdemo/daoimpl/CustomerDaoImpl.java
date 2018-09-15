@@ -20,6 +20,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	
 	@Autowired
 	private SessionFactory factory;
+	
 	@Override
 	public boolean addCustomer(Customer customer) {
 		try {
@@ -45,7 +46,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Override
 	public boolean deleteCustomer(Customer customer) {
 		try {
-			factory.getCurrentSession().update(customer);
+			factory.getCurrentSession().delete(customer);
 			return true;
 		} catch (Exception e) {
 			
@@ -55,7 +56,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
 
 	@Override
-	public Customer login(String email, String password) {
+	public Customer customerLogin(String email, String password) {
 		
 		try {
 			Query<Customer> query=factory.getCurrentSession().createQuery("from Customer where email=:email and password=:password",Customer.class)
@@ -71,13 +72,14 @@ public class CustomerDaoImpl implements CustomerDao{
 	
 
 	@Override
-	public Customer getCustomerById(long id) {
+	public Customer getCustomerById(long id) 
+	{
 		try {
-			factory.getCurrentSession().get(Customer.class,id);
+			return factory.getCurrentSession().get(Customer.class,id);
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			
 		return null;
+	}
 	}
 
 	@Override

@@ -37,10 +37,6 @@ public class IndexController {
 	@Autowired
 	private VendorDao vendorDao;
 	@Autowired
-	private Customer customer;
-	@Autowired
-	private CustomerDao customerDao;
-	@Autowired
 	private Mail mail;
 	@Autowired
 	private Category category;
@@ -202,7 +198,7 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 
 //customer signup process
 	
-	@GetMapping("/customersignup")
+	/*@GetMapping("/customersignup")
 	public String signupCustomer(Model model)
 	{
 		model.addAttribute("customer", new Customer());
@@ -223,8 +219,6 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 		}
 	}
 	
-	
-	
 	@GetMapping("/customerlogin")
 	public String loginCustomer(Model model)
 	{
@@ -235,7 +229,7 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 	@PostMapping("/customerlogin")
 	public String loginCustomer(HttpServletRequest request, HttpSession session,Customer customer) 
 	{
-/*System.out.println(login.getEmail() + "  " + login.getPassword());*/
+System.out.println(login.getEmail() + "  " + login.getPassword());
 		if ((customerDao.login(request.getParameter("email"),request.getParameter("password"))) != null) 
 		{
 			customer =customerDao.login(request.getParameter("email"),request.getParameter("password"));
@@ -254,5 +248,5 @@ public String adminlogin(@ModelAttribute("login") Login login,HttpSession sessio
 		return "customerindex";
 	}
 
-
+*/
 }

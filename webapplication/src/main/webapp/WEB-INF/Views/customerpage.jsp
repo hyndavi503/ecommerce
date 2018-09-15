@@ -20,14 +20,15 @@
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
- 	<a class="nav-link" href="profile">Profile</a>
+ 	<a class="nav-link" href="customerprofile">Profile</a>
  	</li>
  	<li class="nav-item">
- 	<a class="nav-link" href="editprofile">Edit Profile</a>
- 	</li>
+ 	<a class="nav-link" href="editcustomer">Edit Profile</a>
+ 	<!-- </li>
  	<li class="nav-item">
  	<a class="nav-link" href="customerdetails">Customer details</a>
- 	</li>
+ 	</li> -->
+ 	 
  	</ul> 
 </nav>
 </div>

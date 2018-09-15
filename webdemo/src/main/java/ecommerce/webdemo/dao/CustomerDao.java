@@ -10,7 +10,7 @@ public interface CustomerDao {
 	
 	
 	public boolean addCustomer(Customer customer);
-	public Customer login(String email,String password);
+	public Customer customerLogin(String email,String password);
 	public boolean deleteCustomer(Customer customer);
 	public boolean updateCustomer(Customer customer);
 	public Customer getCustomerById(long id);

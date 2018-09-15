@@ -40,24 +40,16 @@ display: flex;
 
 }
 
-/* .fa-at{
-align-content:center;
-vertical-align:middle;
-font-size: 20px;
-} */
 </style>
 </head>
 <body>
-	<%-- <springform:form action="login" method="POST" modelAttribute="login"> --%>
+
 	<div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
-				<springform:form action="login" method="POST" modelAttribute="login"
+				<springform:form action="customerloginprocess" method="POST" modelAttribute="customerlogin"
 					class="form-container">
-					<center>
-						<i class="fas fa-users"></i>
-					</center>
 					<h1>Login Here!!!</h1>
 
 					<div class="form-group">
@@ -80,7 +72,7 @@ font-size: 20px;
 						</label>
 
 					</div>
-					<button type="submit" class="btn btn-success btn-block">login</button>
+					<button type="submit" class="btn btn-success btn-block">Customer Login</button>
 				</springform:form>
 			</div>
 		</div>
