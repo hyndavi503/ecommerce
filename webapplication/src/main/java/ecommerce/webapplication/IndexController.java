@@ -99,7 +99,6 @@ public class IndexController {
 	}
 
 	// login process
-
 	@PostMapping("/login")
 	public String loginVendor(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
 	{
@@ -173,80 +172,9 @@ public String rejectUser(@PathVariable("id")long id) {
 	
 }
 	
-/*@GetMapping("adminlogin")
-public String adminlogin()
-{
-	return "adminlogin";
+@GetMapping("categories")
+public String getCategories(Map<String, Object> categories) {
+	categories.put("categoryList", categoryDao.getCategoryDetails());
+	return "categories";
 }
-
-
-@PostMapping("adminlogin")
-public String adminlogin(@ModelAttribute("login") Login login,HttpSession session,Admin admin)
-{
-	if(adminDao.adminlogin(login.getEmail(),login.getPassword())!=null)
-	{
-		admin=adminDao.adminlogin(login.getEmail(),login.getPassword());
-		session.setAttribute("admin", admin);
-		return "admin";
-	}
-	else
-	{
-		return "adminlogin";
-	}
-}*/
-
-
-//customer signup process
-	
-	/*@GetMapping("/customersignup")
-	public String signupCustomer(Model model)
-	{
-		model.addAttribute("customer", new Customer());
-		
-		return "customersignup";
-	}
-	
-	@PostMapping("customersignup")
-	public String singupCustomer(@ModelAttribute("customer")Customer customer) {
-	
-		if((customerDao.getCustomerByEmail(customer.getEmail()))!=null) {
-		
-			 return "customerlogin";
-		}
-		else {
-			customerDao.addCustomer(customer);
-			return "customersignup";
-		}
-	}
-	
-	@GetMapping("/customerlogin")
-	public String loginCustomer(Model model)
-	{
-		model.addAttribute("login", new Login());
-		return "customerlogin";
-	}
-	
-	@PostMapping("/customerlogin")
-	public String loginCustomer(HttpServletRequest request, HttpSession session,Customer customer) 
-	{
-System.out.println(login.getEmail() + "  " + login.getPassword());
-		if ((customerDao.login(request.getParameter("email"),request.getParameter("password"))) != null) 
-		{
-			customer =customerDao.login(request.getParameter("email"),request.getParameter("password"));
-			session.setAttribute("customer",customer);
-			return "customerindex";
-		} 
-		else 
-		{
-			return "customerlogin";
-		}
-	}
-	
-	@GetMapping("customerindex")
-	public String customerindex(Model model)
-	{
-		return "customerindex";
-	}
-
-*/
 }

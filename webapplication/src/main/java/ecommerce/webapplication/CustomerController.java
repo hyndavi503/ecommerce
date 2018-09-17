@@ -88,4 +88,6 @@ public String updatecustomer(@ModelAttribute("customer") Customer customer,HttpS
 	customerDao.updateCustomer(customer);
 	return "customerprofile";
 }
+
+
 }

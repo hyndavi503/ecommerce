@@ -24,10 +24,10 @@
  	</li>
  	<li class="nav-item">
  	<a class="nav-link" href="editcustomer">Edit Profile</a>
- 	<!-- </li>
+ 	 </li>
  	<li class="nav-item">
  	<a class="nav-link" href="customerdetails">Customer details</a>
- 	</li> -->
+ 	</li> 
  	 
  	</ul> 
 </nav>
