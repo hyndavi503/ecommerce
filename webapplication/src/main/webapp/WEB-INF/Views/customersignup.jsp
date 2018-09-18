@@ -34,6 +34,7 @@
 
 
 <div class="bg">
+
 		<div class="container-fluid bg">
 			<div class="row">
 <springform:form  action="customerregister" method="post" modelAttribute="customer">

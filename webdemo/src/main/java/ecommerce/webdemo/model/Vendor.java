@@ -39,18 +39,24 @@ public class Vendor {
 	@Column(unique = true)
 	private String mobile;
 	private String password;
-	
-
 	private String companyname;
-
 	private boolean status = false;
-
+private final String role="vendor";
+	
 	@OneToMany(mappedBy = "vendor")
 	private Set<Address> addresses;
 	
 	@OneToMany(mappedBy = "vendor")
 	private List<Products> products;
 
+
+	
+	
+
+
+	public String getRole() {
+		return role;
+	}
 
 	public List<Products> getProducts() {
 		return products;
@@ -126,13 +132,17 @@ public class Vendor {
 		this.addresses = addresses;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", password="
-				+ password + ", companyname=" + companyname + ", addresses=" + addresses + "]";
+		return "Vendor [id=" + id + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", password="
+				+ password + ", companyname=" + companyname + ", status=" + status + ", role=" + role + ", addresses="
+				+ addresses + ", products=" + products + "]";
 	}
 
 	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -171,6 +181,16 @@ public class Vendor {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
+			return false;
+		if (products == null) {
+			if (other.products != null)
+				return false;
+		} else if (!products.equals(other.products))
+			return false;
+		if (role == null) {
+			if (other.role != null)
+				return false;
+		} else if (!role.equals(other.role))
 			return false;
 		if (status != other.status)
 			return false;

@@ -20,6 +20,23 @@ private String name;
 @Column(unique=true)
 private String email;
 private String password;
+private String role;
+private boolean status = false;
+
+
+
+public boolean isStatus() {
+	return status;
+}
+public void setStatus(boolean status) {
+	this.status = status;
+}
+public String getRole() {
+	return role;
+}
+public void setRole(String role) {
+	this.role = role;
+}
 public int getId() {
 	return id;
 }

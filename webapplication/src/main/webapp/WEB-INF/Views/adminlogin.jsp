@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form"
 	prefix="springform"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,20 +40,15 @@ display: flex;
 
 }
 
-/* .fa-at{
-align-content:center;
-vertical-align:middle;
-font-size: 20px;
-} */
 </style>
 </head>
 <body>
-<%--  <springform:form action="login" method="POST" modelAttribute="login"> --%> --%>
+
 	<div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
-				<springform:form action="adminlogin" method="POST" modelAttribute="login">
+				<springform:form action="adminlogin" method="POST" modelAttribute="adminlogin"
 					class="form-container">
 					<h1>Login Here!!!</h1>
 
@@ -63,6 +58,7 @@ font-size: 20px;
 						<div class="inputdiv">
 							
 							<springform:input path="email" class="form-control" id="email" />
+						
 						</div>
 					</div>
 					<div class="form-group">
@@ -77,11 +73,12 @@ font-size: 20px;
 						</label>
 
 					</div>
-					<button type="submit" class="btn btn-success btn-block">Admin login</button>
+					<button type="submit" class="btn btn-success btn-block">Admin Login</button>
 				</springform:form>
 			</div>
 		</div>
 	</div>
+	<%-- </springform:form>  --%>
 </body>
 </html>
 <style>

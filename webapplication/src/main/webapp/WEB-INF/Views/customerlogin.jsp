@@ -58,6 +58,7 @@ display: flex;
 						<div class="inputdiv">
 							
 							<springform:input path="email" class="form-control" id="email" />
+						
 						</div>
 					</div>
 					<div class="form-group">

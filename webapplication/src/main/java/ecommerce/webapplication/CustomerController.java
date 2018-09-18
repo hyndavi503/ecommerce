@@ -29,6 +29,7 @@ public class CustomerController
 @GetMapping("/customersignup")
 public String customersignup(Model model)
 {
+	//
 	model.addAttribute("customer", new Customer());
 	return "customersignup";
 }
@@ -40,7 +41,7 @@ public String customersignup(@ModelAttribute("customer") Customer customer,Model
 	if(customerDao.getCustomerByEmail(customer.getEmail())== null)
 	{
 		customerDao.addCustomer(customer);
-		return "customerlogin";
+		return "redirect:/customerlogin";
 	}
 	else
 	{
@@ -60,7 +61,7 @@ public String customerlogin(@ModelAttribute("customerlogin") CustomerLogin custo
 			{
 		customer=customerDao.customerLogin(customerLogin.getEmail(), customerLogin.getPassword());
 		httpSession.setAttribute("customer", customer);
-		return "customerpage";
+		return "redirect:/customerpage";
 			}
 	else
 	{

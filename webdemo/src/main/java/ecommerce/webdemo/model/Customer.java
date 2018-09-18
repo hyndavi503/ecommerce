@@ -18,8 +18,14 @@ private String name;
 private String email;
 private String mobile;
 private String password;
+private final String role="customer";
 
 
+
+
+public String getRole() {
+	return role;
+}
 public long getId() {
 	return id;
 }

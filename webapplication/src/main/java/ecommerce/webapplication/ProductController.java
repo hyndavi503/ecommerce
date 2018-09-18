@@ -41,7 +41,6 @@ import ecommerce.webdemo.model.Vendor;
 @Controller
 public class ProductController {
 	
-	/*/webapplication/src/main/java/ecommerce/webapplication/Image.java*/
 	@Autowired
 	private SubCategoryDao subCategoryDao;
 	@Autowired

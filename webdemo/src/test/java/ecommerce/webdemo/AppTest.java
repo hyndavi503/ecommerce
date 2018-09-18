@@ -86,13 +86,14 @@ public class AppTest {
 		customer.setEmail("shyam@gmail.com");
 		customer.setMobile("9666069549");
 		customer.setPassword("shyam");
+	
 
 		vendor.setName("hyndavi");
 		vendor.setEmail("hyndavi@gmail.com");
 		vendor.setMobile("9966293705");
 		vendor.setPassword("hyndavi");
 		vendor.setCompanyname("flipkart");
-	
+
 		
 		laptop = new Laptop();
 		laptop.setRam(4);
@@ -148,6 +149,7 @@ public class AppTest {
 		vendor.setMobile("34567890");
 		vendor.setPassword("reshma");
 		vendor.setCompanyname("amazon");
+		
 		assertEquals("test is failed",true,vendorDao.updateVendor(vendor));
 		/*deleteUser();*/
 	}
