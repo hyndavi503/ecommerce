@@ -62,9 +62,11 @@ public class AdminDaoImpl implements AdminDao
 			query.setParameter("password", password);
 			return query.getSingleResult();
 		} catch (Exception e) {
+			return null;
 			// TODO: handle exception
 		}
-		return null;
+		
 	}
 
 }
+

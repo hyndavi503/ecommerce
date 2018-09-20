@@ -73,6 +73,12 @@
     <version>5.0.8.RELEASE</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>5.0.8.RELEASE</version>
+</dependency>
 
 
 			<dependency>
@@ -88,6 +94,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>task</finalName>
+		<finalName>webapplication</finalName>
 	</build>
 </project>

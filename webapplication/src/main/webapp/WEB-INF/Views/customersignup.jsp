@@ -79,8 +79,7 @@
     	    /* Full height */
     	    width: 100%; 
     	    height: 100vh;
-
-    	    /* Center and scale the image nicely */
+			/* Center and scale the image nicely */
     	    background-position: center;
     	    background-repeat: no-repeat;
     	    background-size: cover;
@@ -97,5 +96,3 @@ box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
     	}
 
 </style>
-
-  

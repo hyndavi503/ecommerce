@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConfig 
 {
 	
-	@Bean
+	@Bean(/*"dataSource"*/)
 	public DataSource getDataSource()
 	{
 		BasicDataSource dataSource=new BasicDataSource();

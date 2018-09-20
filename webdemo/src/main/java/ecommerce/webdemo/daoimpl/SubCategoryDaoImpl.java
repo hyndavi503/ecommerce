@@ -45,7 +45,52 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		return null;
 	}
 	}
-	
+	@Override
+	public List<SubCategory> getAllSubCategoryList() {
+
+		try {
+			return factory.getCurrentSession().createCriteria(SubCategory.class).list();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<SubCategory> getElectronics() {
+		try {
+			Query<SubCategory> query = factory.getCurrentSession()
+					.createQuery("from SubCategory where category_cid=1", SubCategory.class);
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<SubCategory> getMens() {
+		try {
+			Query<SubCategory> query =factory.getCurrentSession()
+					.createQuery("from SubCategory where category_cid=3", SubCategory.class);
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<SubCategory> getWomens() {
+		try {
+			Query<SubCategory> query =factory.getCurrentSession()
+					.createQuery("from SubCategory where category_cid=2", SubCategory.class);
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	
 
 }

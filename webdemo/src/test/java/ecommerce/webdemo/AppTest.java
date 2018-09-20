@@ -27,9 +27,13 @@ import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.model.Account;
 import ecommerce.webdemo.model.Address;
 import ecommerce.webdemo.model.Admin;
+import ecommerce.webdemo.model.Cart;
+import ecommerce.webdemo.model.CartItem;
+import ecommerce.webdemo.model.CartItemId;
 import ecommerce.webdemo.model.Category;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Laptop;
+import ecommerce.webdemo.model.CartOrder;
 import ecommerce.webdemo.model.Products;
 import ecommerce.webdemo.model.SubCategory;
 import ecommerce.webdemo.model.Vendor;
@@ -46,6 +50,14 @@ public class AppTest {
 	private Admin admin;
 	@Autowired
 	private AdminDao adminDao;*/
+	@Autowired
+	private CartItem cartItem;
+	@Autowired
+	private CartOrder order;
+	@Autowired
+	private Cart cart;
+	@Autowired
+	private CartItemId cartItemId;
 	@Autowired
 	private Vendor vendor;
 	@Autowired
@@ -101,9 +113,8 @@ public class AppTest {
 		laptop.setNumberOfProducts(6);
 		laptop.setOs("windows 8.1");
 		laptop.setPrice("20000");
-	}
-	
-	
+		
+		}
 	
 	@Test
 	public void addCustomer()

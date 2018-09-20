@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ecommerce.webdemo.dao.AdminDao;
 import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.CustomerDao;
+import ecommerce.webdemo.dao.SubCategoryDao;
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.daoimpl.CustomerDaoImpl;
 import ecommerce.webdemo.daoimpl.VendorDaoImpl;
@@ -31,7 +33,10 @@ import ecommerce.webdemo.model.Login;
 import ecommerce.webdemo.model.Vendor;
 
 @Controller
-public class IndexController {
+public class IndexController
+{
+	@Autowired
+	private SessionFactory session;
 	@Autowired
 	private Vendor vendor;
 	@Autowired
@@ -44,11 +49,17 @@ public class IndexController {
 	private CategoryDao categoryDao;
 	@Autowired
 	private AdminDao adminDao;
+	@Autowired
+	private SubCategoryDao subCategoryDao;
 
 	@RequestMapping("/")
-	public ModelAndView index() {
+	public ModelAndView index(/*HttpSession session*/) {
 		ModelAndView view = new ModelAndView("index");
 		/* view.addObject("myName", "hyndavi"); */
+		
+		/*session.setAttribute("electronics", subCategoryDao.getElectronics());
+		session.setAttribute("men", subCategoryDao.getMens());
+		session.setAttribute("women", subCategoryDao.getWomens());*/
 		return view;
 	}
 

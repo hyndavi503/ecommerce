@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.model.Customer;
@@ -29,7 +30,7 @@ public class CustomerController
 @GetMapping("/customersignup")
 public String customersignup(Model model)
 {
-	//
+	
 	model.addAttribute("customer", new Customer());
 	return "customersignup";
 }
@@ -61,8 +62,9 @@ public String customerlogin(@ModelAttribute("customerlogin") CustomerLogin custo
 			{
 		customer=customerDao.customerLogin(customerLogin.getEmail(), customerLogin.getPassword());
 		httpSession.setAttribute("customer", customer);
-		return "redirect:/customerpage";
+		return "customerpage";
 			}
+
 	else
 	{
 		return "customerlogin";

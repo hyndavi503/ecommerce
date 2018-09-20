@@ -66,6 +66,4 @@ public String toString() {
 	return "Admin [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 }
 
-
-
 }

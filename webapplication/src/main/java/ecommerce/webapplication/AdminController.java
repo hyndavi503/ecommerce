@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import ecommerce.webdemo.dao.AdminDao;
 import ecommerce.webdemo.model.Admin;
@@ -18,6 +19,7 @@ import ecommerce.webdemo.model.Customer;
 
 public class AdminController 
 {
+	
 	@Autowired
 	private Admin admin;
 	@Autowired
@@ -25,9 +27,9 @@ public class AdminController
 	@Autowired
 	private AdminLogin adminLogin;
 @GetMapping("adminlogin")
-public String adminlogin(Model model)
+public String adminlogin()
 {
-	model.addAttribute("adminlogin", new AdminLogin());
+	
 	return "adminlogin";
 }
 
