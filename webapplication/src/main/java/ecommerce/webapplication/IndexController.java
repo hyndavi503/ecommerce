@@ -55,15 +55,19 @@ public class IndexController
 	@RequestMapping("/")
 	public ModelAndView index(/*HttpSession session*/) {
 		ModelAndView view = new ModelAndView("index");
-		/* view.addObject("myName", "hyndavi"); */
+		 view.addObject("myName", "hyndavi"); 
 		
-		/*session.setAttribute("electronics", subCategoryDao.getElectronics());
-		session.setAttribute("men", subCategoryDao.getMens());
+		/*session.setAttribute("electronics", subCategoryDao.getElectronics());*/
+		/*session.setAttribute("men", subCategoryDao.getMens());
 		session.setAttribute("women", subCategoryDao.getWomens());*/
 		return view;
 	}
 
-
+@RequestMapping("/demo")
+public String demo()
+{
+	return "demo";
+}
 	@RequestMapping("/contact")
 	public ModelAndView contact() {
 		ModelAndView modelAndView = new ModelAndView("contact");

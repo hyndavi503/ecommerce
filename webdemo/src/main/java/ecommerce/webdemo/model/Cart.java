@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Cart 
+public class Cart
 {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,37 +28,39 @@ private List<CartItem> cartItem;
 private Customer customer;
 
 
-public Customer getCustomer() {
-	return customer;
+public Customer getCustomer()
+{
+    return customer;
 }
-public void setCustomer(Customer customer) {
-	this.customer = customer;
+public void setCustomer(Customer customer)
+{
+    this.customer = customer;
 }
-public int getCartId() {
-	return cartId;
+public int getCartId()
+{
+   return cartId;
 }
-public void setCartId(int cartId) {
-	this.cartId = cartId;
+public void setCartId(int cartId)
+{
+   this.cartId = cartId;
 }
 public int getNoOfItems() {
-	return noOfItems;
+   return noOfItems;
 }
 public void setNoOfItems(int noOfItems) {
-	this.noOfItems = noOfItems;
+   this.noOfItems = noOfItems;
 }
 public int getNetPrice() {
-	return netPrice;
+   return netPrice;
 }
 public void setNetPrice(int netPrice) {
-	this.netPrice = netPrice;
+   this.netPrice = netPrice;
 }
 public List<CartItem> getCartItem() {
-	return cartItem;
+   return cartItem;
 }
-public void setCartItem(List<CartItem> cartItem) {
-	this.cartItem = cartItem;
+public void setCartItem(List<CartItem> cartItem)
+{
+   this.cartItem = cartItem;
 }
-
-
-
 }

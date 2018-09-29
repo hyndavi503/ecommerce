@@ -17,7 +17,7 @@
 <body>
 <div class="bg">
  <h1>Welcome to Vendor Page</h1>
- <%@include file="navbar.jsp"%>
+ <%-- <%@include file="navbar.jsp"%> --%>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">

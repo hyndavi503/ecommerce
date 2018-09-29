@@ -20,7 +20,7 @@ private String name;
 @Column(unique=true)
 private String email;
 private String password;
-private String role;
+private String role="admin";
 private boolean status = false;
 
 

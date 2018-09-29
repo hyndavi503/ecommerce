@@ -19,27 +19,14 @@
 				
 				<div class="dropdown-menu">
 				<c:forEach  items="${electronics}" var="electronic">
-					<a class="dropdown-item" href="product/${electronics.sid}">${electronics.subcategoryname}</a> 
+					<a class="dropdown-item"
+							href="${contextPath}/products/${electronics.sid}">${electronics.subCategoryname}</a>
 		        </c:forEach>
 		        </div>
 				
 				</li>
 				
-			<!-- Dropdown -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-primary" href="#" id="navbardrop"
-				data-toggle="dropdown"> Mens</a>
-				<div class="dropdown-menu">
-					
-				</div></li>
-				
-			<!-- Dropdown -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-primary" href="#" id="navbardrop"
-				data-toggle="dropdown"> Womens</a>
-				<div class="dropdown-menu">
-					
-				</div></li>
+			
 </ul>
 	</div>
 </nav>

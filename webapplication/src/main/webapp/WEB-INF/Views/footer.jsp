@@ -65,7 +65,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
           <p>
             <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
           <p>
-            <i class="fa fa-envelope mr-3"></i> info@shoppy.com</p>
+            <i class="fa fa-envelope mr-3"></i> info@example.com</p>
           <p>
             <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
           <p>

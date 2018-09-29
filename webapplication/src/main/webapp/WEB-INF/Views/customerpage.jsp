@@ -17,6 +17,7 @@
 <body>
 <div class="bg">
  <h1>Welcome to Customer Page</h1>
+  <%@include file="navbar.jsp"%>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
@@ -25,9 +26,7 @@
  	<li class="nav-item">
  	<a class="nav-link" href="editcustomer">Edit Profile</a>
  	 </li>
- 	<li class="nav-item">
- 	<a class="nav-link" href="customerdetails">Customer details</a>
- 	</li> 
+ 
  	 </ul> 
 </nav>
 </div>

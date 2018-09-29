@@ -26,10 +26,9 @@ public class AdminController
 	private AdminDao adminDao;
 	@Autowired
 	private AdminLogin adminLogin;
-@GetMapping("adminlogin")
+@GetMapping("/adminlogin")
 public String adminlogin()
 {
-	
 	return "adminlogin";
 }
 
@@ -40,7 +39,7 @@ public String adminlogin(@ModelAttribute("adminlogin") AdminLogin adminLogin,Htt
 	{
 admin=adminDao.adminlogin(adminLogin.getEmail(),adminLogin.getPassword());
 httpSession.setAttribute("admin",admin);
-return "redirect:/adminpage";
+return "adminpage";
 	}
 		else
 		{
@@ -73,6 +72,4 @@ public String updateadmin(@ModelAttribute("admin") Admin admin,HttpSession httpS
 	adminDao.updateAdmin(admin);
 	return "adminprofile";
 }
-
-
 }

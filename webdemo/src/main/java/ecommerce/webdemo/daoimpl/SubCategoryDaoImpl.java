@@ -67,7 +67,7 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		}
 	}
 
-	@Override
+	/*@Override
 	public List<SubCategory> getMens() {
 		try {
 			Query<SubCategory> query =factory.getCurrentSession()
@@ -90,7 +90,7 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 			return null;
 		}
 	}
-
+*/
 	
 
 }

@@ -19,10 +19,18 @@ private String email;
 private String mobile;
 private String password;
 private final String role="customer";
+private boolean status = false;
 
 
 
 
+
+public boolean isStatus() {
+	return status;
+}
+public void setStatus(boolean status) {
+	this.status = status;
+}
 public String getRole() {
 	return role;
 }

@@ -203,5 +203,12 @@ public class ProductController {
 		mobileDao.updateMobile(mobile);
 		return "vendorindex";
 	}
+	
+	/*@GetMapping("products/{sid}")
+	public String getProducts(@PathVariable("sid")int sid,Map<String,Object> products) {
+		
+		products.put("productList",productDao.getProducts(sid));
+		return "product";
+	}*/
 }
 

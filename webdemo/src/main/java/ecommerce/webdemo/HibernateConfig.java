@@ -19,11 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("ecommerce.webdemo")
+@ComponentScan(/*"ecommerce.webdemo"*/)
 public class HibernateConfig 
 {
 	
-	@Bean(/*"dataSource"*/)
+	@Bean("dataSource")
 	public DataSource getDataSource()
 	{
 		BasicDataSource dataSource=new BasicDataSource();

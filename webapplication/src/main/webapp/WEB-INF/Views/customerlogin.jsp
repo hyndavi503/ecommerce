@@ -78,7 +78,6 @@ display: flex;
 			</div>
 		</div>
 	</div>
-	<%-- </springform:form>  --%>
 </body>
 </html>
 <style>
