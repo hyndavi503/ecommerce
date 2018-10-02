@@ -108,12 +108,17 @@ public String demo()
 		}*/
 	}
 
-	@GetMapping("/vendor/vendorlogin")
-	public String login(Model model) {
-		model.addAttribute("login", new Login());
+	@GetMapping("/vendorlogin")
+	public String login(Principal principal) {
+		
 		return "vendorlogin";
 	}
 
+	@GetMapping("/vendor/vendorindex")
+	public String vendor()
+	{
+		return "vendorindex";
+	}
 	// login process
 	/*@PostMapping("/vendor/vendorlogin")
 	public String loginVendor(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
