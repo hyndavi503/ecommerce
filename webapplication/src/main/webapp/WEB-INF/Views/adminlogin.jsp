@@ -45,96 +45,11 @@ display: flex;
 </head>
 <body>
 
-	<div class="bg">
-		<div class="container-fluid bg">
-			<div class="row" style="padding-left:450px;padding-top:100px;">
-
-				<springform:form action="adminlogin" method="POST" modelAttribute="adminlogin"
-					class="form-container">
-					<h1>Login Here!!!</h1>
-
-					<div class="form-group">
-					<i class="fas fa-at"></i>
-						<label for="email">Email address:</label>
-						<div class="inputdiv">
-							
-							<springform:input path="email" class="form-control" id="email" />
-						
-						</div>
-					</div>
-					<div class="form-group">
-						<i class="fas fa-unlock"></i> <label for="pwd">Password:</label>
-						<springform:input type="password" path="password"
-							class="form-control" id="pwd" />
-					</div>
-					<div class="form-group form-check">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox">Remember me
-
-						</label>
-
-					</div>
-					<button type="submit" class="btn btn-success btn-block">Admin Login</button>
-				</springform:form>
-			</div>
-		</div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<%-- <h1>Spring Security Custom Login Form (XML)</h1>
-
-	<div id="login-box">
-
-		<h2>Login with Username and Password</h2>
-
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
-
-		<form name='loginForm'
-		  action="<c:url value='adminlogin' />" method='POST'>
-
-		  <table>
-			<tr>
-				<td>Email:</td>
-				<td><input path="email"></td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input path="password" /></td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-					value="submit" /></td>
-			</tr>
-		  </table> --%>
-
-		 <%--  <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" /> --%>
-
-		</form>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    <form action="adminlogin" method="post">
+    <input type="email" name="email"/>
+    <input type="password" name="password"/>
+    <input type="submit" value="Login"/>
+    </form>
 	
 </body>
 </html>

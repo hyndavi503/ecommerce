@@ -36,7 +36,7 @@
 <div class="bg">
 		<div class="container-fluid bg">
 			<div class="row">
-<springform:form  action="signup" method="post" modelAttribute="vendor">
+<springform:form  action="vendorsignup" method="post" modelAttribute="vendor">
 <!-- <center>
 <i class="fas fa-users"></i>
 </center> -->

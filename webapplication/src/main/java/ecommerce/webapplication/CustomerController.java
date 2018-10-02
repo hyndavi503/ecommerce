@@ -1,5 +1,7 @@
 package ecommerce.webapplication;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,13 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ecommerce.webdemo.dao.CustomerDao;
+import ecommerce.webdemo.dao.LaptopDao;
+import ecommerce.webdemo.dao.ProductDao;
+import ecommerce.webdemo.dao.SubCategoryDao;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.CustomerLogin;
+import ecommerce.webdemo.model.Laptop;
 import ecommerce.webdemo.model.Login;
+import ecommerce.webdemo.model.Products;
+import ecommerce.webdemo.model.SubCategory;
+import ecommerce.webdemo.model.Vendor;
 
 @Controller
 public class CustomerController 
@@ -26,6 +36,19 @@ public class CustomerController
 	private Customer customer;
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private Laptop laptop;
+	@Autowired
+	private LaptopDao laptopDao;
+	
+	@Autowired
+	private Products products;
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private SubCategory subCategory;
+	@Autowired
+	private SubCategoryDao subCategoryDao;
 	
 @GetMapping("/customersignup")
 public String customersignup(Model model)
@@ -91,6 +114,8 @@ public String updatecustomer(@ModelAttribute("customer") Customer customer,HttpS
 	customerDao.updateCustomer(customer);
 	return "customerprofile";
 }
+
+
 
 
 }

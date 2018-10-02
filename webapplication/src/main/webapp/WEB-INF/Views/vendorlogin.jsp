@@ -49,11 +49,11 @@ font-size: 20px;
 </head>
 <body>
 	<%-- <springform:form action="login" method="POST" modelAttribute="login"> --%>
-	<div class="bg">
+	<%-- <div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
-				<springform:form action="login" method="POST" modelAttribute="login"
+				<springform:form action="vendorlogin" method="POST" modelAttribute="login"
 					class="form-container">
 					<center>
 						<i class="fas fa-users"></i>
@@ -84,8 +84,15 @@ font-size: 20px;
 				</springform:form>
 			</div>
 		</div>
-	</div>
-	<%-- </springform:form>  --%>
+	</div> --%>
+	
+	
+	<form action="vendor/vendorlogin" method="post">
+    <input type="email" name="email"/>
+    <input type="password" name="password"/>
+    <input type="submit" value="Login"/>
+    </form>
+	
 </body>
 </html>
 <style>

@@ -27,7 +27,6 @@
  	<a class="nav-link" href="editcustomer">Edit Profile</a>
  	 </li>
  
- 	 </ul> 
 </nav>
 </div>
 </body>

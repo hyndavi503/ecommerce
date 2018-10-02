@@ -20,10 +20,10 @@
         <ul class="navbar-nav">
           <li class="nav-item">
           
-            <a class="nav-link" href="signup">SignUp</a>
+            <a class="nav-link" href="vendorsignup">SignUp</a>
         </li>
     <li class="nav-item">
-       <a class="nav-link" href="login">Login</a>
+       <a class="nav-link" href="vendorlogin">Login</a>
    </li>
    <li class="nav-item">
        <a class="nav-link" href="customersignup">Customer Signup</a>

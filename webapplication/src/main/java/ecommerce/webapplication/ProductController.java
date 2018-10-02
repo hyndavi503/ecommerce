@@ -204,10 +204,16 @@ public class ProductController {
 		return "vendorindex";
 	}
 	
+	
+	
 	/*@GetMapping("products/{sid}")
-	public String getProducts(@PathVariable("sid")int sid,Map<String,Object> products) {
+	public String getProducts(@PathVariable("sid")int sid,Map<String,Object> products,HttpSession session) {
+		
+		session.setAttribute("electronics",subCategoryDao.getElectronics());
 		
 		products.put("productList",productDao.getProducts(sid));
+		
+		
 		return "product";
 	}*/
 }

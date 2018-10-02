@@ -3,6 +3,7 @@ package ecommerce.webdemo.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Category
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private int cid;
 private String cname;
-@OneToMany(mappedBy="category")
+@OneToMany(mappedBy="category",fetch=FetchType.EAGER)
 private Set<SubCategory> subCategory;
 
 
@@ -44,6 +45,7 @@ public void setCname(String cname) {
 public String toString() {
 	return "Category [cid=" + cid + ", cname=" + cname + ", subCategory=" + subCategory + "]";
 }
+
 
 
 }

@@ -1,5 +1,6 @@
 package ecommerce.webapplication;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,12 +53,12 @@ public class IndexController
 	@Autowired
 	private SubCategoryDao subCategoryDao;
 
-	@RequestMapping("/")
+	@RequestMapping(value= {"/","/index"})
 	public ModelAndView index(/*HttpSession session*/) {
 		ModelAndView view = new ModelAndView("index");
 		 view.addObject("myName", "hyndavi"); 
 		
-		/*session.setAttribute("electronics", subCategoryDao.getElectronics());*/
+		/*session.setAttribute("electronics",subCategoryDao.getElectronics());*/
 		/*session.setAttribute("men", subCategoryDao.getMens());
 		session.setAttribute("women", subCategoryDao.getWomens());*/
 		return view;
@@ -75,14 +76,14 @@ public String demo()
 		return modelAndView;
 	}
 
-	@GetMapping("/signup")
+	@GetMapping("/vendor/vendorsignup")
 	
 	public String signup(Model model) {
 		model.addAttribute("vendor", new Vendor());
-		return "signup";
+		return "vendorsignup";
 	}
 
-	@PostMapping("/signup")
+	@PostMapping("/vendor/vendorsignup")
 	public String signup(@Valid @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult)
 	{
 		System.out.println(bindingResult.hasErrors());
@@ -93,12 +94,12 @@ public String demo()
 				vendorDao.addVendor(vendor);
 				/*mail=new Mail();
 				mail.sendingMail(vendor.getEmail(),vendor.getPassword());*/
-				return "redirect:/login";
+				return "redirect:/vendorlogin";
 
 			} 
 			else 
 			{
-				return "signup";
+				return "vendorsignup";
 			}
 		/*} 
 		else 
@@ -107,14 +108,14 @@ public String demo()
 		}*/
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/vendor/vendorlogin")
 	public String login(Model model) {
 		model.addAttribute("login", new Login());
-		return "login";
+		return "vendorlogin";
 	}
 
 	// login process
-	@PostMapping("/login")
+	/*@PostMapping("/vendor/vendorlogin")
 	public String loginVendor(@ModelAttribute("login") Login login, HttpSession session,Vendor vendor) 
 	{
 System.out.println(login.getEmail() + "  " + login.getPassword());
@@ -126,23 +127,27 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 		} 
 		else 
 		{
-			return "login";
+			return "vendorlogin";
 		}
 	}
+	*/
 	
-	@GetMapping("profile")
-	public String profile() 
+	@GetMapping("/vendor/profile")
+	public ModelAndView profile(Principal principal) 
 	{
-		return "profile";
+		ModelAndView view=new ModelAndView("profile");
+		view.addObject("vendor",vendorDao.getVendorByEmail(principal.getName()));
+		return view;
 	}
+	
 
-	@GetMapping("/editprofile")
+	@GetMapping("/vendor/editprofile")
 	public String editprofile(HttpSession session, Model model) {
 		model.addAttribute("vendor", session.getAttribute("vendor"));
 		return "editprofile";
 	}
 
-	@PostMapping("/update")
+	@PostMapping("/vendor/update")
     public String update(@ModelAttribute("vendor")Vendor vendor,HttpSession httpSession)
     {
         System.out.println(vendor);
@@ -152,7 +157,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
         
     }
 	
-	@GetMapping("vendordetails")
+	@GetMapping("/vendor/vendordetails")
 	public String getVendorDetails(Map<String, Object> vendor) {
 		vendor.put("vendorList",vendorDao.getVendorDetails());
 		return "vendordetails";
@@ -167,7 +172,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 	
 
 	
-@GetMapping("accept/{id}")
+@GetMapping("/vendor/accept/{id}")
 public String acceptUser(@PathVariable("id")long id) {
 	
 	Vendor vendor=vendorDao.getVendor(id);
@@ -177,7 +182,7 @@ public String acceptUser(@PathVariable("id")long id) {
 	
 }
 
-@GetMapping("reject/{id}")
+@GetMapping("/vendor/reject/{id}")
 public String rejectUser(@PathVariable("id")long id) {
 	
 	Vendor vendor=vendorDao.getVendor(id);
