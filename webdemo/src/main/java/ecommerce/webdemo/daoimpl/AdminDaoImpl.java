@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.webdemo.dao.AdminDao;
 import ecommerce.webdemo.model.Admin;
+import ecommerce.webdemo.model.Vendor;
 
 @Component
 @Transactional
@@ -66,6 +67,20 @@ public class AdminDaoImpl implements AdminDao
 			// TODO: handle exception
 		}
 		
+	}
+
+	@Override
+	public Admin getAdminByEmail(String email) {
+		try
+		{
+			Query<Admin> query=factory.getCurrentSession().createQuery("from Admin where email=:email",Admin.class)
+					.setParameter("email", email);
+			return query.getSingleResult();
+		}
+		catch(Exception e)
+		{
+		return null;
+		}
 	}
 
 }

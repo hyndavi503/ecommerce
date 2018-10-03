@@ -45,7 +45,7 @@ display: flex;
 </head>
 <body>
 
-	<div class="bg">
+	<%-- <div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
@@ -79,15 +79,15 @@ display: flex;
 			</div>
 		</div>
 	</div>
+	 --%>
 	
 	
-	
-	<!-- <form action="customerloginprocess" method="post">
+	<form action="customer/customerloginprocess" method="post">
     <input type="email" name="email"/>
     <input type="password" name="password"/>
     <input type="submit" value="Login"/>
     </form>
-	 -->
+	
 </body>
 </html>
 <style>

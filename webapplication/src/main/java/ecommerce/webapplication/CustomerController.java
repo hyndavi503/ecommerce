@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.LaptopDao;
@@ -72,13 +73,13 @@ public String customersignup(@ModelAttribute("customer") Customer customer,Model
 		return "customersignup";
 	}
 }
-@GetMapping("/customerlogin")
+@GetMapping("customerlogin")
 public String customerlogin(Model model) {
 	model.addAttribute("customerlogin", new Customer());
 	return "customerlogin";
 }
 
-@PostMapping("customerloginprocess")
+/*@PostMapping("customerloginprocess")
 public String customerlogin(@ModelAttribute("customerlogin") CustomerLogin customerLogin,HttpSession httpSession)
 {
 	if(customerDao.customerLogin(customerLogin.getEmail(),customerLogin.getPassword())!=null)
@@ -93,7 +94,14 @@ public String customerlogin(@ModelAttribute("customerlogin") CustomerLogin custo
 		return "customerlogin";
 	}
 }
+*/
 
+
+@GetMapping("customer/customerpage")
+public ModelAndView CustomerIndex() {
+	ModelAndView modelAndView = new ModelAndView("customerpage");
+	return modelAndView;
+}
 @GetMapping("customerprofile")
 public String customerprofile()
 {
@@ -107,7 +115,7 @@ public String editcustomer(HttpSession httpSession,Model model)
 	return "editcustomer";
 }
 
-@PostMapping("/updatecustomer")
+@PostMapping("updatecustomer")
 public String updatecustomer(@ModelAttribute("customer") Customer customer,HttpSession httpSession)
 {
 	httpSession.setAttribute("customer", customer);

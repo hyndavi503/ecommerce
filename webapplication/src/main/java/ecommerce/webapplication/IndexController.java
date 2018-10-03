@@ -56,7 +56,7 @@ public class IndexController
 	@RequestMapping(value= {"/","/index"})
 	public ModelAndView index(/*HttpSession session*/) {
 		ModelAndView view = new ModelAndView("index");
-		 view.addObject("myName", "hyndavi"); 
+		 view.addObject("myName","hyndavi"); 
 		
 		/*session.setAttribute("electronics",subCategoryDao.getElectronics());*/
 		/*session.setAttribute("men", subCategoryDao.getMens());
@@ -114,7 +114,7 @@ public String demo()
 		return "vendorlogin";
 	}
 
-	@GetMapping("/vendor/vendorindex")
+	@GetMapping("vendor/vendorindex")
 	public String vendor()
 	{
 		return "vendorindex";
@@ -168,7 +168,7 @@ System.out.println(login.getEmail() + "  " + login.getPassword());
 		return "vendordetails";
 	}
 	
-	@GetMapping("categorydetails")
+	@GetMapping("/vendor/categorydetails")
 	public String getCategoryDetails(Map<String,Object> category )
 	{
 		category.put("categorylist",categoryDao.getCategoryDetails());
@@ -197,7 +197,7 @@ public String rejectUser(@PathVariable("id")long id) {
 	
 }
 	
-@GetMapping("categories")
+@GetMapping("vendor/categories")
 public String getCategories(Map<String, Object> categories) {
 	categories.put("categoryList", categoryDao.getCategoryDetails());
 	return "categories";

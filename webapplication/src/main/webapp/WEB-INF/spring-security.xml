@@ -1,4 +1,3 @@
-
 <beans:beans
 	xmlns="http://www.springframework.org/schema/security"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -17,7 +16,7 @@
         <beans:bean id="noOpPasswordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder">
         </beans:bean>
 
-	<http auto-config="true">
+<!-- <http auto-config="true">
 	<intercept-url pattern="/index" access="authenticated"/>
 	<form-login login-page="/adminlogin"
 	login-processing-url="/adminlogin" username-parameter="email"  password-parameter="password"
@@ -37,18 +36,54 @@
 		</authentication-provider>
 	</authentication-manager>
 	
-	
-<http auto-config="true" use-expressions="true"
+	 -->
+	 
+	 
+	 
+	 
+	 <http auto-config="true" use-expressions="true"
+		pattern="/admin/**" authentication-manager-ref="adminauthmanager">
+		<intercept-url pattern="/" access="anonymous" />
+		<intercept-url pattern="/admin/**"
+			access="hasAuthority('admin')" />
+		<intercept-url pattern="/admin/adminlogin"
+			access="anonymous" />
+		<form-login login-page="/adminlogin"
+			login-processing-url="/admin/adminlogin"
+			default-target-url="/admin/adminpage" username-parameter="email"
+			password-parameter="password"
+			authentication-failure-url="/adminlogin" />
+		<csrf disabled="true" />
+
+	</http>
+
+	<authentication-manager id="adminauthmanager">
+		<authentication-provider>
+			<password-encoder ref="noOpPasswordEncoder"></password-encoder>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select email,password,status  from  admin where email=?"
+				authorities-by-username-query="select email,role from  admin where email=?" />
+		</authentication-provider>
+
+	</authentication-manager>
+	 
+	 
+	 
+	 
+	 
+	 
+<!-- <http auto-config="true" use-expressions="true"
 		pattern="/vendor/**"
 		authentication-manager-ref="vendorAuthentication">
 		<intercept-url pattern="/"
 			access="hasAuthority('vendor')" />
 		<form-login login-page="/vendorlogin"
 			login-processing-url="/vendor/vendorlogin"
-			default-target-url="/vendor/vendorindex"
 			username-parameter="email"
 			password-parameter="password"
+			default-target-url="/"
 			authentication-failure-forward-url="/vendorlogin" />
+			<logout logout-success-url="/"/>
 		<csrf disabled="true" />
 	</http>
 
@@ -61,6 +96,83 @@
 				authorities-by-username-query="select email,role from vendor where email=?" />
 		</authentication-provider>
 
+	</authentication-manager> -->
+	
+	
+	
+	<http auto-config="true" use-expressions="true"
+		pattern="/vendor/**" authentication-manager-ref="vendorauthmanager">
+		<intercept-url pattern="/" access="anonymous" />
+		<intercept-url pattern="/vendor/**"
+			access="hasAuthority('vendor')" />
+		<intercept-url pattern="/vendor/vendorlogin"
+			access="anonymous" />
+		<form-login login-page="/vendorlogin"
+			login-processing-url="/vendor/vendorlogin"
+			default-target-url="/vendor/vendorindex"
+			username-parameter="email"
+			password-parameter="password"
+			authentication-failure-forward-url="/vendorlogin" />
+		<csrf disabled="true" />
+	</http>
+
+	<authentication-manager id="vendorauthmanager">
+		<authentication-provider>
+			<password-encoder ref="noOpPasswordEncoder"></password-encoder>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select email,password,status  from vendor  where email=?"
+				authorities-by-username-query="select email,role from vendor where email=?" />
+		</authentication-provider>
+
 	</authentication-manager>
+	 
+	 
+	  <http auto-config="true" use-expressions="true"
+		pattern="/customer/**"
+		authentication-manager-ref="customerauthmanager">
+		<intercept-url pattern="/customer/**"
+			access="hasAuthority('customer')" />
+		<intercept-url pattern="/customer/customerloginprocess"
+			access="anonymous" />
+		<form-login login-page="/customerlogin"
+			login-processing-url="/customer/customerloginprocess"
+			default-target-url="/customer/customerpage"
+			username-parameter="email"
+			password-parameter="password"
+			authentication-failure-forward-url="/customerlogin" />
+		<csrf disabled="true" />
+	</http>
+
+
+	<authentication-manager id="customerauthmanager">
+		<authentication-provider>
+			<password-encoder ref="noOpPasswordEncoder"></password-encoder>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select email,password,status  from customer where email=?"
+				authorities-by-username-query="select email,role from customer where email=?" />
+		</authentication-provider>
+
+	</authentication-manager>
+	 
+	  
+	  
+	 <!--  <http auto-config="true">
+	<intercept-url pattern="/index" access="authenticated"/>
+	<form-login login-page="/customerlogin"
+	login-processing-url="/customerloginprocess" username-parameter="email"  password-parameter="password"
+	default-target-url="/"
+	authentication-failure-forward-url="/customerlogin" />
+	
+<csrf disabled="true"/>
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+		<password-encoder ref="noOpPasswordEncoder"></password-encoder>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select email,password,
+                status from customer where email=?"
+				authorities-by-username-query="select email, role from customer where email=?" />
+		</authentication-provider>
+	</authentication-manager> -->
 	
 </beans:beans> 

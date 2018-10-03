@@ -45,7 +45,7 @@ display: flex;
 </head>
 <body>
 
-    <form action="adminlogin" method="post">
+    <form action="admin/adminlogin" method="post">
     <input type="email" name="email"/>
     <input type="password" name="password"/>
     <input type="submit" value="Login"/>

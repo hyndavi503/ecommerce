@@ -59,7 +59,7 @@ public class ProductController {
 	private Image image;
 	
 	
-	@PostMapping("subcategory")
+	@PostMapping("vendor/subcategory")
 	public String getSubCategory(@RequestParam("cid")int cid,Model model) {
 		 
 		model.addAttribute("subCategoryList",subCategoryDao.getSubCategoryById(cid));
@@ -67,7 +67,7 @@ public class ProductController {
 		return "subcategory";
 		
 	}
-	@PostMapping("getModel")
+	@PostMapping("vendor/getModel")
 	
 
 	public String  addProducts(HttpServletRequest request,Model model,HttpSession session) {
@@ -140,7 +140,7 @@ public class ProductController {
 		return noOfProductsList;
 }
 	
-	@GetMapping("productdetails")
+	@GetMapping("vendor/productdetails")
 	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {	
 		Vendor vendor=(Vendor)session.getAttribute("vendor");
 		products.put("productList", productDao.getAllProducts(vendor.getId()));
@@ -148,7 +148,7 @@ public class ProductController {
 		return "productdetails";	
 	}
 
-	@GetMapping("viewproductdetails/{pid}")
+	@GetMapping("vendor/viewproductdetails/{pid}")
 	public String viewProducts(@PathVariable("pid")int pid,Model model) 
 	{
 		String name=subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
@@ -163,7 +163,7 @@ public class ProductController {
 		default:return "vendordetails";
        }
 	}
-	@GetMapping("editproducts/{pid}")
+	@GetMapping("vendor/editproducts/{pid}")
 	public String editProducts(@PathVariable("pid") int pid, Model model,HttpServletRequest request) {
 
 		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();

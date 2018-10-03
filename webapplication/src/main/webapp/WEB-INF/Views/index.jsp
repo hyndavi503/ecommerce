@@ -16,6 +16,7 @@
 </head>
 <body>
    <div class="container-fluid">
+   <%--   <%@include file="navbar.jsp"%> --%>
       <nav class="navbar navbar-expand bg-danger navbar-dark justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item">
