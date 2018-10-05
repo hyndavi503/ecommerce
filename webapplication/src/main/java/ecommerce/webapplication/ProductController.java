@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +25,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.LaptopDao;
-import ecommerce.webdemo.dao.MixerDao;
 import ecommerce.webdemo.dao.MobileDao;
 import ecommerce.webdemo.dao.ProductDao;
 import ecommerce.webdemo.dao.SubCategoryDao;
 import ecommerce.webdemo.dao.VendorDao;
 import ecommerce.webdemo.daoimpl.SubCategoryDaoImpl;
 import ecommerce.webdemo.model.Laptop;
-import ecommerce.webdemo.model.Mixer;
 import ecommerce.webdemo.model.Mobile;
 import ecommerce.webdemo.model.NoOfProducts;
 import ecommerce.webdemo.model.Products;
@@ -50,8 +49,6 @@ public class ProductController {
 	@Autowired
 	private MobileDao mobileDao;
 	@Autowired
-	private MixerDao mixerDao;
-	@Autowired
 	private VendorDao vendorDao;
 	@Autowired
 	private ProductDao productDao;
@@ -66,16 +63,17 @@ public class ProductController {
 		model.addAttribute("cname",categoryDao.getCategoryId(cid));
 		return "subcategory";
 		
+		
 	}
 	@PostMapping("vendor/getModel")
 	
 
-	public String  addProducts(HttpServletRequest request,Model model,HttpSession session) {
+	public String  addProducts(HttpServletRequest request,Model model,HttpSession session,Principal principal) {
 		SubCategory subCategory=subCategoryDao.getSubCategory(Integer.parseInt(request.getParameter("sid")));
 		model.addAttribute("sid", subCategory.getSid());
-		Vendor vendor=(Vendor)session.getAttribute("vendor");
-		
-		
+		/*Vendor vendor=(Vendor)session.getAttribute("vendor");*/
+		Vendor vendor=vendorDao.getVendorByEmail(principal.getName());
+		session.setAttribute("vendorDetails", vendor);
 		model.addAttribute("id",vendor.getId());
 		
 		  switch(subCategory.getSubcategoryname())  
@@ -85,15 +83,13 @@ public class ProductController {
 		  
 		  case "mobile": model.addAttribute("mobile" ,new Mobile());
 		   return "mobile";
-		   
-		 case "mixer": model.addAttribute("mixer" ,new Mixer());
-		   return "mixer";
+		  
 		default: return "subcategory";
 		}
 				
 }
 
-	@PostMapping("laptop")
+	@PostMapping("vendor/laptop")
 	public String addLaptop(@ModelAttribute("laptop")Laptop laptop,HttpSession session,HttpServletRequest request) {
 	   List<NoOfProducts> noOfProducts=listOfProducts(laptop);
 		laptop.setNoOfProducts(noOfProducts);;
@@ -101,31 +97,24 @@ public class ProductController {
 		if(laptopDao.addLaptop(laptop)) 
 		{
 			image.uploadImage(laptop, request);
-			return  "vendorindex";
+			return "redirect:/vendor/vendorindex";
 			}
 		   else {
-			return  "getModel";
+			return "vendor/getModel";
 		   }
 		}
 	
-	@PostMapping("mobile")
+	@PostMapping("vendor/mobile")
 	public String addMobile(@ModelAttribute("mobile")Mobile mobile,HttpServletRequest request) 
 	{	
 		
 		if(mobileDao.addMobile(mobile))
 		{
 			image.uploadImage(mobile, request);
-			return "vendorindex";
+			return "redirect:/vendor/vendorindex";
 		}
 		
-		return "getModel";
-	}
-	
-	@PostMapping("mixer")
-	public String addMixer(@ModelAttribute("mixer")Mixer mixer) {
-		
-		mixerDao.addMixer(mixer);
-		return "vendorindex";
+		return "vendor/getModel";
 	}
 	
 	private List<NoOfProducts> listOfProducts(Products products)
@@ -141,8 +130,8 @@ public class ProductController {
 }
 	
 	@GetMapping("vendor/productdetails")
-	public String getProducts(HttpSession session,Model model,Map<String,Object> products) {	
-		Vendor vendor=(Vendor)session.getAttribute("vendor");
+	public String getProducts(HttpSession session,Model model,Map<String,Object> products,Principal principal) {	
+		Vendor vendor=vendorDao.getVendorByEmail(principal.getName());
 		products.put("productList", productDao.getAllProducts(vendor.getId()));
 
 		return "productdetails";	
@@ -160,13 +149,31 @@ public class ProductController {
 		case "laptop": model.addAttribute("laptop",laptopDao.getLaptopDetails(pid));
 			return "laptopdetails";
 			
-		default:return "vendordetails";
+		default:return "vendorindex";
        }
 	}
-	@GetMapping("vendor/editproducts/{pid}")
+	
+	@GetMapping("productspecifications/{pid}")
+	public String viewproductspecifications(@PathVariable("pid") int pid,Model model)
+	{
+		String name=subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
+		System.out.println(name);
+		switch(name)
+		{
+		case "mobile":model.addAttribute("mobile",mobileDao.getMobileDetails(pid));
+			return "viewmobile";
+		case "laptop": model.addAttribute("laptop",laptopDao.getLaptopDetails(pid));
+			return "viewlaptop";
+			
+		default:return "vendorindex";
+       }
+		
+	}
+@GetMapping("vendor/editproducts/{pid}")
 	public String editProducts(@PathVariable("pid") int pid, Model model,HttpServletRequest request) {
 
 		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
+		
 		
 		
 		switch (name) {
@@ -205,16 +212,12 @@ public class ProductController {
 	}
 	
 	
-	
-	/*@GetMapping("products/{sid}")
+	@GetMapping("products/{sid}")
 	public String getProducts(@PathVariable("sid")int sid,Map<String,Object> products,HttpSession session) {
 		
 		session.setAttribute("electronics",subCategoryDao.getElectronics());
-		
 		products.put("productList",productDao.getProducts(sid));
-		
-		
-		return "product";
-	}*/
+		return "products";
+	}
 }
 

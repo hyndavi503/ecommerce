@@ -48,13 +48,12 @@ font-size: 20px;
 </style>
 </head>
 <body>
-	<%-- <springform:form action="login" method="POST" modelAttribute="login"> --%>
-	<%-- <div class="bg">
+	
+	<div class="bg">
 		<div class="container-fluid bg">
 			<div class="row" style="padding-left:450px;padding-top:100px;">
 
-				<springform:form action="vendorlogin" method="POST" modelAttribute="login"
-					class="form-container">
+				<form action="vendor/vendorlogin" method="POST" class="form-container">
 					<center>
 						<i class="fas fa-users"></i>
 					</center>
@@ -64,14 +63,12 @@ font-size: 20px;
 					<i class="fas fa-at"></i>
 						<label for="email">Email address:</label>
 						<div class="inputdiv">
-							
-							<springform:input path="email" class="form-control" id="email" />
+							<input type="email" name="email" class="form-control"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<i class="fas fa-unlock"></i> <label for="pwd">Password:</label>
-						<springform:input type="password" path="password"
-							class="form-control" id="pwd" />
+						<input type="password" name="password" class="form-control"/>
 					</div>
 					<div class="form-group form-check">
 						<label class="form-check-label"> <input
@@ -81,15 +78,15 @@ font-size: 20px;
 
 					</div>
 					<button type="submit" class="btn btn-success btn-block">login</button>
-				</springform:form>
+				</form>
 			</div>
 		</div>
-	</div> --%>
+	</div> 
 	
 	
-	<form action="vendor/vendorlogin" method="post">
-    <input type="email" name="email"/>
-    <input type="password" name="password"/>
+	
+    
+    
     <input type="submit" value="Login"/>
     </form>
 	

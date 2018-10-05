@@ -33,7 +33,9 @@ import ecommerce.webdemo.model.CartItemId;
 import ecommerce.webdemo.model.Category;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Laptop;
-import ecommerce.webdemo.model.CartOrder;
+/*import ecommerce.webdemo.model.Order;
+import ecommerce.webdemo.model.OrderedItemId;
+import ecommerce.webdemo.model.OrderedItems;*/
 import ecommerce.webdemo.model.Products;
 import ecommerce.webdemo.model.SubCategory;
 import ecommerce.webdemo.model.Vendor;
@@ -52,8 +54,12 @@ public class AppTest {
 	private AdminDao adminDao;*/
 	@Autowired
 	private CartItem cartItem;
+	/*@Autowired
+	private Order order;
 	@Autowired
-	private CartOrder order;
+	private OrderedItems orderedItems;
+	@Autowired
+	private OrderedItemId orderedItemId;*/
 	@Autowired
 	private Cart cart;
 	@Autowired

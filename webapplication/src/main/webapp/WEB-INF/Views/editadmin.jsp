@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Welcome to EditAdmin Page
+Welcome to Edit Admin Page
 <springform:form action="updateadmin" method="POST" modelAttribute="admin">
 <table>
  <tr>
@@ -18,11 +18,11 @@ Welcome to EditAdmin Page
 </tr> 
 <tr>
 <td>name</td>
-<td><springform:input path="name"/></td>
+<td><springform:input path="name" value="${admin.name}"/></td>
 </tr> 
 <tr>
 <td>email</td>
-<td><springform:input path="email"/></td>
+<td><springform:input path="email" value="${admin.email}"/></td>
 </tr>
 <tr>
 <td>password</td>

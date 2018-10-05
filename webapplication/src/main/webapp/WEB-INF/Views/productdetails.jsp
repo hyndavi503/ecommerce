@@ -41,7 +41,7 @@
 			</c:forEach>
 		</div> --%>
 		
-		
+		<%@include file="contextpaths.jsp" %>
 		<div class="container">
 		<div class="row">
 			<c:forEach items="${productList}" var="product">
@@ -49,14 +49,14 @@
 					<div class="thumbnail">
 						<img
 							src="<spring:url  value="/resources/images/products/${product.pid}.jpg"></spring:url>"
-							alt="${product.price }" style="width: 100%" />
+							alt="${product.price}" style="width: 100%" />
 
 						<div class="caption">
 
 						
-						<a href="viewproductdetails/${product.pid }"><button
+						<a href="${contextPath}/viewproductdetails/${product.pid }"><button
 									class="btn btn-success">view</button></a> <a
-								href="editproducts/${product.pid }"><button
+								href="editproducts/${product.pid}"><button
 									class="btn btn-success">Edit</button></a>
 
 						</div>

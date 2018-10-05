@@ -13,6 +13,6 @@ public interface SubCategoryDao {
 	public List<SubCategory> getElectronics();
 	/*public List<SubCategory> getMens();
 	public List<SubCategory> getWomens();*/
-	
+	public List<SubCategory> getSubcategory(int cid);
 }
 

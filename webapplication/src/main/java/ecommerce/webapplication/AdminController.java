@@ -103,10 +103,29 @@ public class AdminController
 	
 
 	@GetMapping("admin/adminprofile")
-	public String getAdminDetails() {
-		return "adminprofile";
+	public ModelAndView getAdminProfile(Principal principal)
+	{
+		ModelAndView view=new ModelAndView("adminprofile");
+		view.addObject("admin",adminDao.getAdminByEmail(principal.getName()));
+		return view;
 	}
 
+	@GetMapping("/admin/editprofile")
+	public String editprofile(HttpSession session, Model model) {
+		model.addAttribute("admin", session.getAttribute("admin"));
+		return "editprofile";
+	}
+
+	@PostMapping("/admin/updateadmin")
+    public String update(@ModelAttribute("admin")Admin admin,HttpSession httpSession)
+    {
+        System.out.println(admin);
+        httpSession.setAttribute("admin",admin);
+      adminDao.updateAdmin(admin);
+        return "adminprofile";
+        
+    }
+	
 	@GetMapping("admin/accept/{id}")
 	public String acceptUser(@PathVariable("id") int id) {
 
@@ -128,7 +147,7 @@ public class AdminController
 	}
 	@GetMapping("admin/vendordetails")
 	public String getVendorDetails(Map<String, Object> vendors) {
-		vendors.put("vendorList", vendorDao.getVendorDetails());
+		vendors.put("vendorList", adminDao.getAllVendors());
 		return "vendordetails";
 	}
 

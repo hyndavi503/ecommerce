@@ -1,5 +1,7 @@
 package ecommerce.webdemo.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +82,18 @@ public class AdminDaoImpl implements AdminDao
 		catch(Exception e)
 		{
 		return null;
+		}
+	}
+
+	@Override
+	public List<Vendor> getAllVendors() {
+		try {
+			Query<Vendor> query=factory.getCurrentSession().createQuery("from Vendor",Vendor.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
 		}
 	}
 

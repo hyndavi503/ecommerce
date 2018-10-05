@@ -4,36 +4,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 </head>
 <body>
+<h3><code>Laptop Specifications</code></h3>
 <table>
-<tr>
-<td>numberOfProducts</td>
-<td>${laptop.numberOfProducts}</td>
-</tr>
+
 
 <tr>
-<td>ram</td>
+<td>Ram:</td>
 <td>${laptop.ram}</td>
 </tr>
 <tr>
-<td>rom</td>
+<td>Rom:</td>
 <td>${laptop.rom}</td>
 </tr>
 <tr>
-<td>processor</td>
-<td>${laptop.processor}</td>
-</tr>
-<tr>
-<td>os</td>
+<td>OS:</td>
 <td>${laptop.os}</td>
 </tr>
 <tr>
-<td>price</td>
+<td>Processor:</td>
+<td>${laptop.processor}</td>
+</tr>
+
+<tr>
+<td>Price:</td>
 <td>${laptop.price}</td>
 </tr>
+
+<tr>
+<td>No. Of Products:</td>
+<td>${laptop.numberOfProducts}</td>
+</tr>
 </table>
-<input type="button" value="editlaptop"/>
 </body>
 </html>
+
+<style>
+html,body,h3
+{
+padding-top:10px;
+font-style:italic;
+}
+	html,body,table
+	{
+		float:right;
+		padding-right:180px;
+		font-size:40px;
+	}
+
+</style>

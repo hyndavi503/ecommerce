@@ -35,19 +35,19 @@
 <table>
 <tr>
 <td>name:</td>
-<td>${customer.name}</td>
+<td>${customerDetails.name}</td>
 </tr>
 <tr>
 <td>Email address:</td>
-<td>${customer.email}</td>
+<td>${customerDetails.email}</td>
 </tr>
 <tr>
 <td>mobile:</td>
-<td>${customer.mobile}</td>
+<td>${customerDetails.mobile}</td>
 </tr>
 <tr>
 <td>password:</td>
-<td>${customer.password}</td>
+<td>${customerDetails.password}</td>
 </tr>
 </table>
 <button><a href="editcustomer">Edit Customer</a></button>

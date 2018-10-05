@@ -29,43 +29,34 @@
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 <title></title>
-<style type="text/css">
-.fa-users {
-	font-size: 80px;
-	
-}
-
-.inputdiv{
-background-color: white;
-display: flex;
-
-}
 
 </style>
 </head>
 <body>
 
-	<%-- <div class="bg">
+
+
+	<div class="bg">
+	
 		<div class="container-fluid bg">
+		
 			<div class="row" style="padding-left:450px;padding-top:100px;">
-
-				<springform:form action="customerloginprocess" method="POST" modelAttribute="customerlogin"
-					class="form-container">
-					<h1>Login Here!!!</h1>
-
+			<div id="para">
+<h3>Everything starts with the CUSTOMER :)</h3>
+</div>
+				<form action="customer/customerloginprocess" method="post">
+					
 					<div class="form-group">
-					<i class="fas fa-at"></i>
-						<label for="email">Email address:</label>
+					<!-- <i class="fas fa-at"></i> -->
+					
+						<i class="fas fa-at"></i><label for="email">Email Id:</label>
 						<div class="inputdiv">
-							
-							<springform:input path="email" class="form-control" id="email" />
-						
+							<input type="email" name="email" class="form-control"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<i class="fas fa-unlock"></i> <label for="pwd">Password:</label>
-						<springform:input type="password" path="password"
-							class="form-control" id="pwd" />
+						<input type="password" name="password" class="form-control"/>
 					</div>
 					<div class="form-group form-check">
 						<label class="form-check-label"> <input
@@ -74,19 +65,15 @@ display: flex;
 						</label>
 
 					</div>
-					<button type="submit" class="btn btn-success btn-block">Customer Login</button>
-				</springform:form>
+					<button type="submit" class="btn btn-success btn-block">login</button>
+				</form>
 			</div>
 		</div>
-	</div>
-	 --%>
+	</div> 
 	
 	
-	<form action="customer/customerloginprocess" method="post">
-    <input type="email" name="email"/>
-    <input type="password" name="password"/>
-    <input type="submit" value="Login"/>
-    </form>
+	
+   
 	
 </body>
 </html>
@@ -94,7 +81,7 @@ display: flex;
 .bg {
 	/* The image used */
 	background-image:
-		url("https://image.freepik.com/free-vector/blurred-abstract-background_1107-166.jpg");
+		url("https://www.pixelstalk.net/wp-content/uploads/2016/10/Smoke-patterns-lines-colorful-1920x1080-620x349.jpg");
 	/* Full height */
 	width: 100%;
 	height: 100vh;
@@ -111,10 +98,20 @@ box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
 
        } 
 form {
-	padding-left: 550px;
-	padding-top: 150px;
+
+	padding-left: 500px;
+	padding-top: 50px;
 }
 
 text {
 	color:#fff;
+}
+body,form,div,label
+{
+	text-color:white;
+}
+.para
+{
+
+padding-right:200px;
 }

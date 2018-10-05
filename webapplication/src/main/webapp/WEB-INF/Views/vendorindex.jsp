@@ -18,13 +18,14 @@
 <div class="bg">
  <h1>Welcome to Vendor Page</h1>
  <%-- <%@include file="navbar.jsp"%> --%>
+ <%@include file="contextpaths.jsp" %>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
- 	<a class="nav-link" href="profile">Profile</a>
+ 	<a class="nav-link" href="${contextPath}/vendor/profile">Profile</a>
  	</li>
  	<li class="nav-item">
- 	<a class="nav-link" href="editprofile">Edit Profile</a>
+ 	<a class="nav-link" href="${contextPath}/vendor/editprofile">Edit Profile</a>
  	</li>
  	<li class="nav-item">
  	<a class="nav-link" href="vendordetails">Vendor details</a>
@@ -33,7 +34,7 @@
  	<a class="nav-link" href="categorydetails">Add Products</a>
  	</li>
  	 <li class="nav-item">
- 	<a class="nav-link" href="productdetails">View Products</a>
+ 	<a class="nav-link" href="${contextPath}/vendor/productdetails">View Products</a>
  	</li> 
  	</ul> 
 </nav>

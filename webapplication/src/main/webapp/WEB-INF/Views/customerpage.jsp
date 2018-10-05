@@ -19,13 +19,14 @@
  <h1>Welcome to Customer Page</h1>
  
 <%--   <%@include file="navbar.jsp"%> --%>
+<%@include file="contextpaths.jsp" %>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
- 	<a class="nav-link" href="customerprofile">Profile</a>
+ 	<a class="nav-link" href="${contextPath}/customer/customerprofile">Profile</a>
  	</li>
  	<li class="nav-item">
- 	<a class="nav-link" href="editcustomer">Edit Profile</a>
+ 	<a class="nav-link" href="${contextPath}/customer/editcustomer">Edit Profile</a>
  	 </li>
  
 </nav>

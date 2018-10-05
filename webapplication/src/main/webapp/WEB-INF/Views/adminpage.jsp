@@ -18,16 +18,17 @@
 <body>
 <div class="bg">
  <h1>Welcome to Admin Page</h1>
+ <%@include file="contextpaths.jsp" %>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">
  	<li class="nav-item">
- 	<a class="nav-link" href="adminprofile">Profile</a>
+ 	<a class="nav-link" href="${contextPath}/admin/adminprofile">Profile</a>
  	</li>
  	<li class="nav-item">
- 	<a class="nav-link" href="editadmin">Edit Profile</a>
+ 	<a class="nav-link" href="${contextPath}/admin/editadmin">Edit Profile</a>
  	 </li>
  	<li class="nav-item">
- 	<a class="nav-link" href="admindetails">Admin details</a>
+ 	<a class="nav-link" href="${contextPath}/admin/vendordetails">Vendor details</a>
  	</li> 
  	 
  	</ul> 

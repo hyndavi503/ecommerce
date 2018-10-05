@@ -1,5 +1,6 @@
 package ecommerce.webapplication;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,29 +99,31 @@ public String customerlogin(@ModelAttribute("customerlogin") CustomerLogin custo
 
 
 @GetMapping("customer/customerpage")
-public ModelAndView CustomerIndex() {
+public ModelAndView CustomerIndex(Principal principal,HttpSession httpSession) {
 	ModelAndView modelAndView = new ModelAndView("customerpage");
+	Customer customer=customerDao.getCustomerByEmail(principal.getName());
+	httpSession.setAttribute("customerDetails",customer);
 	return modelAndView;
 }
-@GetMapping("customerprofile")
+@GetMapping("customer/customerprofile")
 public String customerprofile()
 {
 	return "customerprofile";
 }
 
-@GetMapping("editcustomer")
+@GetMapping("customer/editcustomer")
 public String editcustomer(HttpSession httpSession,Model model)
 {
-	model.addAttribute("customer", httpSession.getAttribute("customer"));
+	model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
 	return "editcustomer";
 }
 
 @PostMapping("updatecustomer")
 public String updatecustomer(@ModelAttribute("customer") Customer customer,HttpSession httpSession)
 {
-	httpSession.setAttribute("customer", customer);
+	httpSession.setAttribute("customerDetails", customer);
 	customerDao.updateCustomer(customer);
-	return "customerprofile";
+	return "customer/customerprofile";
 }
 
 

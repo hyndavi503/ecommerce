@@ -92,5 +92,17 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 	}
 */
 	
+	@Override
+	public List<SubCategory> getSubcategory(int cid) {
+		try {
+			Query<SubCategory> query =factory.getCurrentSession()
+					.createQuery("from SubCategory where category_cid=:cid", SubCategory.class);
+			query.setParameter("cid", cid);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

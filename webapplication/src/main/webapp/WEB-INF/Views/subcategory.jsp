@@ -30,9 +30,10 @@
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 <body>
+<%@include file="contextpaths.jsp" %>
 <div class="bg">
 <div class="container-fluid">
-        <form action="getModel" method="post">
+        <form action="${contextPath}/vendor/getModel" method="post">
 				<div class="form-group">
 					<label for="item">SubCategory</label> 
 					<select class="form-control" id="item" name="sid">

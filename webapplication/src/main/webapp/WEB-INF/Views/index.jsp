@@ -3,7 +3,8 @@
 <html>
 <head>
  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@include file="contextpaths.jsp"%>
 <spring:url value="/resources/images" var="images"></spring:url>
 <!--  <link rel="stylesheet" href="edit.css"> -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -15,14 +16,16 @@
 <title>project</title>
 </head>
 <body>
-   <div class="container-fluid">
-   <%--   <%@include file="navbar.jsp"%> --%>
+     <%-- <%@include file="navbar.jsp"%> --%>
+      
       <nav class="navbar navbar-expand bg-danger navbar-dark justify-content-end">
+     
         <ul class="navbar-nav">
           <li class="nav-item">
           
             <a class="nav-link" href="vendorsignup">SignUp</a>
         </li>
+         <%@include file="navbar1.jsp"%>
     <li class="nav-item">
        <a class="nav-link" href="vendorlogin">Login</a>
    </li>
@@ -34,8 +37,6 @@
    </li>
    <li class="nav-item">
    <a class="nav-link" href="adminlogin">Admin Login</a>
-<hr>
-<hr>
 </div>
 </nav>
       <div class="container">

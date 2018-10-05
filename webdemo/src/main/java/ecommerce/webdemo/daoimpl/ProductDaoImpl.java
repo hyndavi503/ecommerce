@@ -98,5 +98,22 @@ public class ProductDaoImpl implements ProductDao{
 		return null;
 		}	
 		}
+
+
+	@Override
+	public int getSubCategoryId(int pid) {
+		
+		try {
+			Query<Products> query=factory.getCurrentSession().createQuery("from Products where pid =:pid" , Products.class);
+			query.setParameter("pid",pid);
+			Products product=query.getSingleResult();
+			System.out.println(product.getSubCategory().getSid());
+			return product.getSubCategory().getSid();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
 	
 }

@@ -38,11 +38,6 @@ public String getSubcategoryname() {
 public void setSubcategoryname(String subcategoryname) {
 	this.subcategoryname = subcategoryname;
 }
-@Override
-public String toString() {
-	return "SubCategory [sid=" + sid + ", subcategoryname=" + subcategoryname + ", category=" + category + "]";
-}
-
 
 
 }

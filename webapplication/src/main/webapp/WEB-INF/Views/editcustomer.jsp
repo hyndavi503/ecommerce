@@ -1,5 +1,5 @@
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,23 +13,23 @@ Welcome to Edit Page
 <table>
  <tr>
 <td>id</td>
-<td><springform:input path="id" type="hidden"/></td>
+<td><springform:input path="id" value="${customerDetails.id}" type="hidden"/></td>
 </tr> 
 <tr>
 <td>name</td>
-<td><springform:input path="name"/></td>
+<td><springform:input path="name" value="${customerDetails.name}"/></td>
 </tr> 
 <tr>
 <td>email</td>
-<td><springform:input path="email"/></td>
+<td><springform:input path="email" value="${customerDetails.email}"/></td>
 </tr>
 <tr>
 <td>password</td>
-<td><springform:input path="password" type="hidden"/></td>
+<td><springform:input path="password" value="${customerDetails.password}" type="hidden"/></td>
 </tr> 
 <tr>
 <td>mobile</td>
-<td><springform:input path="mobile"/></td>
+<td><springform:input path="mobile" value="${customerDetails.mobile}"/></td>
 </tr>
 </table>
 <tr>
@@ -38,3 +38,4 @@ Welcome to Edit Page
 </springform:form>
 </body>
 </html>
+
