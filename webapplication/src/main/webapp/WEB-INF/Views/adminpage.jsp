@@ -24,9 +24,9 @@
  	<li class="nav-item">
  	<a class="nav-link" href="${contextPath}/admin/adminprofile">Profile</a>
  	</li>
- 	<li class="nav-item">
+ 	<%-- <li class="nav-item">
  	<a class="nav-link" href="${contextPath}/admin/editadmin">Edit Profile</a>
- 	 </li>
+ 	 </li> --%>
  	<li class="nav-item">
  	<a class="nav-link" href="${contextPath}/admin/vendordetails">Vendor details</a>
  	</li> 

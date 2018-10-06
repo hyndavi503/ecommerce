@@ -46,7 +46,7 @@
 <td>${admin.password}</td>
 </tr>
 </table>
-<button><a href="editadmin">Edit Admin</a></button>
+<!-- <button><a href="editadmin">Edit Admin</a></button> -->
 </form>
 					
 

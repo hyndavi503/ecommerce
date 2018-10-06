@@ -87,22 +87,13 @@ public class IndexController {
 	@PostMapping("vendorsignup")
 	public String signup(@Valid @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult) {
 		System.out.println(bindingResult.hasErrors());
-		/*
-		 * if (!bindingResult.hasErrors()) {
-		 */
 		if (vendorDao.getVendorByEmail(vendor.getEmail()) == null) {
 			vendorDao.addVendor(vendor);
-			/*
-			 * mail=new Mail(); mail.sendingMail(vendor.getEmail(),vendor.getPassword());
-			 */
 			return "redirect:/vendorlogin";
 
 		} else {
 			return "vendorsignup";
 		}
-		/*
-		 * } else { return "signup"; }
-		 */
 	}
 
 	@GetMapping("vendorlogin")

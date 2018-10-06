@@ -1,3 +1,4 @@
+
 package ecommerce.webapplication;
 
 import java.security.Principal;
@@ -44,50 +45,7 @@ public class AdminController
 	@Autowired
 	private CategoryDao categoryDao;
 	
-/*	@GetMapping("/adminlogin")*/
-	/*public String adminlogin()
-	{
-		return "adminlogin";
-	}
-	
-	@GetMapping("/admin/adminindex")
-	public ModelAndView openAdminIndex() {
-		ModelAndView modelAndView = new ModelAndView("adminindex");
-		return modelAndView;
-	}
 
-
-	@PostMapping("/updateadmin")
-	public String updateadmin(@ModelAttribute("admin") Admin admin,HttpSession httpSession)
-	{
-		httpSession.setAttribute("admin", admin);
-		adminDao.updateAdmin(admin);
-		return "adminprofile";
-	}
-*/
-
-
-	/*@GetMapping("adminsignin")
-	public String loginAdmin() {
-		return "adminsignin";
-	}
-*/
-	/*@PostMapping("adminloginprocess")
-	public String loginAdminProcess(HttpServletRequest request, HttpSession session) {
-		
-		
-		if ((adminDaoService.login(request.getParameter("email"), request.getParameter("password"))) != null) {
-			AdminPerson adminPerson = adminDaoService.login(request.getParameter("email"),
-					request.getParameter("password"));
-			session.setAttribute("adminDetails", adminPerson);
-			return "redirect:adminindex";
-		} else {
-			return "adminsignin";
-		}
-		
-	}
-	*/
-	
 	@GetMapping("/adminlogin")
 	public String adminlogin()
 	{
@@ -110,10 +68,10 @@ public class AdminController
 		return view;
 	}
 
-	@GetMapping("/admin/editprofile")
+	/*@GetMapping("/admin/editadmin")
 	public String editprofile(HttpSession session, Model model) {
 		model.addAttribute("admin", session.getAttribute("admin"));
-		return "editprofile";
+		return "editadmin";
 	}
 
 	@PostMapping("/admin/updateadmin")
@@ -124,7 +82,7 @@ public class AdminController
       adminDao.updateAdmin(admin);
         return "adminprofile";
         
-    }
+    }*/
 	
 	@GetMapping("admin/accept/{id}")
 	public String acceptUser(@PathVariable("id") int id) {

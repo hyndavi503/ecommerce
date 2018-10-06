@@ -28,9 +28,6 @@
  	<a class="nav-link" href="${contextPath}/vendor/editprofile">Edit Profile</a>
  	</li>
  	<li class="nav-item">
- 	<a class="nav-link" href="vendordetails">Vendor details</a>
- 	</li>
- 	<li class="nav-item">
  	<a class="nav-link" href="categorydetails">Add Products</a>
  	</li>
  	 <li class="nav-item">

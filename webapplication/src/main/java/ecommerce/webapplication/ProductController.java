@@ -153,6 +153,7 @@ public class ProductController {
        }
 	}
 	
+	
 	@GetMapping("productspecifications/{pid}")
 	public String viewproductspecifications(@PathVariable("pid") int pid,Model model)
 	{
@@ -173,12 +174,8 @@ public class ProductController {
 	public String editProducts(@PathVariable("pid") int pid, Model model,HttpServletRequest request) {
 
 		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
-		
-		
-		
 		switch (name) {
-
-		case "mobile":
+case "mobile":
 			model.addAttribute("contextPath",request.getContextPath());
 			model.addAttribute("mobile", mobileDao.getMobileDetails(pid));
 			return "editmobile";
@@ -218,6 +215,27 @@ public class ProductController {
 		session.setAttribute("electronics",subCategoryDao.getElectronics());
 		products.put("productList",productDao.getProducts(sid));
 		return "products";
+	}
+	
+	
+	@GetMapping("buyproducts/{pid}")
+	public String buyProducts(@PathVariable("pid") int pid, Model model) {
+
+		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
+		System.out.println(name);
+		switch (name) {
+		case "mobile":
+			model.addAttribute("mobile", mobileDao.getMobileDetails(pid));
+			return "buymobile";
+
+		case "l"
+				+ "aptop":
+			model.addAttribute("laptop", laptopDao.getLaptopDetails(pid));
+			return "buylaptop";
+		
+		default:
+			return "vendor/vendorindex";
+		}
 	}
 }
 

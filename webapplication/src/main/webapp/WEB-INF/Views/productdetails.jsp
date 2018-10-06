@@ -54,7 +54,7 @@
 						<div class="caption">
 
 						
-						<a href="${contextPath}/viewproductdetails/${product.pid }"><button
+						<a href="${contextPath}/vendor/viewproductdetails/${product.pid }"><button
 									class="btn btn-success">view</button></a> <a
 								href="editproducts/${product.pid}"><button
 									class="btn btn-success">Edit</button></a>

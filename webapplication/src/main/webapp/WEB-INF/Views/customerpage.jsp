@@ -5,6 +5,7 @@
 <html>
 <head>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <spring:url value="/resources/images" var="images"></spring:url>
 <meta charset="utf-8">
@@ -18,7 +19,7 @@
 <div class="bg">
  <h1>Welcome to Customer Page</h1>
  
-<%--   <%@include file="navbar.jsp"%> --%>
+ <%@include file="navbar1.jsp"%>
 <%@include file="contextpaths.jsp" %>
  <nav class="navbar navbar-expand-sm bg-dark">
  	<ul class="navbar-nav">

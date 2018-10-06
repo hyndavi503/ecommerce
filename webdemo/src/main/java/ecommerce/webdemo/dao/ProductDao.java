@@ -15,4 +15,5 @@ public List<Products> getAllProducts(int id);
 public int getSid(int pid);
 public List<Products> getProducts(int sid);
 public int getSubCategoryId(int pid);
+public Products getProduct(int pid);
 }

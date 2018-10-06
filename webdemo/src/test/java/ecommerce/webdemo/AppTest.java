@@ -18,18 +18,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ecommerce.webdemo.dao.AccountDao;
 import ecommerce.webdemo.dao.AddressDao;
 import ecommerce.webdemo.dao.AdminDao;
+import ecommerce.webdemo.dao.CartDao;
+import ecommerce.webdemo.dao.CartItemIdDao;
+import ecommerce.webdemo.dao.CartItemsDao;
 import ecommerce.webdemo.dao.CategoryDao;
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.LaptopDao;
 import ecommerce.webdemo.dao.ProductDao;
 import ecommerce.webdemo.dao.SubCategoryDao;
 import ecommerce.webdemo.dao.VendorDao;
+import ecommerce.webdemo.daoimpl.CartItemsDaoImpl;
 import ecommerce.webdemo.model.Account;
 import ecommerce.webdemo.model.Address;
 import ecommerce.webdemo.model.Admin;
 import ecommerce.webdemo.model.Cart;
-import ecommerce.webdemo.model.CartItem;
 import ecommerce.webdemo.model.CartItemId;
+import ecommerce.webdemo.model.CartItems;
 import ecommerce.webdemo.model.Category;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.Laptop;
@@ -48,22 +52,6 @@ import ecommerce.webdemo.HibernateConfig;
 public class AppTest {
 
 	
-	/*@Autowired
-	private Admin admin;
-	@Autowired
-	private AdminDao adminDao;*/
-	@Autowired
-	private CartItem cartItem;
-	/*@Autowired
-	private Order order;
-	@Autowired
-	private OrderedItems orderedItems;
-	@Autowired
-	private OrderedItemId orderedItemId;*/
-	@Autowired
-	private Cart cart;
-	@Autowired
-	private CartItemId cartItemId;
 	@Autowired
 	private Vendor vendor;
 	@Autowired
@@ -80,6 +68,18 @@ public class AppTest {
 	private SubCategory subCategory;
 	@Autowired
 	private SubCategoryDao subCategoryDao;
+	@Autowired
+	private Cart cart;
+	@Autowired
+	private CartDao cartDao;
+	@Autowired
+	private CartItems cartItems;
+	@Autowired
+	private CartItemsDao cartItemsDao;
+	@Autowired
+	private CartItemId cartItemId;
+	@Autowired
+	private CartItemIdDao cartItemIdDao;
 	@Autowired
 	private Laptop laptop;
 	@Autowired

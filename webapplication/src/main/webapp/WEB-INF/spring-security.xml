@@ -48,7 +48,7 @@
 	</authentication-manager>
 
 
-
+	
 
 	<http auto-config="true" use-expressions="true"
 		pattern="/vendor/**" authentication-manager-ref="vendorauthmanager">
@@ -74,7 +74,7 @@
 		</authentication-provider>
 
 	</authentication-manager>
-
+	
 
 	<http auto-config="true" use-expressions="true"
 		pattern="/customer/**"

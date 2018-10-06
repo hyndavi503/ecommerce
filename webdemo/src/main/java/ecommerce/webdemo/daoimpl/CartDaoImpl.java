@@ -2,6 +2,7 @@ package ecommerce.webdemo.daoimpl;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,31 +10,29 @@ import org.springframework.stereotype.Component;
 import ecommerce.webdemo.dao.CartDao;
 import ecommerce.webdemo.model.Cart;
 
-@Transactional
-@Component
-public class CartDaoImpl implements CartDao{
 
+@Component
+@Transactional
+public class CartDaoImpl implements CartDao {
 	@Autowired
-	private SessionFactory factory;
+	private SessionFactory sessionFactory;
+
 	@Override
 	public boolean addCart(Cart cart) {
 		try {
-			factory.getCurrentSession().save(cart);
+			sessionFactory.getCurrentSession().save(cart);
 			return true;
 		} catch (Exception e) {
-			
 			return false;
 		}
-		
 	}
 
 	@Override
 	public boolean updateCart(Cart cart) {
 		try {
-			factory.getCurrentSession().update(cart);
+			sessionFactory.getCurrentSession().update(cart);
 			return true;
 		} catch (Exception e) {
-			
 			return false;
 		}
 	}
@@ -41,24 +40,24 @@ public class CartDaoImpl implements CartDao{
 	@Override
 	public boolean deleteCart(Cart cart) {
 		try {
-			factory.getCurrentSession().delete(cart);
+			sessionFactory.getCurrentSession().delete(cart);
 			return true;
 		} catch (Exception e) {
-		
 			return false;
-		}
+		}	}
 	
-	}
 
 	@Override
-	public Cart getCartById(int cartId) {
+	public Cart getCart(long id) {
 		try {
-			return factory.getCurrentSession().get(Cart.class,cartId);
-			
+			return (Cart) sessionFactory.getCurrentSession().createQuery("from Cart where customer_id=:id")
+					.setParameter("id",id).getSingleResult();
 		} catch (Exception e) {
+              e.printStackTrace();
 			return null;
 		}
-		
 	}
 
+
+	
 }

@@ -115,5 +115,18 @@ public class ProductDaoImpl implements ProductDao{
 		}
 		
 	}
+
+
+	@Override
+	public Products getProduct(int pid) {
+		try {
+			Query<Products> query=factory.getCurrentSession().createQuery("from Products where pid:=pid",Products.class);
+			query.setParameter("pid", pid);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
 	
 }
