@@ -6,14 +6,18 @@ import java.util.List;
 import java.util.Stack;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import ecommerce.webdemo.dao.CartDao;
 import ecommerce.webdemo.dao.CartItemIdDao;
+import ecommerce.webdemo.dao.CartItemsDao;
 import ecommerce.webdemo.dao.CustomerDao;
 import ecommerce.webdemo.dao.NoOfProductsDao;
 import ecommerce.webdemo.dao.ProductDao;
@@ -24,7 +28,7 @@ import ecommerce.webdemo.model.CartItems;
 import ecommerce.webdemo.model.Customer;
 import ecommerce.webdemo.model.NoOfProducts;
 import ecommerce.webdemo.model.Products;
-
+@Controller
 public class CartController {
 
 	@Autowired
@@ -43,7 +47,7 @@ public class CartController {
 	private Customer customer;
 
 	@Autowired
-	private CartItemsDaoImpl cartItemsDao;
+	private CartItemsDao cartItemsDao;
 
 	@Autowired
 	private CartItemId cartItemId;
@@ -55,6 +59,9 @@ public class CartController {
 	private ProductDao productDao;
 
 	@Autowired
+	private Products products;
+	
+	@Autowired
 	private Cart cart;
 
 	@Autowired
@@ -63,21 +70,23 @@ public class CartController {
 	@Autowired
 	private NoOfProducts noOfProducts;
 
-	@GetMapping("/customer/addtocart")
+	@GetMapping("customer/addtocart")
 	public String addToCart(Principal principal, HttpServletRequest request) {
 
+		
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		int quantity = Integer.parseInt(request.getParameter("noOfProducts"));
 		int unitprice = Integer.parseInt(productDao.getProduct(pid).getPrice());
+		System.out.println(productDao.getProduct(pid).getPrice());
 		Products products = productDao.getProduct(pid);
-		customer=customerDao.getCustomerByEmail(principal.getName());
+		customer = customerDao.getCustomerByEmail(principal.getName());
 
 		if (checkAvailabilityOfProducts(pid, quantity) == true) {
 
 			cart = cartDao.getCart(customer.getId());
-			
+
 			if (cart == null) {
-				
+
 				cart = new Cart();
 				cartItems = new CartItems();
 				List<CartItemId> cartItemIdList = new ArrayList<CartItemId>();
@@ -85,7 +94,7 @@ public class CartController {
 				List<NoOfProducts> noOfProductsList = noOfProductsDao.getNoOfProducts(pid);
 
 				for (int i = 0; i < quantity; i++) {
-					
+
 					cartItemId = new CartItemId();
 					noOfProducts = new NoOfProducts();
 					noOfProducts = noOfProductsList.get(i);
@@ -120,9 +129,9 @@ public class CartController {
 					int position = cartItemsList.indexOf(cartItems);
 					List<NoOfProducts> noOfProductsList = noOfProductsDao.getNoOfProducts(pid);
 					cartItemIdsList = cartItemIdDao.getAllCartItemId(cartItems.getCartItem_id());
-					
+
 					for (int i = 0; i < quantity; i++) {
-						
+
 						cartItemId = new CartItemId();
 						noOfProducts = new NoOfProducts();
 						noOfProducts = noOfProductsList.get(i);
@@ -146,7 +155,7 @@ public class CartController {
 					List<CartItems> cartItemsList = new ArrayList<CartItems>();
 					List<NoOfProducts> numberOfProductsList = noOfProductsDao.getNoOfProducts(pid);
 					for (int i = 0; i < quantity; i++) {
-						
+
 						cartItemId = new CartItemId();
 						noOfProducts = new NoOfProducts();
 						noOfProducts = numberOfProductsList.get(i);
@@ -172,13 +181,13 @@ public class CartController {
 
 		} else {
 
-			return  "redirect:/customer/customerindex";
+			return "redirect:/customer/customerpage";
 		}
 
 	}
 
 	public CartItems checkIfProductAlreadyExists(int pid, Cart cart) {
-		
+
 		List<CartItems> cartItemsList = cart.getCartItems();
 		for (CartItems items : cartItemsList) {
 			if (items.getCartItemIds().get(0).getNoOfProducts().getProducts().getPid() == pid) {
@@ -188,38 +197,29 @@ public class CartController {
 		return null;
 	}
 
-	public boolean checkAvailabilityOfProducts(int product_id, int quantity) {
-		
-		if (noOfProductsDao.getNoOfProducts(product_id).size()>= quantity) {
+	public boolean checkAvailabilityOfProducts(int pid, int quantity) {
+
+		if (noOfProductsDao.getNoOfProducts(pid).size() >= quantity) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	@GetMapping("/customer/cart")
-	public String displayCart(Principal principal,Model model)
-	{
-		Customer customer=customerDao.getCustomerByEmail(principal.getName());
-		Cart cart=cartDao.getCart(customer.getId());
-		List<Products> products=new ArrayList<Products>();
-		List<CartItems> cartItems=new Stack<CartItems>();
-		cartItems= cartItemsDao.getAllCartItemsByCartId(cart.getCart_id());
-		List<CartItemId> cartItemId=new ArrayList<CartItemId>();
-		
-		List<String> subcategoryname=new ArrayList<String>();
-		
-		for(CartItems items:cartItems)
-		{
-			cartItemId=cartItemIdDao.getAllCartItemId(items.getCartItem_id());
-			products.add(cartItemId.get(0).getNoOfProducts().getProducts());
-		    subcategoryname.add(cartItemId.get(0).getNoOfProducts().getProducts().getSubCategory().getSubcategoryname());
-		}
-		
-		model.addAttribute("product",products);
-		model.addAttribute("name",subcategoryname);
-		model.addAttribute("cartitem",cartItems);
+
+	@GetMapping("customer/cart")
+	public String displayCart(Principal principal, HttpSession session, Model model) {
+		Customer customer = customerDao.getCustomerByEmail(principal.getName());
+		Cart cart = cartDao.getCart(customer.getId());
+
+		model.addAttribute("cart", cart);
 		return "cart";
+	}
+
+	
+	/*@GetMapping("customer/cart")
+	public String deleteCart(@PathVariable)
+	{
+		
+	}*/
 }
 
-}

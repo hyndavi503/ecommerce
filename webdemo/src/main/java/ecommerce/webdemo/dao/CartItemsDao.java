@@ -18,4 +18,6 @@ public interface CartItemsDao {
 	public CartItems getCartItemByCartId(int cart_id);
 
 	public boolean deleteAllCartItems(int cart_id);
+	public CartItems getCartItems(int cartItems_id);
+	
 }

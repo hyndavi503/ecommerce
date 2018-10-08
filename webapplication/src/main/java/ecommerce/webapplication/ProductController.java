@@ -92,7 +92,7 @@ public class ProductController {
 	@PostMapping("vendor/laptop")
 	public String addLaptop(@ModelAttribute("laptop")Laptop laptop,HttpSession session,HttpServletRequest request) {
 	   List<NoOfProducts> noOfProducts=listOfProducts(laptop);
-		laptop.setNoOfProducts(noOfProducts);;
+		laptop.setNoOfProducts(noOfProducts);
 		
 		if(laptopDao.addLaptop(laptop)) 
 		{
@@ -107,6 +107,9 @@ public class ProductController {
 	@PostMapping("vendor/mobile")
 	public String addMobile(@ModelAttribute("mobile")Mobile mobile,HttpServletRequest request) 
 	{	
+		
+		 List<NoOfProducts> noOfProducts=listOfProducts(mobile);
+			mobile.setNoOfProducts(noOfProducts);
 		
 		if(mobileDao.addMobile(mobile))
 		{
@@ -223,13 +226,13 @@ case "mobile":
 
 		String name = subCategoryDao.getSubCategory(productDao.getSid(pid)).getSubcategoryname();
 		System.out.println(name);
-		switch (name) {
+		switch (name) 
+		{
 		case "mobile":
 			model.addAttribute("mobile", mobileDao.getMobileDetails(pid));
 			return "buymobile";
 
-		case "l"
-				+ "aptop":
+		case "laptop":
 			model.addAttribute("laptop", laptopDao.getLaptopDetails(pid));
 			return "buylaptop";
 		

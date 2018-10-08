@@ -29,7 +29,9 @@
  	<li class="nav-item">
  	<a class="nav-link" href="${contextPath}/customer/editcustomer">Edit Profile</a>
  	 </li>
- 
+ <li class=nav-item">
+ <a class="nav-link" href="${contextPath}/customer/cart">Cart</a>
+ </li>
 </nav>
 </div>
 </body>

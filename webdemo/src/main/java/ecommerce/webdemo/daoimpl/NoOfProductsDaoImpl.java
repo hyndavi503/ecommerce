@@ -35,7 +35,7 @@ public class NoOfProductsDaoImpl  implements NoOfProductsDao {
 	public List<NoOfProducts> getNoOfProducts(int pid) {
 		try {
 			Query<NoOfProducts> query= factory.getCurrentSession()
-					.createQuery("from NoOfProducts where products_pid=:pid and sold=false");
+					.createQuery("from NoOfProducts where products_pid=:pid and sold=false",NoOfProducts.class);
 			
 					query.setParameter("pid", pid);
 					return query.getResultList();

@@ -88,5 +88,17 @@ public class CartItemsDaoImpl implements CartItemsDao{
 		}
 	}
 
+	@Override
+	public CartItems getCartItems(int cartItems_id) {
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery("from CartItems where cartItem_id=:id", CartItems.class).setParameter("id", cartItems_id)
+					.getSingleResult();
+		} catch (Exception e) {
+
+			return null;
+		}
+	}
+
 }
 

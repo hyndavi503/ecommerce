@@ -22,9 +22,6 @@ private final String role="customer";
 private boolean status = false;
 
 
-
-
-
 public boolean isStatus() {
 	return status;
 }

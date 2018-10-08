@@ -32,10 +32,6 @@
 </head>
 <body>
 
-
-
-
-<div class="bg">
  <div class="container-fluid bg">
 		<div class="row justify-content-center">
 				<springform:form class="form-container" action="mobile"
@@ -92,12 +88,12 @@
 		</div>
 	</div>
 	
-</div>
+
 </body>
 
 </html> 
 
-<style>
+<!-- <style>
 
 .bg { 
     	    /* The image used */
@@ -118,7 +114,7 @@
     	}
 
 </style>
-
+ -->
   
 
 

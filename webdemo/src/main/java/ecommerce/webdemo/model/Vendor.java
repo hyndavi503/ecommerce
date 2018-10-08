@@ -22,20 +22,10 @@ public class Vendor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	/*@NotNull(message = "name should not be null")
-	@NotBlank(message = "name should not be blank")*/
-	/*@Pattern(regexp = "[a-zA-Z/s]{3,15}", message = "name must contain a-z.min are 3 and max are 15")*/
 	@Column(unique = true)
 	private String name;
-	/*@NotNull(message = "email should not be null")
-	@NotBlank(message = "email should not be blank")*/
-	/*@Pattern(regexp = "[a-z0-9]{5,15}@[a-z]{3,6}\.[a-z]{2,6}
-	 * ", message = "email must contain the following rules")*/
 	@Column(unique = true)
 	private String email;
-	/*@NotNull(message = "mobile should not be null")
-	@NotBlank(message = "mobile should not be blank")*/
-	/*@Pattern(regexp = "[0-9] {1,10}", message = "mobile number should have 0-9")*/
 	@Column(unique = true)
 	private String mobile;
 	private String password;

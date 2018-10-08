@@ -29,6 +29,7 @@ private int numberOfProducts;
 @Transient
 private MultipartFile image;
 
+
 @ManyToOne
 private Vendor vendor;
 @ManyToOne

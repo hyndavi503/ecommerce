@@ -48,12 +48,6 @@
     	    background-repeat: no-repeat;
     	    background-size: cover;
     	}
-    	/*.form-container{border:0px solid #fff; padding: 30px 60px;
-    		margin-top: 40vh;
-    		-webkit-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
--moz-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
-box-shadow: 22px 20px 25px 9px rgba(0,0,0,0.75);
-    	}*/
     	form{
     		padding-left: 550px;
     		padding-top: 70px;

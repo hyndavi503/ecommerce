@@ -37,11 +37,11 @@
 					method="post" modelAttribute="laptop" enctype="multipart/form-data">
 					<h2>Add Laptop</h2>
 					<div class="form-group">
-						<label path="subCategory.sid">SubCategoryId</label>
+					<!-- 	<label path="subCategory.sid">SubCategoryId</label> -->
 						<springform:input path="subCategory.sid" class="form-control"  type="hidden" value="${sid }"/>
 					</div>
 					<div class="form-group">
-						<label path="vendor.id">VendorId</label>
+						<!-- <label path="vendor.id">VendorId</label> -->
 						<springform:input path="vendor.id" class="form-control" type="hidden" value="${id}"/>
 					</div>
 					<div class="form-group">
@@ -104,7 +104,7 @@
     	
     	form{
     		padding-left: 550px;
-    		padding-top: 30px;
+    		padding-top:40px;
     	}
 
 </style>
